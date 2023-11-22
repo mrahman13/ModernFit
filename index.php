@@ -1,7 +1,7 @@
 <?php
-session_start();
-include("includes/connection.php");
+    include 'includes/autoloader.php'
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +55,13 @@ include("includes/connection.php");
                     <li>Specialised staff</li>
                 </ul>
             </div>
+                <?php
+                    //$usersObj = new usersContr();
+                    //$usersObj->createUser("John", "Does", "email@email.com", "password", "member", "pfp", "1984-02-01")
+                    //$first_name, $last_name, $email, $password, $user_type, $profile_picture, $date_joined
+                    $usersObj = new usersView();
+                    // $usersObj->showUser("John", "member")
+                ?>
         </div>
         <footer></footer>
     </div>

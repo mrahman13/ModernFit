@@ -1,6 +1,5 @@
 <?php
-session_start();
-include("includes/connection.php");
+include 'includes/autoloader.php'
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +27,12 @@ include("includes/connection.php");
       </nav>
     </header>
     <div id="main">
-
+      <h1>Sign in</h1>
+      <form action="">
+        <input type="email" id="email" name="email" placeholder="Please enter your email:" required>
+        <input type="password" id="password" name="password" placeholder="Please enter your password:" required>
+        <input type="submit" value="Submit">
+      </form>
     </div>
     <footer></footer>
   </div>
