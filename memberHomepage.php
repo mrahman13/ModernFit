@@ -1,6 +1,5 @@
 <?php
-session_start();
-include("includes/connection.php");
+    include 'includes/autoloader.php'
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +10,7 @@ include("includes/connection.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/mobile.css">
   <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
-  <title>Create program - Workout</title>
+  <title>Program</title>
 </head>
 
 <body>
