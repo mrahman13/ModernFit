@@ -1,9 +1,9 @@
 <?php
-class usersView extends Users{
+class usersView extends users{
 
-  // public function showUser($name, $user_type){
-  //   $user_data = $this->getUser($name, $user_type);
-  //   $obj = $user_data->fetch_object();
-  //   echo "Name: " . $obj->first_name. $obj->date_joined;
-  // }
+  public function showUserId($email){
+    $user_data = $this->getUserId($email);
+    $obj = $user_data->fetch_object();
+    return $obj->user_id;
+  }
 }

@@ -1,6 +1,5 @@
 <?php
-session_start();
-include("includes/connection.php");
+include 'includes/autoloader.php'
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +27,39 @@ include("includes/connection.php");
       </nav>
     </header>
     <div id="main">
+      <h1>Registration</h1>
+      <form method="post">
+        <input type="text" id="profile_picture" name="profile_picture" placeholder="Please enter your profile picture:" required>
+        <input type="text" id="first_name" name="first_name" placeholder="Please enter your first name:" required>
+        <input type="text" id="last_name" name="last_name" placeholder="Please enter your last name:" required>
+        <input type="email" id="email" name="email" placeholder="Please enter your email:" required>
+        <input type="password" id="password" name="password" placeholder="Please enter your password:" required>
+        <input type="text" id="goals" name="goals" placeholder="Please enter your goals and determinations:" required>
+        <input id="button" type="submit" value="Submit" name="registration"><br><br>
+      </form>
+      <?php
+      if (isset($_POST['registration'])) {
+        //gets form data
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        //idk what to do for this so just did text for now
+        $profile_picture = $_POST['profile_picture'];
+        $date_joined = date("Y-m-d");
+        //will need to randomly generate and check with all other pins that its unique
+        $pin = 235231;
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $user_role = "member";
 
+        $userRegistrationObj = new usersContr();
+        $userRegistrationObj->createUser($email, $password, $user_role);
+        $userIdObj = new usersView();
+        // echo "SELECT user_id from user where email = $email";
+        echo $date_joined;
+        $memberRegistrationObj = new memberContr();
+        $memberRegistrationObj->createMember($first_name, $last_name, $profile_picture, $date_joined, $pin, $userIdObj->showUserId($email));
+      }
+      ?>
     </div>
     <footer></footer>
   </div>

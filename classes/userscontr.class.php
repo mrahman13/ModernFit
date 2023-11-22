@@ -1,8 +1,12 @@
 <?php
 
-class usersContr extends Users{
+class usersContr extends users{
 
-  // public function createUser($first_name, $last_name, $email, $password, $user_type, $profile_picture, $date_joined){
-  //   $this->setUser($first_name, $last_name, $email, $password, $user_type, $profile_picture, $date_joined);
-  // }
+  public function createUser($email, $password, $user_role){
+    $this->setUser($email, $password, $user_role);
+  }
+
+  public function signIn($email, $password){
+    $this->signInCheck($email, $password);
+  }
 }

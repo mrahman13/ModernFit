@@ -1,22 +1,37 @@
 <?php
 
-class Users extends db
+class users extends db
 {
-  // protected $first_name;
-  // protected $last_name;
-  // protected $email;
-  // protected $password;
-  // protected $user_type;
+  protected $user_id;
+  protected $email;
+  protected $password;
+  protected $user_role;
 
-  // protected function getUser($name, $user_type)
-  // {
-  //   $query = "SELECT * from $user_type where first_name = '$name'";
-  //   $user_data = $this->connect()->query($query);
-  //   return $user_data;
-  // }
-  // protected function setUser($first_name, $last_name, $email, $password, $user_type, $profile_picture, $date_joined)
-  // {
-  //   $query = "INSERT INTO member (first_name,last_name,email,password,user_type,profile_picture,date_joined) values ('$first_name','$last_name','$email','$password','$user_type','$profile_picture','$date_joined')";
-  //   mysqli_query($this->connect(), $query);
-  // }
+  protected function getUser($user_id)
+  {
+    $query = "SELECT * from user where user_id = '$user_id'";
+    $user_data = $this->connect()->query($query);
+    return $user_data;
+  }
+  protected function setUser($email, $password, $user_role)
+  {
+    $query = "INSERT INTO user (email,password,user_role) values ('$email','$password','$user_role')";
+    mysqli_query($this->connect(), $query);
+  }
+  protected function getUserId($email)
+  {
+    $query = "SELECT user_id from user where email = '$email'";
+    $user_data = $this->connect()->query($query);
+    return $user_data;
+  }
+  protected function signInCheck($email, $password)
+  {
+    $checkCredentials = mysqli_query($this->connect(), "SELECT * FROM user WHERE email = '$email' AND password = '$password'");
+    if(mysqli_num_rows($checkCredentials) == 1){
+      header("Location: memberHomepage.php");
+    }
+    // $query = "SELECT user_id from user where email = '$email'";
+    // $user_data = $this->connect()->query($query);
+    // return $user_data;
+  }
 }

@@ -28,11 +28,21 @@ include 'includes/autoloader.php'
     </header>
     <div id="main">
       <h1>Sign in</h1>
-      <form action="">
+      <form method="post">
         <input type="email" id="email" name="email" placeholder="Please enter your email:" required>
         <input type="password" id="password" name="password" placeholder="Please enter your password:" required>
-        <input type="submit" value="Submit">
+        <input id="button" type="submit" value="Submit" name="signIn"><br><br>
       </form>
+      <?php
+        	if (isset($_POST['signIn'])) {
+            // $mealLogObj = new fitnessLogContr();
+            //gets form data
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $signIn = new usersContr();
+            $signIn->signIn($email, $password);
+          }
+        ?>
     </div>
     <footer></footer>
   </div>
