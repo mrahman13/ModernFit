@@ -1,5 +1,6 @@
 <?php
-class usersView extends users{
+
+class usersView extends usersModel{
 
   public function showUserId($email){
     $user_data = $this->getUserId($email);

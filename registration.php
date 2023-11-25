@@ -46,7 +46,7 @@ include 'includes/autoloader.php'
         $profile_picture = $_POST['profile_picture'];
         $date_joined = date("Y-m-d");
         //will need to randomly generate and check with all other pins that its unique
-        $pin = 235231;
+        // $pin = 235231;
         $email = $_POST['email'];
         $password = $_POST['password'];
         $user_role = "member";
@@ -55,14 +55,20 @@ include 'includes/autoloader.php'
         $userRegistrationObj->createUser($email, $password, $user_role);
         $userIdObj = new usersView();
         // echo "SELECT user_id from user where email = $email";
-        echo $date_joined;
+        // echo $date_joined;
         $memberRegistrationObj = new memberContr();
-        $memberRegistrationObj->createMember($first_name, $last_name, $profile_picture, $date_joined, $pin, $userIdObj->showUserId($email));
+        $memberRegistrationObj->createMember($first_name, $last_name, $profile_picture, $date_joined, $userIdObj->showUserId($email));
       }
       ?>
     </div>
     <footer></footer>
   </div>
+  <script>
+		//prevents the form resubmitting when the page is refreshed
+		if (window.history.replaceState) {
+			window.history.replaceState(null, null, window.location.href);
+		}
+	</script>
 </body>
 
 </html>

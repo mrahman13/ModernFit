@@ -1,5 +1,5 @@
 <?php
-class memberView extends Member{
+class fitnessLogView extends fitnessLogModel{
 
   // public function showUser($name, $user_type){
   //   $user_data = $this->getUser($name, $user_type);

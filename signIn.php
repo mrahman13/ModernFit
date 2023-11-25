@@ -46,6 +46,12 @@ include 'includes/autoloader.php'
     </div>
     <footer></footer>
   </div>
+  <script>
+		//prevents the form resubmitting when the page is refreshed
+		if (window.history.replaceState) {
+			window.history.replaceState(null, null, window.location.href);
+		}
+	</script>
 </body>
 
 </html>

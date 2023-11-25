@@ -1,6 +1,6 @@
 <?php
 
-class fitnessLog extends db
+class fitnessLogModel extends dbModel
 {
   // protected $first_name;
   // protected $last_name;
