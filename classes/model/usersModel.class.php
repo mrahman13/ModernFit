@@ -13,17 +13,28 @@ class usersModel extends dbModel
     $user_data = $this->connect()->query($query);
     return $user_data;
   }
+
   protected function setUser($email, $password, $user_role)
   {
-    $query = "INSERT INTO user (email,password,user_role) values ('$email','$password','$user_role')";
-    mysqli_query($this->connect(), $query);
+    $query = "SELECT * FROM user WHERE email = '$email'";
+    $user_data = $this->connect()->query($query);
+    if(mysqli_num_rows($user_data) == 0){
+      $query = "INSERT INTO user (email,password,user_role) values ('$email','$password','$user_role')";
+      mysqli_query($this->connect(), $query);
+      header("Location: " . $user_role . "Homepage.php");
+    }
+    else{
+      echo "Email already in use";
+    }
   }
+
   protected function getUserId($email)
   {
     $query = "SELECT user_id from user where email = '$email'";
     $user_data = $this->connect()->query($query);
     return $user_data;
   }
+
   protected function signInCheck($email, $password)
   {
     $query = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
