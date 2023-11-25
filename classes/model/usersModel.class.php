@@ -1,6 +1,6 @@
 <?php
 
-class users extends db
+class usersModel extends dbModel
 {
   protected $user_id;
   protected $email;
@@ -26,12 +26,14 @@ class users extends db
   }
   protected function signInCheck($email, $password)
   {
-    $checkCredentials = mysqli_query($this->connect(), "SELECT * FROM user WHERE email = '$email' AND password = '$password'");
-    if(mysqli_num_rows($checkCredentials) == 1){
-      header("Location: memberHomepage.php");
+    $query = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
+    $user_data = $this->connect()->query($query);
+    if(mysqli_num_rows($user_data) == 1){
+      $obj = $user_data->fetch_object();
+      header("Location: " . $obj->user_role . "Homepage.php");
     }
-    // $query = "SELECT user_id from user where email = '$email'";
-    // $user_data = $this->connect()->query($query);
-    // return $user_data;
+    else{
+      echo "Wrong password";
+    }
   }
 }
