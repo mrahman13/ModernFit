@@ -1,4 +1,8 @@
-//help with understanding the mvc model
+// help with understanding the mvc model
 https://www.youtube.com/watch?v=Fg0CP-ri87U&list=PL0eyrZgxdwhypQiZnYXM7z7-OTkcMgGPh&index=18&t=634s
-//auto class loader
+// auto class loader
 https://www.youtube.com/watch?v=z3pZdmJ64jo&list=PL0eyrZgxdwhypQiZnYXM7z7-OTkcMgGPh&index=9&t=524s
+// pdo connection
+https://www.w3schools.com/php/php_mysql_connect.asp#:~:text=Both%20MySQLi%20and%20PDO%20have,string%20and%20a%20few%20queries
+// getting amount of rows from select statement
+https://www.php.net/manual/en/pdostatement.rowcount.php#:~:text=For%20most%20databases%2C%20PDOStatement%3A%3A,the%20number%20of%20matching%20rows.
