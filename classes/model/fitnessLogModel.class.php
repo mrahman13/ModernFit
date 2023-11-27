@@ -1,6 +1,6 @@
 <?php
 
-class fitnessLogModel extends dbModel
+class fitnessLogModel extends dbConnection
 {
   // protected $first_name;
   // protected $last_name;
@@ -17,6 +17,6 @@ class fitnessLogModel extends dbModel
   protected function setMealLog($meal_name,$date_completed,$member_id,$meal_id)
   {
     $query = "INSERT INTO meal_log (meal_name,date_completed,member_id,meal_id) values ('$meal_name','$date_completed','$member_id','$meal_id')";
-    mysqli_query($this->connect(), $query);
+    $this->connect()->query($query);
   }
 }

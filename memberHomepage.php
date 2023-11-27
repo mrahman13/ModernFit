@@ -27,6 +27,12 @@
       </nav>
     </header>
     <div id="main">
+      <a href="entryLog.php">Entry Log</a>
+      <a href="nutritionalInfo.php">Nutritional Info</a>
+      <a href="tailoredProgram.php">Tailored Program</a>
+
+
+
 
     </div>
     <footer></footer>
