@@ -45,17 +45,15 @@ include 'includes/autoloader.php'
         //idk what to do for this so just did text for now
         $profile_picture = $_POST['profile_picture'];
         $date_joined = date("Y-m-d");
-        //will need to randomly generate and check with all other pins that its unique
-        // $pin = 235231;
+
         $email = $_POST['email'];
         $password = $_POST['password'];
         $user_role = "member";
 
         $userRegistrationObj = new usersContr();
         $userRegistrationObj->createUser($email, $password, $user_role);
+        
         $userIdObj = new usersView();
-        // echo "SELECT user_id from user where email = $email";
-        // echo $date_joined;
         $memberRegistrationObj = new memberContr();
         $memberRegistrationObj->createMember($first_name, $last_name, $profile_picture, $date_joined, $userIdObj->showUserId($email));
       }

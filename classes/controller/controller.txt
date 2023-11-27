@@ -1,0 +1,1 @@
+controller takes data from the front end and passes it into the model, which then interacts with the database
