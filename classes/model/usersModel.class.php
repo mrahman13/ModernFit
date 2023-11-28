@@ -1,11 +1,11 @@
 <?php
 
-class usersModel extends dbModel
+class usersModel extends dbConnection
 {
-  protected $user_id;
-  protected $email;
-  protected $password;
-  protected $user_role;
+  // protected $user_id;
+  // protected $email;
+  // protected $password;
+  // protected $user_role;
 
   protected function getUser($user_id)
   {
@@ -16,11 +16,13 @@ class usersModel extends dbModel
 
   protected function setUser($email, $password, $user_role)
   {
-    $query = "SELECT * FROM user WHERE email = '$email'";
-    $user_data = $this->connect()->query($query);
-    if(mysqli_num_rows($user_data) == 0){
+    $query = "SELECT COUNT(*) FROM user WHERE email = '$email'";
+    $result = $this->connect()->query($query);
+    $count = $result->fetchColumn();
+    if($count == 0)
+    {
       $query = "INSERT INTO user (email,password,user_role) values ('$email','$password','$user_role')";
-      mysqli_query($this->connect(), $query);
+      $this->connect()->query($query);
       header("Location: " . $user_role . "Homepage.php");
     }
     else{
@@ -31,17 +33,21 @@ class usersModel extends dbModel
   protected function getUserId($email)
   {
     $query = "SELECT user_id from user where email = '$email'";
-    $user_data = $this->connect()->query($query);
-    return $user_data;
+    $user_id = $this->connect()->query($query);
+    return $user_id;
   }
 
   protected function signInCheck($email, $password)
   {
-    $query = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
-    $user_data = $this->connect()->query($query);
-    if(mysqli_num_rows($user_data) == 1){
-      $obj = $user_data->fetch_object();
-      header("Location: " . $obj->user_role . "Homepage.php");
+    $query = "SELECT COUNT(*) FROM user WHERE email = '$email' AND password = '$password'";
+    $result = $this->connect()->query($query);
+    $count = $result->fetchColumn();
+    if($count == 1)
+    {
+      $query = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
+      $user_data = $this->connect()->query($query);
+      $obj = $user_data->fetch();
+      header("Location: " . $obj['user_role'] . "Homepage.php");
     }
     else{
       echo "Wrong password";
