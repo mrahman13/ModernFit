@@ -3,8 +3,14 @@
     include 'includes/memberHeader.php';
     //might need get method or direct connection
     
+    if(isset($_GET['key'])){
+      $key = $_GET['key'];
+    }
+    else {
+      $key = '';
+    }
     $data = new NI_View();
-    $integ_data = $data->showIngredients();
+    $integ_data = $data->showIngredients($key);
     
 ?>
 
@@ -38,12 +44,12 @@
           foreach($integ_data as $row) {?>
             <div class="responsive-row">
               <div class="container set-padding" id="integ">
-
                 <div class="image">
-                  <img class="img-responsive" src="/img/<?php $row['image'] ?>">
+                  <img style="width:500px;height:300px;" class="img-responsive" src="img/<?php echo $row['image'] ?>">
                 </div>
 
                 <div class="info">
+                  <p id='ingredient_name'><?php echo "Name: ".$row['ingredient_name'] ?></p>
                   <p id='calorie'><?php echo "Calorie Count: ".$row['calories'] ?></p>
                   <p id='protein'><?php echo "Protein: ".$row['protein'] ?></p>
                   <p id='carbohydrates'><?php echo "Carbohydrates: ".$row['carbohydrates'] ?></p>
