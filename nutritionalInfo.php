@@ -45,7 +45,7 @@
             <div class="responsive-row">
               <div class="container set-padding" id="integ">
                 <div class="image">
-                  <img style="width:500px;height:300px;" class="img-responsive" src="img/<?php echo $row['image'] ?>">
+                  <img style="width:500px;height:300px;" class="img-responsive" src="../img/<?php echo $row['image'] ?>">
                 </div>
 
                 <div class="info">
