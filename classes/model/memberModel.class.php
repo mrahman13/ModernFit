@@ -36,9 +36,16 @@ class memberModel extends dbConnection
   }
   protected function setMember($first_name, $last_name, $profile_picture, $date_joined, $user_id)
   {
-    $pin = $this->makePin();
-    $query = "INSERT INTO member (first_name,last_name,profile_picture,date_joined,pin,user_id) values (?, ?, ?, ?, ?, ?)";
+    $query = "SELECT COUNT(*) FROM member WHERE user_id = ?";
     $stmt = $this->connect()->prepare($query);
-    $stmt->execute([$first_name, $last_name, $profile_picture, $date_joined, $pin, $user_id]);
+    $stmt->execute([$user_id]);
+    $count = $stmt->fetchColumn();
+    if($count == 0)
+    {
+      $pin = $this->makePin();
+      $query = "INSERT INTO member (first_name,last_name,profile_picture,date_joined,pin,user_id) values (?, ?, ?, ?, ?, ?)";
+      $stmt = $this->connect()->prepare($query);
+      $stmt->execute([$first_name, $last_name, $profile_picture, $date_joined, $pin, $user_id]);
+    }
   }
 }
