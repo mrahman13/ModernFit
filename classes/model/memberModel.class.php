@@ -16,6 +16,13 @@ class memberModel extends dbConnection
     $stmt->execute([$user_id]);
     return $stmt;
   }
+  protected function getMemberID($user_id)
+  {
+    $query = "SELECT member_id from member where user_id = ?";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$user_id]);
+    return $stmt;
+  }
   protected function makePin()
   {
     // need to make a new pin, and then check with all pins saved, if there arn't any can add, otherwise need to make another
@@ -46,6 +53,15 @@ class memberModel extends dbConnection
       $query = "INSERT INTO member (first_name,last_name,profile_picture,date_joined,pin,user_id) values (?, ?, ?, ?, ?, ?)";
       $stmt = $this->connect()->prepare($query);
       $stmt->execute([$first_name, $last_name, $profile_picture, $date_joined, $pin, $user_id]);
+
+      $query = "SELECT member_id from member where user_id = ?";
+      $stmt = $this->connect()->prepare($query);
+      $stmt->execute([$user_id]);
+      // $obj = $stmt->fetch();
+      // session_start();
+      $_SESSION['member_id'] = $stmt;
+      
+      // $_SESSION['member_id'] = $obj['member_id'];
     }
   }
 }
