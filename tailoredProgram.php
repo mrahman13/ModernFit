@@ -34,7 +34,8 @@
         $mealObject = new mealProgramView();
         $mealObject->showMealProgram();
 
-
+        $workoutObject = new workoutProgramView();
+        $workoutObject->showWorkoutProgram();
       ?>  
 
     </div>
