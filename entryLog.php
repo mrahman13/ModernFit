@@ -36,7 +36,7 @@
         </form>
         <?php
         	if (isset($_POST['mealLog'])) {
-            $mealLogObj = new fitnessLogContr();
+            $mealLogObj = new mealLogContr();
             //gets form data
             $meal_name = $_POST['meal_name'];
             $date_completed = $_POST['date_completed'];
