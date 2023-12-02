@@ -1,11 +1,14 @@
 <?php
+    session_start();
     include 'includes/autoloader.php';
     include 'includes/memberHeader.php';
-    //might need get method or direct connection
     
-    if(isset($_GET['key'])){
-      $key = $_GET['key'];
+    //set key
+    if(isset($_POST["search"]))
+    {
+      $key = $_POST["key"];
     }
+
     else {
       $key = '';
     }
@@ -30,9 +33,9 @@
 
 
       <div class="search-box">
-        <form class="" action="nutritionalInfo.php">
+        <form class="" action="" method="post">
           <input type="text" class="" placeholder="Search Ingredient..." name="key" value="<?php isset($_GET['keyword']) ? $_GET['keyword'] : '' ?>">
-          <button type="submit" class="">Search</button>
+          <button name="search" type="submit" class="">Search</button>
         </form>
       </div>
 
@@ -45,7 +48,7 @@
             <div class="responsive-row">
               <div class="container set-padding" id="integ">
                 <div class="image">
-                  <img style="width:500px;height:300px;" class="img-responsive" src="img/<?php echo $row['image'] ?>">
+                  <img style="width:500px;height:300px;" class="img-responsive" src="../img/<?php echo $row['image'] ?>">
                 </div>
 
                 <div class="info">
