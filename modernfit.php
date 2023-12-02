@@ -11,6 +11,10 @@ switch ($request) {
     /*case '/views/users':
         require __DIR__ . $viewDir . 'users.php';
         break;*/
+        
+    case '/nutrition':
+        require __DIR__ . '/nutritionalInfo.php';
+        break;
 
     default:
         http_response_code(404);

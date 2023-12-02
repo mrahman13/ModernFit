@@ -9,9 +9,10 @@ class usersModel extends dbConnection
 
   protected function getUser($user_id)
   {
-    $query = "SELECT * from user where user_id = '$user_id'";
-    $user_data = $this->connect()->query($query);
-    return $user_data;
+    $query = "SELECT * from user where user_id = ?";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$user_id]);
+    return $stmt;
   }
 
   protected function setUser($email, $password, $user_role)
@@ -52,6 +53,19 @@ class usersModel extends dbConnection
       $stmt = $this->connect()->prepare($query);
       $stmt->execute([$email, $password]);
       $obj = $stmt->fetch();
+      // session_start();
+      $_SESSION['user_id'] = $obj['user_id'];
+      $_SESSION['user_role'] = $obj['user_role'];
+      if($obj['user_role'] == "member")
+      {
+        $query = "SELECT member_id from member where user_id = ?";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute([$_SESSION['user_id']]);
+        $memberObj = $stmt->fetch();
+        $_SESSION['member_id'] = $memberObj['member_id'];
+      }
+
+
       header("Location: " . $obj['user_role'] . "Homepage.php");
     }
     else{

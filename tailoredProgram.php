@@ -1,5 +1,7 @@
 <?php
-    include 'includes/autoloader.php'
+    session_start();
+    include 'includes/autoloader.php';
+    $user_id = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +29,13 @@
       </nav>
     </header>
     <div id="main">
+      <?php
+
+        $mealObject = new mealProgramView();
+        $mealObject->showMealProgram();
+
+
+      ?>  
 
     </div>
     <footer></footer>
