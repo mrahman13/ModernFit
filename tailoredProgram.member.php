@@ -2,6 +2,7 @@
     session_start();
     include 'includes/autoloader.php';
     include 'includes/checkLogin.php';
+    include 'includes/memberHeader.php';
     $user_id = $_SESSION['user_id'];
 ?>
 
@@ -18,17 +19,6 @@
 
 <body>
   <div id="container" class="container">
-    <header id="header" class="header">
-      <!-- something for the drop down menu -->
-      <div id="logo" class="logo">
-        <a href="includes/signOut.php"><img src="" alt="ModernFit Logo"></a>
-      </div>
-      <nav id="header-nav">
-        <ul>
-          <li><a href="includes/signOut.php">Sign Out</a></li>
-        </ul>
-      </nav>
-    </header>
     <div id="main">
       <?php
 
