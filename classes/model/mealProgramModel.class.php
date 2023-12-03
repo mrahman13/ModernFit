@@ -9,4 +9,12 @@ class mealProgramModel extends dbConnection
     $stmt->execute([$_SESSION['member_id']]);
     return $stmt;
   }
+  protected function checkMealExists($meal_name, $personal_trainer_id)
+  {
+    $query = "SELECT COUNT(*) from meal_program WHERE meal_name = ? AND member_id = ? AND personal_trainer_id = ?";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$meal_name, $_SESSION['member_id'], $personal_trainer_id]);
+    $count = $stmt->fetchColumn();
+    return $count;
+  }
 }

@@ -3,6 +3,10 @@
     include 'includes/autoloader.php';
     include 'includes/checkLogin.php';
     include 'includes/memberHeader.php';
+
+    if (isset($_SESSION['meal_id'])) {
+        $unset($_SESSION['meal_id']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +33,23 @@
         <?php
         	if (isset($_POST['mealLog'])) {
             $mealLogObj = new mealLogContr();
+            $mealObject = new mealProgramView();
+            $data = $mealObject->showMealProgram();
             //gets form data
             $meal_name = $_POST['meal_name'];
             $date_completed = $_POST['date_completed'];
-            $member_id = 4;
-            $meal_id = 8;
 
-            $mealLogObj->createMealLog($meal_name,$date_completed,$member_id,$meal_id);
+            foreach($data as $row) {
+              if($row['meal_name'] == $meal_name){
+                $meal_id = $row['meal_id'];
+                $personal_trainer_id = $row['personal_trainer_id'];
+                $meal_check = $mealObject->mealCheck($meal_name, $personal_trainer_id);
+                $mealLogObj->createMealLog($meal_name, $date_completed, $meal_id, $meal_check);
+              }
+              // else{
+              //   echo "Meal does not exist";
+              // }
+            }
           }
         ?>
       </div>
