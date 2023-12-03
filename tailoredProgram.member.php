@@ -21,10 +21,19 @@
   <div id="container" class="container">
     <div id="main">
       <?php
-
         $mealObject = new mealProgramView();
-        $mealObject->showMealProgram();
+        $data = $mealObject->showMealProgram();
 
+        foreach($data as $row) {
+          $meal_time = date('H:i', strtotime($row['meal_time']));          
+          $meal_name = $row['meal_name'];
+          $meal_id = $row['meal_id'];
+          ?>
+              <div class="meal">
+                <p id='meal_time'><?php echo $meal_time ?></p>
+                <a href="recipeViewer.member.php?meal_id=<?php echo $meal_id; ?>"><p id='meal_name'><?php echo $meal_name ?></p></a>
+              </div>
+        <?php }
         $workoutObject = new workoutProgramView();
         $workoutObject->showWorkoutProgram();
       ?>  

@@ -20,7 +20,7 @@
   <div id="container" class="container">
     <div id="main">
       <a href="entryLog.member.php">Entry Log</a>
-      <a href="nutritionalInfo.member.php">Nutritional Info</a>
+      <a href="nutritionalInfo.member.personalTrainer.php">Nutritional Info</a>
       <a href="tailoredProgram.member.php">Tailored Program</a>
     </div>
     <footer></footer>
