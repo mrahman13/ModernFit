@@ -64,7 +64,6 @@ class usersModel extends dbConnection
         $memberObj = $stmt->fetch();
         $_SESSION['member_id'] = $memberObj['member_id'];
       }
-      echo $_SESSION['user_id'];
 
       header("Location: " . $obj['user_role'] . "Homepage." . $obj['user_role'] . ".php");
     }
