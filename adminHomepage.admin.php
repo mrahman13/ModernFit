@@ -1,7 +1,7 @@
 <?php
     session_start();
     include 'includes/autoloader.php';
-    $user_id = $_SESSION['user_id'];
+    include 'includes/checkLogin.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/mobile.css">
   <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
-  <title>Program</title>
+  <title>Admin Home</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <header id="header" class="header">
       <!-- something for the drop down menu -->
       <div id="logo" class="logo">
-        <a href="index.php"><img src="" alt="ModernFit Logo"></a>
+        <a href="includes/signOut.php"><img src="" alt="ModernFit Logo"></a>
       </div>
       <nav id="header-nav">
         <ul>
@@ -29,14 +29,6 @@
       </nav>
     </header>
     <div id="main">
-      <?php
-
-        $mealObject = new mealProgramView();
-        $mealObject->showMealProgram();
-
-        $workoutObject = new workoutProgramView();
-        $workoutObject->showWorkoutProgram();
-      ?>  
 
     </div>
     <footer></footer>
