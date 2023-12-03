@@ -6,3 +6,5 @@ https://www.youtube.com/watch?v=z3pZdmJ64jo&list=PL0eyrZgxdwhypQiZnYXM7z7-OTkcMg
 https://www.w3schools.com/php/php_mysql_connect.asp#:~:text=Both%20MySQLi%20and%20PDO%20have,string%20and%20a%20few%20queries
 // getting amount of rows from select statement
 https://www.php.net/manual/en/pdostatement.rowcount.php#:~:text=For%20most%20databases%2C%20PDOStatement%3A%3A,the%20number%20of%20matching%20rows.
+// passing data through url
+https://teamtreehouse.com/community/passing-a-get-variable-through-a-link-with-php-2
