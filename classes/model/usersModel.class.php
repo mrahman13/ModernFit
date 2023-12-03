@@ -65,8 +65,7 @@ class usersModel extends dbConnection
         $_SESSION['member_id'] = $memberObj['member_id'];
       }
 
-
-      header("Location: " . $obj['user_role'] . "Homepage.php");
+      header("Location: " . $obj['user_role'] . "Homepage." . $obj['user_role'] . ".php");
     }
     else{
       echo "Wrong password";
