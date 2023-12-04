@@ -1,5 +1,5 @@
 <?php
-class fitnessLogView extends fitnessLogModel{
+class mealLogView extends mealLogModel{
 
 
 }
