@@ -4,10 +4,10 @@ class workoutProgramView extends workoutProgramModel{
 
   public function showWorkoutProgram(){
     $workoutProgram = $this->getWorkoutProgram();
-    foreach($workoutProgram as $row){
-      echo "<p>" . $row['workout_day'] . "</p>";
-      echo "<p>" . $row['workout_name'] . "</p>";
-      echo "<p>" . $row['exercises'] . "</p>";
-    }
+    return $workoutProgram;
+  }
+  public function workoutCheck($workout_name, $personal_trainer_id){
+    $count = $this->checkWorkoutExists($workout_name, $personal_trainer_id);
+    return $count;
   }
 }
