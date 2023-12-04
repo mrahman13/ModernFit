@@ -35,7 +35,7 @@ if (isset($_SESSION['meal_id'])) {
           $mealExistCount = 0;
           $mealLogObj = new mealLogContr();
           $mealObject = new mealProgramView();
-          $mealData = $mealObject->showMealProgram();
+          $mealData = $mealObject->showMealProgramByMember();
           $meal_name = $_POST['meal_name'];
           $date_completed = $_POST['date_completed'];
           foreach ($mealData as $row) {
@@ -63,7 +63,7 @@ if (isset($_SESSION['meal_id'])) {
           $workoutExistCount = 0;
           $workoutLogObj = new workoutLogContr();
           $workoutObject = new workoutProgramView();
-          $workoutData = $workoutObject->showWorkoutProgram();
+          $workoutData = $workoutObject->showWorkoutProgramByMember();
           $workout_name = $_POST['workout_name'];
           $date_completed = $_POST['date_completed'];
           foreach ($workoutData as $row) {

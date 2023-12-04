@@ -27,14 +27,12 @@ if (isset($_GET['meal_id']) && $_GET['meal_id'] !== '') {
     <div id="main">
       <?php
       $mealObject = new mealProgramView();
-      $data = $mealObject->showMealProgram();
-      // $obj = $data->fetch();
+      $data = $mealObject->showMealProgramByMember();
       $meal_name = "";
       $meal_time = "";
       $ingredients = "";
       $method = "";
       $macros = "";
-
       foreach($data as $row) {
         if($row['meal_id'] == $meal_id){
           $meal_name = $row['meal_name'];
@@ -44,15 +42,13 @@ if (isset($_GET['meal_id']) && $_GET['meal_id'] !== '') {
           $macros = $row['macros'];
         }
       } ?>
-      
         <div class="meal">
-          <p id='meal_time'><?php echo $meal_name ?></p>
+          <p id='meal_name'><?php echo $meal_name ?></p>
           <p id='meal_time'><?php echo $meal_time ?></p>
-          <p id='meal_time'><?php echo $ingredients ?></p>
-          <p id='meal_time'><?php echo $method ?></p>
-          <p id='meal_time'><?php echo $macros ?></p>
+          <p id='ingredients'><?php echo $ingredients ?></p>
+          <p id='method'><?php echo $method ?></p>
+          <p id='macros'><?php echo $macros ?></p>
         </div>
-
     </div>
     <footer></footer>
   </div>
