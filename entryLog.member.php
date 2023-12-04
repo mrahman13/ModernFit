@@ -32,6 +32,7 @@
         </form>
         <?php
         	if (isset($_POST['mealLog'])) {
+            $mealExistCount = 0;
             $mealLogObj = new mealLogContr();
             $mealObject = new mealProgramView();
             $data = $mealObject->showMealProgram();
@@ -45,10 +46,14 @@
                 $personal_trainer_id = $row['personal_trainer_id'];
                 $meal_check = $mealObject->mealCheck($meal_name, $personal_trainer_id);
                 $mealLogObj->createMealLog($meal_name, $date_completed, $meal_id, $meal_check);
+                $mealExistCount++;
               }
               // else{
               //   echo "Meal does not exist";
               // }
+            }
+            if($mealExistCount == 0){
+              echo "Meal does not exist";
             }
           }
         ?>
