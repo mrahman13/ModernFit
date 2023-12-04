@@ -30,23 +30,23 @@
       </nav>
     </header>
     <div id="main">
-    <h1>View members profiles</h1>
-      <form method="post">
-        <input type="text" name="searchMember" id="searchMember" placeholder="Search for a member" required>
-        <input type="submit" value="search" id="button"><br><br>
-      </form>
-      <?php
-      if (isset($_POST['searchMember'])) {
-      $search = $_POST['searchMember']; 
-      $searchMember = new memberDataContr();
-      $members = $searchMember->searchMember($search);
-  
-      foreach ($members as $member) {
-        echo "<p><a href='personalTrainerMemberData.personalTrainer.php?member_id={$member['member_id']}'>{$member['first_name']} {$member['last_name']}</a></p>";
-      }
-      }
-          
-        ?>
+    <h1>Member Information</h1>
+    <?php
+$member_id = $_GET['member_id'];
+$memberData = new memberDataView();
+$memberDataResult = $memberData->showMemberData($member_id);
+
+
+foreach ($memberDataResult as $row) {
+  ?>
+  <p id='name'>Name: <?php echo $row['first_name'] . ' ' . $row['last_name'] ?></p>
+  <p id='profile_picture'>Profile Picture: <?php echo $row['profile_picture'] ?></p>
+  <p id='date_joined'>Date Joined: <?php echo date('Y-m-d', strtotime($row['date_joined'])) ?></p>
+  <p id='pin'>PIN: <?php echo $row['pin'] ?></p>
+  <?php
+}
+?>
+
     </div>
     <footer></footer>
   </div>
@@ -54,7 +54,6 @@
 
 </html>
 
-      <!-- search member reference -->
-      <!--  https://www.youtube.com/watch?v=9ANd4KVPQtE&t=726s-->
+      <!-- Reference for date format -->
+      <!-- https://stackoverflow.com/questions/24094571/formating-date-string-with-strtotime-and-date -->
 
-     

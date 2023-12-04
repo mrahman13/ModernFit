@@ -10,10 +10,4 @@ class personalTrainerView extends personalTrainerModel{
     $personal_trainers = $this->getAllPersonalTrainers();
     return $personal_trainers;
   }
-
-  public function showMembers($member){
-    $member_data = $this->getMemberData($member);
-    $obj = $member_data->fetchAll();
-    return $obj;
-  }
 }

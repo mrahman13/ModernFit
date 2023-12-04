@@ -24,12 +24,5 @@ class personalTrainerModel extends dbConnection
         $stmt->execute([]);
         return $stmt;
     }
-
-    protected function getMemberData($search)
-    {
-        $query = "SELECT * FROM member WHERE first_name LIKE '%$search%'";
-        $member_data = $this->connect()->query($query);
-        return $member_data;
-    }
 }
 
