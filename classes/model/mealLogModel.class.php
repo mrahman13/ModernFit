@@ -13,4 +13,11 @@ class mealLogModel extends dbConnection
       echo "Meal logged";
     }
   }
+  protected function getMealLog()
+  {
+    $query = "SELECT * from meal_log WHERE member_id = ?";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$_SESSION['member_id']]);
+    return $stmt;
+  }
 }

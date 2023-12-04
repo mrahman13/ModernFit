@@ -52,7 +52,6 @@ if (isset($_SESSION['meal_id'])) {
           }
         }
         ?>
-
         <form method="post">
           <input type="date" id="date_completed" name="date_completed" required>
           <input type="text" id="workout_name" name="workout_name" placeholder="Workout name: " required>
@@ -79,6 +78,17 @@ if (isset($_SESSION['meal_id'])) {
             echo "Workout does not exist";
           }
         }
+        $workoutLogObject = new workoutLogView();
+        $workoutLogData = $workoutLogObject->showWorkoutLog();
+
+        foreach($workoutLogData as $row){ ?>
+          <a href="workoutViewer.member.php?workout_id=<?php echo $row['workout_id']; ?>&date_completed=<?php echo $row['date_completed']; ?>"><p id='workout_name_date'><?php echo $row['workout_name'] . " " . $row['date_completed'] ?></p></a>
+        <?php }
+        $mealLogObject = new mealLogView();
+        $mealLogData = $mealLogObject->showMealLog();
+        foreach($mealLogData as $row){ ?>
+            <a href="recipeViewer.member.php?meal_id=<?php echo $row['meal_id']; ?>&date_completed=<?php echo $row['date_completed']; ?>"><p id='meal_name_date'><?php echo $row['meal_name'] . " " . $row['date_completed'] ?></p></a>
+        <?php }
         ?>
       </div>
     </div>
