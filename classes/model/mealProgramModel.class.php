@@ -2,11 +2,18 @@
 
 class mealProgramModel extends dbConnection
 {
-  protected function getMealProgram()
+  protected function getMealProgramByMember()
   {
     $query = "SELECT * from meal_program WHERE member_id = ?";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$_SESSION['member_id']]);
+    return $stmt;
+  }
+  protected function getMealProgramByPersonalTrainer($personal_trainer_id)
+  {
+    $query = "SELECT * from meal_program WHERE personal_trainer_id = ?";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$personal_trainer_id]);
     return $stmt;
   }
   protected function checkMealExists($meal_name, $personal_trainer_id)

@@ -22,7 +22,7 @@
     <div id="main">
       <?php
         $mealObject = new mealProgramView();
-        $mealData = $mealObject->showMealProgram();
+        $mealData = $mealObject->showMealProgramByMember();
 
         foreach($mealData as $row) {
           $meal_time = date('H:i', strtotime($row['meal_time']));          
@@ -35,12 +35,12 @@
               </div>
         <?php }
         $workoutObject = new workoutProgramView();
-        $workoutData = $workoutObject->showWorkoutProgram();
+        $workoutData = $workoutObject->showWorkoutProgramByMember();
 
         foreach($workoutData as $row){ ?>
-          <p><?php echo $row['workout_day'] ?></p>
-          <p><?php echo $row['workout_name'] ?></p>
-          <p><?php echo $row['exercises'] ?></p>
+          <p id="workout_day"><?php echo $row['workout_day'] ?></p>
+          <p id="workout_name"><?php echo $row['workout_name'] ?></p>
+          <p id="exercises"><?php echo $row['exercises'] ?></p>
         <?php } ?>  
 
     </div>
