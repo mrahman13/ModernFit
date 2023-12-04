@@ -27,7 +27,23 @@
       </nav>
     </header>
     <div id="main">
-
+    <h1>View members profiles</h1>
+      <form method="post">
+        <input type="text" name="searchMember" id="searchMember" placeholder="Search for a member" required>
+        <input type="submit" value="search" id="button"><br><br>
+      </form>
+      <?php
+      if (isset($_POST['searchMember'])) {
+      $search = $_POST['searchMember']; 
+      $searchMember = new personalTrainerContr();
+      $members = $searchMember->searchMember($search);
+  
+      foreach ($members as $member) {
+          echo "<p>{$member['first_name']} {$member['last_name']}</p>";
+         }
+      }
+          
+        ?>
     </div>
     <footer></footer>
   </div>
