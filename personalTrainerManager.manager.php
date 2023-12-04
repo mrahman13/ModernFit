@@ -2,6 +2,7 @@
     session_start();
     include 'includes/autoloader.php';
     include 'includes/checkLogin.php';
+    $user_id = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/mobile.css">
   <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
-  <title>Manager Home</title>
+  <title>Personal Trainer Manager</title>
 </head>
 
 <body>
@@ -29,7 +30,13 @@
       </nav>
     </header>
     <div id="main">
-      <a href="personalTrainerManager.manager.php">Personal trainer manager</a>
+      <?php
+        $personalTrainersObject = new personalTrainerView();
+        $personalTrainersData = $personalTrainersObject->showAllPersonalTrainers();
+        foreach($personalTrainersData as $row){ ?>
+          <a href="programManager.manager.php?personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>"><p id='personal_trainer_name'><?php echo $row['first_name'] . " " . $row['last_name'] ?></p></a>
+        <?php }
+      ?>
     </div>
     <footer></footer>
   </div>
