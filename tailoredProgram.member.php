@@ -24,23 +24,21 @@
         $mealObject = new mealProgramView();
         $mealData = $mealObject->showMealProgramByMember();
 
-        foreach($mealData as $row) {
-          $meal_time = date('H:i', strtotime($row['meal_time']));          
-          $meal_name = $row['meal_name'];
-          $meal_id = $row['meal_id'];
-          ?>
+        foreach($mealData as $row) { ?>
               <div class="meal">
-                <p id='meal_time'><?php echo $meal_time ?></p>
-                <a href="recipeViewer.member.php?meal_id=<?php echo $meal_id; ?>"><p id='meal_name'><?php echo $meal_name ?></p></a>
+                <p id='meal_time'><?php echo date('H:i', strtotime($row['meal_time'])) ?></p>
+                <a href="recipeViewer.member.php?meal_id=<?php echo $row['meal_id']; ?>"><p id='meal_name'><?php echo $row['meal_name'] ?></p></a>
               </div>
         <?php }
         $workoutObject = new workoutProgramView();
         $workoutData = $workoutObject->showWorkoutProgramByMember();
 
         foreach($workoutData as $row){ ?>
-          <p id="workout_day"><?php echo $row['workout_day'] ?></p>
-          <p id="workout_name"><?php echo $row['workout_name'] ?></p>
-          <p id="exercises"><?php echo $row['exercises'] ?></p>
+          <div class="workout">
+            <p id="workout_day"><?php echo $row['workout_day'] ?></p>
+            <p id="workout_name"><?php echo $row['workout_name'] ?></p>
+            <p id="exercises"><?php echo $row['exercises'] ?></p>
+          </div>
         <?php } ?>  
 
     </div>

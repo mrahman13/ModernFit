@@ -4,8 +4,8 @@ include 'includes/autoloader.php';
 include 'includes/checkLogin.php';
 include 'includes/memberHeader.php';
 
-if (isset($_GET['meal_id']) && $_GET['meal_id'] !== '') {
-  $meal_id = $_GET['meal_id'];
+if (isset($_GET['workout_id']) && $_GET['workout_id'] !== '') {
+  $workout_id = $_GET['workout_id'];
 } else {
   echo "failed";
 }
@@ -28,27 +28,27 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
 
 <body>
   <div id="container" class="container">
-    <div id="main">
-      <?php
-      $mealObject = new mealProgramView();
-      $data = $mealObject->showMealProgramByMember();
-      foreach($data as $row) {
-        if($row['meal_id'] == $meal_id){ ?>
-        <div class="meal">
+  <div id="main">
+      <?php      
+      $workoutObject = new workoutProgramView();
+      $workoutData = $workoutObject->showWorkoutProgramByMember();
+
+      foreach($workoutData as $row){
+        if($row['workout_id'] == $workout_id){ ?>
+          <div class="workout">
           <?php 
             if (isset($_GET['date_completed'])){ ?>
-              <p id='meal_name'><?php echo $row['meal_name'] . " " . $date_completed ?></p>
+              <p id='workout_day'><?php echo $row['workout_day'] . " " . $date_completed ?></p>
             <?php }
             else{ ?>
-              <p id='meal_name'><?php echo $row['meal_name'] ?></p>
+              <p id='workout_day'><?php echo $row['workout_day'] ?></p>
             <?php } ?>
-          <p id='meal_time'><?php echo $row['meal_time'] ?></p>
-          <p id='ingredients'><?php echo $row['ingredients'] ?></p>
-          <p id='method'><?php echo $row['method'] ?></p>
-          <p id='macros'><?php echo $row['macros'] ?></p>
-        </div>
-        <?php }
-      } ?>
+            <p id="workout_name"><?php echo $row['workout_name'] ?></p>
+            <p id="exercises"><?php echo $row['exercises'] ?></p>
+          </div>
+      <?php }
+      } 
+      ?>  
     </div>
     <footer></footer>
   </div>

@@ -13,4 +13,11 @@ class workoutLogModel extends dbConnection
       echo "Workout logged";
     }
   }
+  protected function getWorkoutLog()
+  {
+    $query = "SELECT * from workout_log WHERE member_id = ?";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$_SESSION['member_id']]);
+    return $stmt;
+  }
 }
