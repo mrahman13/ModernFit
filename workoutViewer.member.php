@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'includes/autoloader.php';
+$_SESSION['user_check'] = "member";
 include 'includes/checkLogin.php';
 include 'includes/memberHeader.php';
 

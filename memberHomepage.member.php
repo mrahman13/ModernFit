@@ -1,6 +1,7 @@
 <?php
     session_start();
     include 'includes/autoloader.php';
+    $_SESSION['user_check'] = "member";
     include 'includes/checkLogin.php';
     include 'includes/memberHeader.php';
     $user_id = $_SESSION['user_id'];
@@ -22,9 +23,9 @@
 <body>
   <div id="container" class="container">
     <div id="main">
-      <a href="entryLog.member.php">Entry Log</a>
-      <a href="nutritionalInfo.member.personalTrainer.php">Nutritional Info</a>
-      <a href="tailoredProgram.member.php">Tailored Program</a>
+      <a href="entryLog">Entry Log</a>
+      <a href="nutrition">Nutritional Info</a>
+      <a href="tailoredProgram">Tailored Program</a>
       <p><?php echo $pin ?> </p>
     </div>
     <footer></footer>
