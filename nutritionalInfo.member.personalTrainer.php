@@ -1,6 +1,8 @@
 <?php
     session_start();
     include 'includes/autoloader.php';
+    $_SESSION['user_check'] = "memberPersonalTrainer";
+    include 'includes/checkLogin.php';
     include 'includes/memberHeader.php';
     
     //set key
@@ -43,7 +45,6 @@
         <div class="ingredient">
           
           <?php
-          
           foreach($integ_data as $row) {?>
             <div class="responsive-row">
               <div class="container set-padding" id="integ">

@@ -1,8 +1,10 @@
 <?php
 session_start();
 include 'includes/autoloader.php';
+$_SESSION['user_check'] = "member";
 include 'includes/checkLogin.php';
 include 'includes/memberHeader.php';
+
 
 if (isset($_SESSION['meal_id'])) {
   $unset($_SESSION['meal_id']);
@@ -82,12 +84,12 @@ if (isset($_SESSION['meal_id'])) {
         $workoutLogData = $workoutLogObject->showWorkoutLog();
 
         foreach($workoutLogData as $row){ ?>
-          <a href="workoutViewer.member.php?workout_id=<?php echo $row['workout_id']; ?>&date_completed=<?php echo $row['date_completed']; ?>"><p id='workout_name_date'><?php echo $row['workout_name'] . " " . $row['date_completed'] ?></p></a>
+          <a href="workoutViewer?workout_id=<?php echo $row['workout_id']; ?>&date_completed=<?php echo $row['date_completed']; ?>"><p id='workout_name_date'><?php echo $row['workout_name'] . " " . $row['date_completed'] ?></p></a>
         <?php }
         $mealLogObject = new mealLogView();
         $mealLogData = $mealLogObject->showMealLog();
         foreach($mealLogData as $row){ ?>
-            <a href="recipeViewer.member.php?meal_id=<?php echo $row['meal_id']; ?>&date_completed=<?php echo $row['date_completed']; ?>"><p id='meal_name_date'><?php echo $row['meal_name'] . " " . $row['date_completed'] ?></p></a>
+            <a href="recipeViewer?meal_id=<?php echo $row['meal_id']; ?>&date_completed=<?php echo $row['date_completed']; ?>"><p id='meal_name_date'><?php echo $row['meal_name'] . " " . $row['date_completed'] ?></p></a>
         <?php }
         ?>
       </div>

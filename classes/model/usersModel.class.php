@@ -26,7 +26,7 @@ class usersModel extends dbConnection
       $query = "INSERT INTO user (email,password,user_role) values (?, ?, ?)";
       $stmt = $this->connect()->prepare($query);
       $stmt->execute([$email, $password, $user_role]);
-      header("Location: " . $user_role . "Homepage.php");
+      header("Location: " . $user_role . "Homepage");
     }
     else{
       echo "Email already in use";
@@ -65,7 +65,7 @@ class usersModel extends dbConnection
         $_SESSION['member_id'] = $memberObj['member_id'];
       }
 
-      header("Location: " . $obj['user_role'] . "Homepage." . $obj['user_role'] . ".php");
+      header("Location: " . $obj['user_role'] . "Homepage");
     }
     else{
       echo "Wrong password";
