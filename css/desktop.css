@@ -1,0 +1,48 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+:root {
+    --bg-color: #232323;
+    --txt-color: white;
+    --primary-color: #FFD700;
+    --content-bg-color: #333;
+}
+/* nutritional info */
+body{
+    background-color: var(--content-bg-color);
+    color: var(--txt-color);
+}
+#ingre:hover {
+    box-shadow: 0px 0px 5px 5px var(--primary-color);
+}
+#image{
+    height: 200px;
+}
+#image img{
+    height: 100%;
+}
+#info p{
+    white-space: nowrap;
+    max-height: 20px;
+    margin: 10px;
+}
+.form-control{
+    background-color: transparent !important;
+    color: var(--txt-color) !important;
+    border-color: var(--primary-color) !important;
+}
+::placeholder {
+    color: var(--txt-color) !important;
+}
+.form-control:focus {
+    box-shadow: 0 0 0 3px var(--primary-color);
+}
+.btn-outline-warning{
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn-outline-warning:hover{
+    color: var(--txt-color);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
