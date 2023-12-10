@@ -1,6 +1,7 @@
 <?php
     session_start();
     include 'includes/autoloader.php';
+    $_SESSION['user_check'] = "manager";
     include 'includes/checkLogin.php';
     $user_id = $_SESSION['user_id'];
     if (isset($_GET['personal_trainer_id']) && $_GET['personal_trainer_id'] !== '') {
@@ -26,11 +27,11 @@
     <header id="header" class="header">
       <!-- something for the drop down menu -->
       <div id="logo" class="logo">
-        <a href="includes/signOut.php"><img src="" alt="ModernFit Logo"></a>
+        <a href="signOut"><img src="" alt="ModernFit Logo"></a>
       </div>
       <nav id="header-nav">
         <ul>
-          <li><a href="includes/signOut.php">Sign Out</a></li>
+          <li><a href="signOut">Sign Out</a></li>
         </ul>
       </nav>
     </header>
