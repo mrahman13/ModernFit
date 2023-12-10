@@ -13,7 +13,7 @@ switch ($request) {
         break;*/
         
     case '/nutrition':
-        require __DIR__ . '/nutritionalInfo.php';
+        require __DIR__ . '/nutritionalInfo.member.personalTrainer.php';
         break;
 
     default:
