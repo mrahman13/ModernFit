@@ -42,7 +42,7 @@
       $members = $searchMember->searchMember($search);
   
       foreach ($members as $member) {
-        echo "<p><a href='personalTrainerMemberData.personalTrainer.php?member_id={$member['member_id']}'>{$member['first_name']} {$member['last_name']}</a></p>";
+        echo "<p><a href='personalTrainerMemberData.personalTrainer.php?member_id={$member['member_id']}' target='_blank'>{$member['first_name']} {$member['last_name']}</a></p>";
       }
       }
           
