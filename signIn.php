@@ -19,11 +19,11 @@ include 'includes/autoloader.php';
     <header id="header" class="header">
       <!-- something for the drop down menu -->
       <div id="logo" class="logo">
-        <a href="index.php"><img src="" alt="ModernFit Logo"></a>
+        <a href="index"><img src="" alt="ModernFit Logo"></a>
       </div>
       <nav id="header-nav">
         <ul>
-          <li><a href="registration.php">Registration</a></li>
+          <li><a href="registration">Registration</a></li>
         </ul>
       </nav>
     </header>

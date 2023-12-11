@@ -1,6 +1,8 @@
 <?php
     session_start();
     include 'includes/autoloader.php';
+    $_SESSION['user_check'] = "memberPersonalTrainer";
+    include 'includes/checkLogin.php';
     include 'includes/memberHeader.php';
     
     //set key
@@ -44,7 +46,7 @@
         <div class="row mx-auto" id="ingredient-row"> <!-- border -->
           
           <?php
-          
+
           foreach($ingre_data as $row) {?>
             
             <div class="col-md-6 col-sm-12 p-1 rounded-3" id="ingre"><!-- border border-4 border-danger -->
