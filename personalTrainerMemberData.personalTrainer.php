@@ -1,8 +1,7 @@
 <?php
     session_start();
     include 'includes/autoloader.php';
-    //include 'includes/checkLogin.php';
-    //To view file.
+    include 'includes/checkLogin.php';
 ?>
 
 <!DOCTYPE html>
