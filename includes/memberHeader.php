@@ -38,7 +38,7 @@
         
         <nav id="header-nav">
           <ul>
-            <li><a href="includes/signOut.php">Sign Out</a></li>
+            <li><a href="signOut">Sign Out</a></li>
           </ul>
         </nav>
       </div>

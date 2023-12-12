@@ -28,13 +28,15 @@ include 'includes/autoloader.php'
     </header>
     <div id="main">
       <h1>Registration</h1>
-      <form method="post">
-        <input type="text" id="profile_picture" name="profile_picture" placeholder="Please enter your profile picture:" required>
+      <form method="post" enctype="multipart/form-data">
         <input type="text" id="first_name" name="first_name" placeholder="Please enter your first name:" required>
         <input type="text" id="last_name" name="last_name" placeholder="Please enter your last name:" required>
         <input type="email" id="email" name="email" placeholder="Please enter your email:" required>
         <input type="password" id="password" name="password" placeholder="Please enter your password:" required>
         <input type="text" id="goals" name="goals" placeholder="Please enter your goals and determinations:" required>
+        <input type="file" id="profile_pic" name="profile_pic" accept="image/*">
+         <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
+        <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
         <input id="button" type="submit" value="Submit" name="registration"><br><br>
       </form>
       <?php
@@ -42,8 +44,17 @@ include 'includes/autoloader.php'
         //gets form data
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
-        //idk what to do for this so just did text for now
-        $profile_picture = $_POST['profile_picture'];
+     
+        // Process profile picture upload
+      $filename = $_FILES['profile_pic']['name'];
+      $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+      $profile_picture = uniqid() . '.' . $extension;
+
+       if (!move_uploaded_file($_FILES['profile_pic']['tmp_name'], __DIR__ . "/Profile_picture/" . $profile_picture)) {
+       die("Failed to upload profile picture");
+      }
+
         $date_joined = date("Y-m-d");
 
         $email = $_POST['email'];

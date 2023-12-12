@@ -1,4 +1,5 @@
 <?php
+
 class personalTrainerView extends personalTrainerModel{
   
   public function showPersonalTrainer($personal_trainer_id){
@@ -9,5 +10,4 @@ class personalTrainerView extends personalTrainerModel{
     $personal_trainers = $this->getAllPersonalTrainers();
     return $personal_trainers;
   }
-
 }
