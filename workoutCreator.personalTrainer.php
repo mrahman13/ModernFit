@@ -3,6 +3,7 @@
     include 'includes/autoloader.php';
     $_SESSION['user_check'] = "personalTrainer";
     include 'includes/checkLogin.php';
+    include 'includes/trainerHeader.php';
 ?>
 
 <!DOCTYPE html>

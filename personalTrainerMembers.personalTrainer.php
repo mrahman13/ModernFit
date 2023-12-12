@@ -2,6 +2,7 @@
     session_start();
     include 'includes/autoloader.php';
     include 'includes/checkLogin.php';
+    include 'includes/trainerHeader.php';
 ?>
 
 <!DOCTYPE html>
