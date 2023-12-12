@@ -21,7 +21,7 @@ switch ($request) {
         require __DIR__ . $url;
         break;
 
-    case '/index':
+    case '/home':
         $url = '/index.php';
         require __DIR__ . $url;
         break;
@@ -38,7 +38,6 @@ switch ($request) {
 
     case '/memberHomepage':
         $url = '/memberHomepage.member.php';
-        $_SESSION['url'] = $url;
         require __DIR__ . $url;
         break;
 
