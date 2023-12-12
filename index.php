@@ -20,7 +20,7 @@
         <header id="header" class="header">
             <!-- something for the drop down menu -->
             <div id="logo" class="logo">
-                <a href="signOut"><img src="" alt="ModernFit Logo"></a>
+                <a href="home"><img src="" alt="ModernFit Logo"></a>
             </div>
             <nav id="header-nav">
                 <ul>

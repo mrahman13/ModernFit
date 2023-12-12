@@ -19,7 +19,7 @@
   
     <nav class="navbar navbar-expand-lg header">
       <div class="container-fluid" id="logo">
-        <a href="home" class="navbar-brand ms-xl-5"><img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png"></a>
+        <a href="memberHomepage" class="navbar-brand ms-xl-5"><img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png"></a>
       </div>
       <!-- <div id="logo" class="logo">
         <a href="home"><img src="" alt="ModernFit Logo"></a>

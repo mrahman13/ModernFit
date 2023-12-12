@@ -26,6 +26,8 @@ class usersModel extends dbConnection
       $query = "INSERT INTO user (email,password,user_role) values (?, ?, ?)";
       $stmt = $this->connect()->prepare($query);
       $stmt->execute([$email, $password, $user_role]);
+      $_SESSION['user_id'] = $this->getUserId($email);
+      $_SESSION['user_role'] = $user_role;
       header("Location: " . $user_role . "Homepage");
     }
     else{
@@ -38,7 +40,8 @@ class usersModel extends dbConnection
     $query = "SELECT user_id from user where email = ?";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$email]);
-    return $stmt;
+    $obj = $stmt->fetch();
+    return $obj['user_id'];
   }
 
   protected function signInCheck($email, $password)
@@ -53,7 +56,6 @@ class usersModel extends dbConnection
       $stmt = $this->connect()->prepare($query);
       $stmt->execute([$email, $password]);
       $obj = $stmt->fetch();
-      // session_start();
       $_SESSION['user_id'] = $obj['user_id'];
       $_SESSION['user_role'] = $obj['user_role'];
       if($obj['user_role'] == "member")
@@ -64,7 +66,6 @@ class usersModel extends dbConnection
         $memberObj = $stmt->fetch();
         $_SESSION['member_id'] = $memberObj['member_id'];
       }
-
       header("Location: " . $obj['user_role'] . "Homepage");
     }
     else{
