@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'includes/autoloader.php'
 ?>
 
@@ -18,7 +19,7 @@ include 'includes/autoloader.php'
     <header id="header" class="header">
       <!-- something for the drop down menu -->
       <div id="logo" class="logo">
-        <a href="index"><img src="" alt="ModernFit Logo"></a>
+        <a href="home"><img src="" alt="ModernFit Logo"></a>
       </div>
       <nav id="header-nav">
         <ul>

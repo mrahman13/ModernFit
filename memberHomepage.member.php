@@ -6,7 +6,7 @@
     include 'includes/memberHeader.php';
     $user_id = $_SESSION['user_id'];
     $memberObject = new memberView();
-    $pin = $memberObject->showMemberPin($user_id);
+    $pin = $memberObject->showMemberPin();
 ?>
 
 <!DOCTYPE html>
