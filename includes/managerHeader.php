@@ -35,9 +35,7 @@
             <a class="nav-link" href="personalTrainerManager">Personal Trainer Manager</a>
           </div>
 
-          <button class="btn btn-outline-warning me-lg-3 me-xl-5">
-            <a class="none" href="signOut">Sign Out</a>
-          </button>
+          <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>
         </div>
       </div>
     </nav>
