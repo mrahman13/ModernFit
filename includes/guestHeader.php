@@ -21,7 +21,7 @@
 <body>
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
       <div class="container-fluid">
-        <a href="memberHomepage" class="navbar-brand ms-xl-5" id="logo">
+        <a href="home" class="navbar-brand ms-xl-5" id="logo">
           <img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png" draggable="false">
         </a>
         <!-- <div id="logo" class="logo">

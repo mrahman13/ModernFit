@@ -8,7 +8,7 @@
     if (isset($_GET['personal_trainer_id']) && $_GET['personal_trainer_id'] !== '') {
       $personal_trainer_id = $_GET['personal_trainer_id'];
     } else {
-      echo "failed";
+      header("Location: 404");
     }
 ?>
 
