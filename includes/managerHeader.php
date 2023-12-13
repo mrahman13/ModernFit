@@ -1,7 +1,3 @@
-<?php
-  $memberObject = new memberView();
-  $pin = $memberObject->showMemberPin();
-  ?>
   <!DOCTYPE html>
   <html lang="en">
 
@@ -26,22 +22,17 @@
   <body>
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
       <div class="container-fluid">
-        <p><?php echo $pin ?> </p>
-
-        <a href="memberHomepage" class="navbar-brand ms-xl-5" id="logo">
+        <a href="managerHomepage" class="navbar-brand ms-xl-5" id="logo">
           <img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png" draggable="false">
         </a>
 
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseMember">
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseManager">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseMember">
+        <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseManager">
           <div class="navbar-nav me-auto">
-            <a class="nav-link" href="entryLog">Entry Log</a>
-            <a class="nav-link" href="nutrition">Nutritional Info</a>
-            <a class="nav-link" href="tailoredProgram">Tailored Program</a>
-            <a class="nav-link" href="contactForm">Contact Form</a>
+            <a class="nav-link" href="personalTrainerManager">Personal Trainer Manager</a>
           </div>
 
           <button class="btn btn-outline-warning me-lg-3 me-xl-5">

@@ -43,7 +43,7 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
             else{ ?>
               <p id='meal_name'><?php echo $row['meal_name'] ?></p>
             <?php } ?>
-          <p id='meal_time'><?php echo $row['meal_time'] ?></p>
+          <p id='meal_time'><?php echo date('H:i', strtotime($row['meal_time'])) ?></p>
           <p id='ingredients'><?php echo $row['ingredients'] ?></p>
           <p id='method'><?php echo $row['method'] ?></p>
           <p id='macros'><?php echo $row['macros'] ?></p>

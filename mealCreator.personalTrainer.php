@@ -3,6 +3,7 @@
     include 'includes/autoloader.php';
     $_SESSION['user_check'] = "personalTrainer";
     include 'includes/checkLogin.php';
+    include 'includes/personalTrainerHeader.php';
 
 ?>
 
@@ -19,17 +20,7 @@
 
 <body>
   <div id="container" class="container">
-    <header id="header" class="header">
-      <!-- something for the drop down menu -->
-      <div id="logo" class="logo">
-        <a href="signOut"><img src="" alt="ModernFit Logo"></a>
-      </div>
-      <nav id="header-nav">
-        <ul>
-          <li><a href="signOut">Sign Out</a></li>
-        </ul>
-      </nav>
-    </header>
+
     <div id="main">
 
     </div>

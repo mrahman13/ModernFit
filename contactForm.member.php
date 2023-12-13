@@ -1,9 +1,10 @@
 <?php
     session_start();
     include 'includes/autoloader.php';
-    $_SESSION['user_check'] = "manager";
+    $_SESSION['user_check'] = "member";
     include 'includes/checkLogin.php';
     $user_id = $_SESSION['user_id'];
+    include 'includes/memberHeader.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,17 +20,6 @@
 
 <body>
   <div id="container" class="container">
-    <header id="header" class="header">
-      <!-- something for the drop down menu -->
-      <div id="logo" class="logo">
-        <a href="signOut"><img src="" alt="ModernFit Logo"></a>
-      </div>
-      <nav id="header-nav">
-        <ul>
-          <li><a href="signOut">Sign Out</a></li>
-        </ul>
-      </nav>
-    </header>
     <div id="main">
     <h1>Contact Form</h1>
     <form action="https://formspree.io/f/xgejgrka" method = "POST">
