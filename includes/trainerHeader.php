@@ -1,7 +1,3 @@
-<?php
-  $memberObject = new memberView();
-  $pin = $memberObject->showMemberPin();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,21 +19,20 @@
 <body>
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
       <div class="container-fluid">
-        <p><?php echo $pin ?></p>
-        <a href="memberHomepage" class="navbar-brand ms-xl-5" id="logo">
+        <a href="personalTrainerHomepage" class="navbar-brand ms-xl-5" id="logo">
           <img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png" draggable="false">
         </a>
 
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseMember">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseMember">
           <div class="navbar-nav me-auto">
-            <a class="nav-link" href="entryLog">Entry Log</a>
+            <a class="nav-link" href="mealCreator">Create Meal</a>
             <a class="nav-link" href="nutrition">Nutritional Info</a>
-            <a class="nav-link" href="tailoredProgram">Tailored Program</a>
-            <a class="nav-link" href="contactForm">Contact</a>
+            <a class="nav-link" href="personalTrainerMembers">Members</a>
+            <a class="nav-link" href="workoutCreator">Workouts</a>
           </div>
           
           <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>

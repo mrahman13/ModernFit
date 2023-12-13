@@ -1,7 +1,3 @@
-<?php
-  $memberObject = new memberView();
-  $pin = $memberObject->showMemberPin();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +9,8 @@
   <style>
     a.none{
       text-decoration: none;
+      width: 100px;
+      border-radius: 25px;
     }
     #logo img{
       width: 250px;
@@ -23,24 +21,29 @@
 <body>
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
       <div class="container-fluid">
-        <p><?php echo $pin ?></p>
         <a href="memberHomepage" class="navbar-brand ms-xl-5" id="logo">
           <img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png" draggable="false">
         </a>
+        <!-- <div id="logo" class="logo">
+          <a href="home"><img src="" alt="ModernFit Logo"></a>
+        </div> -->
 
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseMember">
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
-        <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseMember">
+
+        <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapse">
           <div class="navbar-nav me-auto">
             <a class="nav-link" href="entryLog">Entry Log</a>
             <a class="nav-link" href="nutrition">Nutritional Info</a>
+            <a class="nav-link" href="recipeViewer">Recipes</a>
             <a class="nav-link" href="tailoredProgram">Tailored Program</a>
-            <a class="nav-link" href="contactForm">Contact</a>
+            <a class="nav-link" href="workoutViewer">Workouts</a>
           </div>
+
+          <a class="none btn btn-warning me-lg-3 my-1" href="registration">Register</a>
+          <a class="none btn btn-outline-warning me-lg-3 me-xl-5 my-1" href="signIn">Sign In</a>
           
-          <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>
         </div>
       </div>
     </nav>
