@@ -2,12 +2,12 @@
 
 class dbConnection
 {
-  protected function connect()
+  public function connect()
   {
     $dbhost = "localhost";
     $dbuser = "root";
     $dbpass = "";
-    $dbname = "modernfit";
+    $dbname = "modernfit2";
 
     // try
     // {
@@ -31,4 +31,5 @@ class dbConnection
       echo "Failed: " . $exception->getMessage();
     }
   }
+  
 }
