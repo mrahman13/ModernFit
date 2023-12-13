@@ -1,5 +1,6 @@
 <?php
-include 'includes/autoloader.php'
+include 'includes/autoloader.php';
+include 'includes/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,16 +9,20 @@ include 'includes/autoloader.php'
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/mobile.css">
-  <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
+  <link rel="stylesheet" href="css/desktop.css">
   <title>Registration</title>
+  <style>
+    .content {
+      width: 500px;
+    }
+  </style>
 </head>
 
 <body>
   <div id="container" class="container">
-    <header id="header" class="header">
+    <!-- <header id="header" class="header"> -->
       <!-- something for the drop down menu -->
-      <div id="logo" class="logo">
+      <!-- <div id="logo" class="logo">
         <a href="index"><img src="" alt="ModernFit Logo"></a>
       </div>
       <nav id="header-nav">
@@ -25,20 +30,22 @@ include 'includes/autoloader.php'
           <li><a href="signIn">Sign In</a></li>
         </ul>
       </nav>
-    </header>
+    </header> -->
     <div id="main">
-      <h1>Registration</h1>
-      <form method="post" enctype="multipart/form-data">
-        <input type="text" id="first_name" name="first_name" placeholder="Please enter your first name:" required>
-        <input type="text" id="last_name" name="last_name" placeholder="Please enter your last name:" required>
-        <input type="email" id="email" name="email" placeholder="Please enter your email:" required>
-        <input type="password" id="password" name="password" placeholder="Please enter your password:" required>
-        <input type="text" id="goals" name="goals" placeholder="Please enter your goals and determinations:" required>
-        <input type="file" id="profile_pic" name="profile_pic" accept="image/*">
+      <div class="display-3 text-center mt-5 p-4 text-warning"><b>Registration</b></div>
+      <div class="d-flex justify-content-center w-100">
+      <form class="row content gy-3" method="post" enctype="multipart/form-data">
+        <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="Please enter your first name:" required>
+        <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Please enter your last name:" required>
+        <input class="form-control border-3" type="email" id="email" name="email" placeholder="Please enter your email:" required>
+        <input class="form-control border-3" type="password" id="password" name="password" placeholder="Please enter your password:" required>
+        <input class="form-control border-3" type="text" id="goals" name="goals" placeholder="Please enter your goals and determinations:" required>
+        <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*">
          <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
         <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
-        <input id="button" type="submit" value="Submit" name="registration"><br><br>
+        <input class="btn btn-warning sbtn" id="button" type="submit" value="Submit" name="registration"><br><br>
       </form>
+  </div>
       <?php
       if (isset($_POST['registration'])) {
         //gets form data
