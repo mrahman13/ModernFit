@@ -31,17 +31,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/desktop.css">
+  <style>
+    #ingre:hover {
+      box-shadow: 0px 0px 5px 5px var(--primary-color);
+    }
+    #image{
+      height: 200px;
+    }
+    #image img{
+      aspect-ratio: 3 / 2;
+      height: 100%;
+    }
+    #info p{
+      white-space: nowrap;
+      max-height: 20px;
+      margin: 10px;
+    }
+    </style>
   <title>Nutritional Info</title>
   
 </head>
 
 <body>
-    <div id="main">
-
-
-      <div class="container mx-auto my-2 p-0" id="search-box">
+    <div class="p-2" id="main">
+      <div class="container mx-auto my-2" id="search-box">
         <form class="d-flex" method="post">
           <input type="text" class="form-control w-100 border-3 me-2" placeholder="Search Ingredient..." name="key" value="<?php isset($_GET['keyword']) ? $_GET['keyword'] : '' ?>">
           <button name="search" type="submit" class="btn btn-outline-warning border-3">Search</button>

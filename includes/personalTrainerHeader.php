@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,42 +7,37 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/desktop.css">
   <style>
-    a.none {
+    a.none{
       text-decoration: none;
-      color: inherit;
     }
-
-    #logo img {
+    #logo img{
       width: 250px;
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
-    <div class="container-fluid">
-      <a href="personalTrainerHomepage" class="navbar-brand ms-xl-5" id="logo">
-        <img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png" draggable="false">
-      </a>
+    <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
+      <div class="container-fluid">
+        <a href="personalTrainerHomepage" class="navbar-brand ms-xl-5" id="logo">
+          <img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png" draggable="false">
+        </a>
 
-      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapsePersonalTrainer">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapsePersonalTrainer">
-        <div class="navbar-nav me-auto">
-          <a class="nav-link" href="mealCreator">Create Meal</a>
-          <a class="nav-link" href="nutrition">Nutritional Info</a>
-          <a class="nav-link" href="personalTrainerMembers">Personal Trainer Clients</a>
-          <a class="nav-link" href="workoutCreator">Workouts</a>
-        </div>
-
-        <button class="btn btn-outline-warning me-lg-3 me-xl-5">
-          <a class="none" href="signOut">Sign Out</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseMember">
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
-    </div>
-  </nav>
-</body>
 
+        <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseMember">
+          <div class="navbar-nav me-auto">
+            <a class="nav-link" href="mealCreator">Create Meal</a>
+            <a class="nav-link" href="nutrition">Nutritional Info</a>
+            <a class="nav-link" href="personalTrainerMembers">Members</a>
+            <a class="nav-link" href="workoutCreator">Workouts</a>
+          </div>
+          
+          <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>
+        </div>
+      </div>
+    </nav>
+</body>
 </html>

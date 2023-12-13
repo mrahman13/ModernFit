@@ -1,18 +1,17 @@
 <?php
     include 'includes/autoloader.php';
     include 'includes/guestHeader.php';
-    
 ?>
 
 
 <!DOCTYPE html>
+
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mobile.css">
-    <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
     <title>Home</title>
 </head>
 
