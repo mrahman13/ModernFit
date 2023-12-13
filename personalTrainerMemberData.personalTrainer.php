@@ -2,6 +2,14 @@
     session_start();
     include 'includes/autoloader.php';
     include 'includes/checkLogin.php';
+    include 'includes/personalTrainerheader.php';
+
+
+    if (isset($_GET['member_id']) && $_GET['member_id'] !== '') {
+      $member_id = $_GET['member_id'];
+    } else {
+      echo "Member not found";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -17,21 +25,10 @@
 
 <body>
   <div id="container" class="container">
-    <header id="header" class="header">
-      <!-- something for the drop down menu -->
-      <div id="logo" class="logo">
-        <a href="includes/signOut.php"><img src="" alt="ModernFit Logo"></a>
-      </div>
-      <nav id="header-nav">
-        <ul>
-          <li><a href="includes/signOut.php">Sign Out</a></li>
-        </ul>
-      </nav>
-    </header>
+
     <div id="main">
     <h1>Member Information</h1>
     <?php
-$member_id = $_GET['member_id'];
 $memberData = new memberDataView();
 $memberDataResult = $memberData->showMemberData($member_id);
 

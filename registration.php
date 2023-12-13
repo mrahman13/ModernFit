@@ -1,6 +1,7 @@
 <?php
+session_start();
 include 'includes/autoloader.php';
-include 'includes/header.php';
+include 'includes/guestHeader.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,17 +21,6 @@ include 'includes/header.php';
 
 <body>
   <div id="container" class="container">
-    <!-- <header id="header" class="header"> -->
-      <!-- something for the drop down menu -->
-      <!-- <div id="logo" class="logo">
-        <a href="index"><img src="" alt="ModernFit Logo"></a>
-      </div>
-      <nav id="header-nav">
-        <ul>
-          <li><a href="signIn">Sign In</a></li>
-        </ul>
-      </nav>
-    </header> -->
     <div id="main">
       <div class="display-3 text-center mt-5 p-4 text-warning"><b>Registration</b></div>
       <div class="d-flex justify-content-center w-100">
@@ -42,6 +32,7 @@ include 'includes/header.php';
         <input class="form-control border-3" type="text" id="goals" name="goals" placeholder="Please enter your goals and determinations:" required>
         <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*">
          <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
+
         <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
         <input class="btn btn-warning sbtn" id="button" type="submit" value="Submit" name="registration"><br><br>
       </form>
@@ -51,16 +42,16 @@ include 'includes/header.php';
         //gets form data
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
-     
+
         // Process profile picture upload
-      $filename = $_FILES['profile_pic']['name'];
-      $extension = pathinfo($filename, PATHINFO_EXTENSION);
+        $filename = $_FILES['profile_pic']['name'];
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
-      $profile_picture = uniqid() . '.' . $extension;
+        $profile_picture = uniqid() . '.' . $extension;
 
-       if (!move_uploaded_file($_FILES['profile_pic']['tmp_name'], __DIR__ . "/Profile_picture/" . $profile_picture)) {
-       die("Failed to upload profile picture");
-      }
+        if (!move_uploaded_file($_FILES['profile_pic']['tmp_name'], __DIR__ . "/Profile_picture/" . $profile_picture)) {
+          die("Failed to upload profile picture");
+        }
 
         $date_joined = date("Y-m-d");
 
@@ -70,7 +61,7 @@ include 'includes/header.php';
 
         $userRegistrationObj = new usersContr();
         $userRegistrationObj->createUser($email, $password, $user_role);
-        
+
         $userIdObj = new usersView();
         $memberRegistrationObj = new memberContr();
         $memberRegistrationObj->createMember($first_name, $last_name, $profile_picture, $date_joined, $userIdObj->showUserId($email));
@@ -80,11 +71,11 @@ include 'includes/header.php';
     <footer></footer>
   </div>
   <script>
-		//prevents the form resubmitting when the page is refreshed
-		if (window.history.replaceState) {
-			window.history.replaceState(null, null, window.location.href);
-		}
-	</script>
+    //prevents the form resubmitting when the page is refreshed
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+  </script>
 </body>
 
 </html>

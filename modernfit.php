@@ -16,12 +16,17 @@ switch ($request) {
         require __DIR__ . $url;
         break;
 
+    case '/contactForm':
+        $url = '/contactForm.member.php';
+        require __DIR__ . $url;
+        break;
+
     case '/entryLog':
         $url = '/entryLog.member.php';
         require __DIR__ . $url;
         break;
 
-    case '/index':
+    case '/home':
         $url = '/index.php';
         require __DIR__ . $url;
         break;
@@ -38,7 +43,6 @@ switch ($request) {
 
     case '/memberHomepage':
         $url = '/memberHomepage.member.php';
-        $_SESSION['url'] = $url;
         require __DIR__ . $url;
         break;
 
@@ -54,6 +58,11 @@ switch ($request) {
 
     case '/personalTrainerManager':
         $url = '/personalTrainerManager.manager.php';
+        require __DIR__ . $url;
+        break;
+
+    case '/personalTrainerMembersData':
+        $url = '/personalTrainerMemberData.personalTrainer.php';
         require __DIR__ . $url;
         break;
 

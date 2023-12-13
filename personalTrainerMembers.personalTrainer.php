@@ -2,7 +2,7 @@
     session_start();
     include 'includes/autoloader.php';
     include 'includes/checkLogin.php';
-    include 'includes/trainerHeader.php';
+    include 'includes/personalTrainerheader.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,17 +18,7 @@
 
 <body>
   <div id="container" class="container">
-    <header id="header" class="header">
-      <!-- something for the drop down menu -->
-      <div id="logo" class="logo">
-        <a href="signOut"><img src="" alt="ModernFit Logo"></a>
-      </div>
-      <nav id="header-nav">
-        <ul>
-          <li><a href="signOut">Sign Out</a></li>
-        </ul>
-      </nav>
-    </header>
+
     <div id="main">
     <h1>View members profiles</h1>
       <form method="post">
@@ -42,7 +32,7 @@
       $members = $searchMember->searchMember($search);
   
       foreach ($members as $member) {
-        echo "<p><a href='personalTrainerMemberData.personalTrainer.php?member_id={$member['member_id']}' target='_blank'>{$member['first_name']} {$member['last_name']}</a></p>";
+        echo "<p><a href='personalTrainerMembersData?member_id={$member['member_id']}' target='_blank'>{$member['first_name']} {$member['last_name']}</a></p>";
       }
       }
           

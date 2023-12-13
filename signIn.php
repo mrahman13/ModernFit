@@ -1,6 +1,8 @@
 <?php
 session_start();
 include 'includes/autoloader.php';
+include 'includes/guestHeader.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -16,17 +18,6 @@ include 'includes/autoloader.php';
 
 <body>
   <div id="container" class="container">
-    <header id="header" class="header">
-      <!-- something for the drop down menu -->
-      <div id="logo" class="logo">
-        <a href="index"><img src="" alt="ModernFit Logo"></a>
-      </div>
-      <nav id="header-nav">
-        <ul>
-          <li><a href="registration">Registration</a></li>
-        </ul>
-      </nav>
-    </header>
     <div id="main">
       <h1>Sign in</h1>
       <form method="post">

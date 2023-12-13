@@ -1,9 +1,15 @@
 <?php
     session_start();
     include 'includes/autoloader.php';
-    $_SESSION['user_check'] = "memberPersonalTrainer";
-    include 'includes/checkLogin.php';
+    $_SESSION['user_check'] = "memberpersonalTrainer";
+
+    if($_SESSION['user_role'] == 'member'){
     include 'includes/memberHeader.php';
+    }
+    else{
+      include 'includes/personalTrainerHeader.php';
+    }
+    include 'includes/checkLogin.php';
     
     //set key
     if(isset($_POST["search"]))
