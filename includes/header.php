@@ -9,6 +9,8 @@
   <style>
     a.none{
       text-decoration: none;
+      width: 100px;
+      border-radius: 25px;
     }
     #logo img{
       width: 250px;
@@ -26,19 +28,22 @@
           <a href="home"><img src="" alt="ModernFit Logo"></a>
         </div> -->
 
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseMember">
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseMember">
+        <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapse">
           <div class="navbar-nav me-auto">
             <a class="nav-link" href="entryLog">Entry Log</a>
             <a class="nav-link" href="nutrition">Nutritional Info</a>
+            <a class="nav-link" href="recipeViewer">Recipes</a>
             <a class="nav-link" href="tailoredProgram">Tailored Program</a>
-            <a class="nav-link" href="contactForm">Contact</a>
+            <a class="nav-link" href="workoutViewer">Workouts</a>
           </div>
+
+          <a class="none btn btn-warning me-lg-3 my-1" href="registration">Register</a>
+          <a class="none btn btn-outline-warning me-lg-3 me-xl-5 my-1" href="signIn">Sign In</a>
           
-          <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>
         </div>
       </div>
     </nav>
