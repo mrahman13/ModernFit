@@ -8,11 +8,13 @@ include 'includes/memberHeader.php';
 if (isset($_GET['meal_id']) && $_GET['meal_id'] !== '') {
   $meal_id = $_GET['meal_id'];
 } else {
-  echo "failed";
+  header("Location: 404");
 }
 
 if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
   $date_completed = $_GET['date_completed'];
+} else{
+  header("Location: 404");
 }
 ?>
 
