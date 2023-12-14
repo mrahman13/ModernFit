@@ -2,11 +2,11 @@
 
 class workoutProgramModel extends dbConnection
 {
-  protected function getWorkoutProgramByMember()
+  protected function getWorkoutProgramByMember($member_id)
   {
     $query = "SELECT * from workout_program WHERE member_id = ?";
     $stmt = $this->connect()->prepare($query);
-    $stmt->execute([$_SESSION['member_id']]);
+    $stmt->execute([$member_id]);
     return $stmt;
   }
   protected function getWorkoutProgramByPersonalTrainer($personal_trainer_id)

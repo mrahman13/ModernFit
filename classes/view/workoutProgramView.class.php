@@ -2,8 +2,8 @@
 
 class workoutProgramView extends workoutProgramModel{
 
-  public function showWorkoutProgramByMember(){
-    $workoutProgram = $this->getWorkoutProgramByMember();
+  public function showWorkoutProgramByMember($member_id){
+    $workoutProgram = $this->getWorkoutProgramByMember($member_id);
     return $workoutProgram;
   }
   public function showWorkoutProgramByPersonalTrainer($personal_trainer_id){
