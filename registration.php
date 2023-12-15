@@ -10,7 +10,6 @@ include 'includes/guestHeader.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/desktop.css">
   <title>Registration</title>
   <style>
     .content {
@@ -34,7 +33,7 @@ include 'includes/guestHeader.php';
          <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
 
         <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
-        <input class="btn btn-warning sbtn" id="button" type="submit" value="Submit" name="registration"><br><br>
+        <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registration"><br><br>
       </form>
   </div>
       <?php
