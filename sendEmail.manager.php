@@ -1,9 +1,8 @@
 <?php
     session_start();
-    include 'includes/autoloader.php';
-    $_SESSION['user_check'] = "manager";
-   // include 'includes/checkLogin.php';
-
+   // include 'includes/autoloader.php';
+    //include 'includes/checkLogin.php';
+    //include 'includes/adminHeader.php';
 ?>
 
 <!DOCTYPE html>

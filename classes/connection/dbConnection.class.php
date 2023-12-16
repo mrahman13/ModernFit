@@ -2,12 +2,12 @@
 
 class dbConnection
 {
-  public function connect()
+  protected function connect()
   {
     $dbhost = "localhost";
     $dbuser = "root";
     $dbpass = "";
-    $dbname = "modernfit2";
+    $dbname = "modernfit";
 
     // try
     // {
