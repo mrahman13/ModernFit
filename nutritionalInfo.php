@@ -71,7 +71,7 @@ $ingre_data = $data->showIngredients($key);
             <div class="container text-center">
               <div class="row py-2"> <!-- border border-4 border-warning -->
                 <div class="col-xl-6 col-sm-12 m-auto" id="image">
-                  <img class="img-responsive" src="../img/<?php echo $row['image'] ?>" draggable="false">
+                  <img class="img-responsive" src="../img/Ingredient/<?php echo $row['image'] ?>" draggable="false">
                 </div>
 
                 <div class="col-xl-6 col-sm-12" id="info">
