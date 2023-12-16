@@ -2,7 +2,7 @@
 
 class mealLogContr extends mealLogModel{
 
-  public function createMealLog($meal_name,$date_completed,$meal_id, $meal_check){
-    $this->setMealLog($meal_name,$date_completed,$meal_id, $meal_check);
+  public function createMealLog($date_completed, $food_name, $calories, $protein, $carbohydrates, $fat){
+    $this->setMealLog($date_completed, $food_name, $calories, $protein, $carbohydrates, $fat);
   }
 }

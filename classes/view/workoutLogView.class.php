@@ -6,4 +6,8 @@ class workoutLogView extends workoutLogModel{
     $workoutLog = $this->getWorkoutLog();
     return $workoutLog;
   }
+  public function showWorkoutLogByExercise($exercise){
+    $workoutLog = $this->getWorkoutLogByExercise($exercise);
+    return $workoutLog;
+  }
 }
