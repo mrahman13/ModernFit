@@ -23,7 +23,7 @@ include 'includes/guestHeader.php';
     <div id="main">
       <div class="display-3 text-center mt-5 p-4 text-warning"><b>Registration</b></div>
       <div class="d-flex justify-content-center w-100">
-      <form class="row content gy-3" method="post" enctype="multipart/form-data">
+      <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
         <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="Please enter your first name:" required>
         <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Please enter your last name:" required>
         <input class="form-control border-3" type="email" id="email" name="email" placeholder="Please enter your email:" required>
