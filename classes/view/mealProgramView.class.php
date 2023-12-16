@@ -2,8 +2,8 @@
 
 class mealProgramView extends mealProgramModel{
 
-  public function showMealProgramByMember(){
-    $mealProgram = $this->getMealProgramByMember();
+  public function showMealProgramByMember($member_id){
+    $mealProgram = $this->getMealProgramByMember($member_id);
     return $mealProgram;
   }
   public function showMealProgramByPersonalTrainer($personal_trainer_id){

@@ -1,5 +1,6 @@
 <?php
-    include 'includes/autoloader.php'
+    include 'includes/autoloader.php';
+    include 'includes/guestHeader.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,17 +15,6 @@
 
 <body>
   <div id="container" class="container">
-    <header id="header" class="header">
-      <!-- something for the drop down menu -->
-      <div id="logo" class="logo">
-        <a href="index"><img src="" alt="ModernFit Logo"></a>
-      </div>
-      <nav id="header-nav">
-        <ul>
-          <li><a href="signOut">Sign Out</a></li>
-        </ul>
-      </nav>
-    </header>
     <div id="main">
       <div id="services-container" class="services-container">
         <h1>Services</h1>

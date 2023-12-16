@@ -1,66 +1,51 @@
+<?php
+$memberObject = new memberView();
+$pin = $memberObject->showMemberPin();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/desktop.css">
   <style>
-    .header {
-      background-color: #000;
+    a.none {
+      text-decoration: none;
     }
-    #logo img{
+
+    #logo img {
       width: 250px;
     }
   </style>
-  <title>Member Header</title>
 </head>
 
-<body id="header">
-  
-    <nav class="navbar navbar-expand-lg header">
-      <div class="container-fluid" id="logo">
-        <a href="memberHomepage" class="navbar-brand ms-xl-5"><img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png"></a>
-      </div>
-      <!-- <div id="logo" class="logo">
-        <a href="home"><img src="" alt="ModernFit Logo"></a>
-      </div> -->
+<body>
+  <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
+    <div class="container-fluid">
+      <a href="memberHomepage" class="navbar-brand ms-xl-5" id="logo">
+        <img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png" draggable="false">
+      </a>
 
       <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseMember">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarCollapseMember">
-        <div class="navbar-nav">
-          <a class="nav-link" href=""></a>
-          <a class="nav-link" href=""></a>
-          <a class="nav-link" href=""></a>
+      <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseMember">
+        <div class="navbar-nav me-auto">
+          <a class="nav-link" href="entryLog">Entry Log</a>
+          <a class="nav-link" href="nutrition">Nutritional Info</a>
+          <a class="nav-link" href="tailoredProgram">Tailored Program</a>
+          <a class="nav-link" href="contactForm">Contact</a>
         </div>
-        
-        <nav id="header-nav">
-          <ul>
-            <li><a href="signOut">Sign Out</a></li>
-          </ul>
-        </nav>
+
+        <p><?php echo $pin ?></p>
+        <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>
       </div>
-    </nav>
+    </div>
+  </nav>
 </body>
+
 </html>
-
-<!-- js
-  const navs = document.querySelectorAll('[data-nav-target]')           'nav-link'
-const navContents = document.querySelectorAll('[data-nav-content]')     remove
-
-navs.forEach(nav => {
-    nav.addEventListener('click', () => {
-        const target = document.querySelector(nav.dataset.navTarget)    remove
-        navs.forEach(navContent => {
-            navContent.classList.remove('active')
-        })
-        navContents.forEach(navContent => {                             remove
-            navContent.classList.remove('active')
-        })
-        nav.classList.add('active')
-        target.classList.add('active')                                  remove
-    })
-})
- -->

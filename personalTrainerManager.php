@@ -4,6 +4,7 @@
     $_SESSION['user_check'] = "manager";
     include 'includes/checkLogin.php';
     $user_id = $_SESSION['user_id'];
+    include 'includes/managerHeader.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,17 +20,7 @@
 
 <body>
   <div id="container" class="container">
-    <header id="header" class="header">
-      <!-- something for the drop down menu -->
-      <div id="logo" class="logo">
-        <a href="signOut"><img src="" alt="ModernFit Logo"></a>
-      </div>
-      <nav id="header-nav">
-        <ul>
-          <li><a href="signOut">Sign Out</a></li>
-        </ul>
-      </nav>
-    </header>
+
     <div id="main">
       <?php
         $personalTrainersObject = new personalTrainerView();
