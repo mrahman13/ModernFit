@@ -24,7 +24,7 @@
 <body>
   <div id="container" class="container">
     <div id="main">
-    <div class="display-3 text-center mt-5 p-4 text-warning"><b>Contact Form</b></div>
+    <div class="display-3 text-center p-4 text-warning"><b>Contact Form</b></div>
     <div class="d-flex justify-content-center">
       <form class="content" action="https://formspree.io/f/xgejgrka" method="post">
         <div class="row gy-3 p-0">
@@ -56,8 +56,9 @@
           <div class="col-12">
             <textarea textarea class="form-control border-3" name="Message" placeholder="Messages" rows="10"></textarea>
           </div>
-
-          <input class="btn btn-warning" type="Submit" value="Submit">
+          <div class="col-12">
+            <input class="btn btn-warning w-100" type="Submit" value="Submit">
+          </div>
         </div>
       </form>
     </div>
