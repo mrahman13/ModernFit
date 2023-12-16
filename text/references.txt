@@ -8,3 +8,8 @@ https://www.w3schools.com/php/php_mysql_connect.asp#:~:text=Both%20MySQLi%20and%
 https://www.php.net/manual/en/pdostatement.rowcount.php#:~:text=For%20most%20databases%2C%20PDOStatement%3A%3A,the%20number%20of%20matching%20rows.
 // passing data through url
 https://teamtreehouse.com/community/passing-a-get-variable-through-a-link-with-php-2
+// php array to js
+https://www.youtube.com/watch?v=2zgxbiX0tbs
+// hover display
+https://www.youtube.com/watch?v=jIKjm-WThZA
+https://www.youtube.com/watch?v=GnRAbf9MMQI
