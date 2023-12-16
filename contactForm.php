@@ -47,7 +47,7 @@
             <label class="text-warning h4">Email Address:</label>
           </div>
           <div class="col-9">
-            <input class="form-control border-3 h-100" type="text" placeholder="Email Address" name="Email">
+            <input class="form-control border-3 h-100" type="email" placeholder="Email Address" name="Email">
           </div>
 
           <div class="col-12">
