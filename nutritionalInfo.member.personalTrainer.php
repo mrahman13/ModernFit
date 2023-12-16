@@ -56,7 +56,7 @@
     <div class="p-2" id="main">
       <div class="container mx-auto my-2" id="search-box">
         <form class="d-flex" method="post">
-          <input type="text" class="form-control w-100 border-3 me-2" placeholder="Search Ingredient..." name="key" value="<?php echo $key; ?>">
+          <input type="text" class="form-control w-100 border-3 me-2" placeholder="Search Ingredient..." name="key" value="<?php isset($_GET['keyword']) ? $_GET['keyword'] : '' ?>">
           <button name="search" type="submit" class="btn btn-outline-warning border-3">Search</button>
         </form>
       </div>

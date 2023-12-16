@@ -30,12 +30,5 @@
         </div>
         <button class="btn btn-link text-warning" onclick="history.back()">Go Back</button>
     </div>
-    <!-- <div class="container">
-        <div class="d-flex w-100 justify-content-center">
-            <div class="h1 border ">404</div>
-            <div class="align-self-end border">Page not found.</div>
-        </div>
-        <a onclick="history.back()">Go Back</a>
-    </div> -->
 </body>
 </html>

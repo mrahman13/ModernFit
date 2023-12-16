@@ -23,7 +23,7 @@
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
       <div class="container-fluid">
         <a href="adminHomepage" class="navbar-brand ms-xl-5" id="logo">
-          <img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png" draggable="false">
+          <img class="logo ms-sm-3 ms-xl-4" src="../img/Logo/Modernfit_Logo.png" draggable="false">
         </a>
 
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseAdmin">

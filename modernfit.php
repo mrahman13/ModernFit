@@ -11,18 +11,23 @@ switch ($request) {
         /*case '/views/users':
         require __DIR__ . $viewDir . 'users.php';
         break;*/
+    case '/404':
+        $url = '/404.php';
+        require __DIR__ . $url;
+        break;
+
     case '/adminHomepage':
-        $url = '/adminHomepage.admin.php';
+        $url = '/adminHomepage.php';
         require __DIR__ . $url;
         break;
 
     case '/contactForm':
-        $url = '/contactForm.member.php';
+        $url = '/contactForm.php';
         require __DIR__ . $url;
         break;
 
     case '/entryLog':
-        $url = '/entryLog.member.php';
+        $url = '/entryLog.php';
         require __DIR__ . $url;
         break;
 
@@ -32,52 +37,52 @@ switch ($request) {
         break;
 
     case '/managerHomepage':
-        $url = '/managerHomepage.manager.php';
+        $url = '/managerHomepage.php';
         require __DIR__ . $url;
         break;
 
     case '/mealCreator':
-        $url = '/mealCreator.personalTrainer.php';
+        $url = '/mealCreator.php';
         require __DIR__ . $url;
         break;
 
     case '/memberHomepage':
-        $url = '/memberHomepage.member.php';
+        $url = '/memberHomepage.php';
         require __DIR__ . $url;
         break;
 
     case '/nutrition':
-        $url = '/nutritionalInfo.member.personalTrainer.php';
+        $url = '/nutritionalInfo.php';
         require __DIR__ . $url;
         break;
 
     case '/personalTrainerHomepage':
-        $url = '/personalTrainerHomepage.personalTrainer.php';
+        $url = '/personalTrainerHomepage.php';
         require __DIR__ . $url;
         break;
 
     case '/personalTrainerManager':
-        $url = '/personalTrainerManager.manager.php';
+        $url = '/personalTrainerManager.php';
         require __DIR__ . $url;
         break;
 
     case '/personalTrainerMembersData':
-        $url = '/personalTrainerMemberData.personalTrainer.php';
+        $url = '/personalTrainerMemberData.php';
         require __DIR__ . $url;
         break;
 
     case '/personalTrainerMembers':
-        $url = '/personalTrainerMembers.personalTrainer.php';
+        $url = '/personalTrainerMembers.php';
         require __DIR__ . $url;
         break;
 
     case '/programManager':
-        $url = '/programManager.manager.php';
+        $url = '/programManager.php';
         require __DIR__ . $url;
         break;
 
     case '/recipeViewer':
-        $url = '/recipeViewer.member.php';
+        $url = '/recipeViewer.php';
         require __DIR__ . $url;
         break;
 
@@ -97,17 +102,17 @@ switch ($request) {
         break;
 
     case '/tailoredProgram':
-        $url = '/tailoredProgram.member.php';
+        $url = '/tailoredProgram.php';
         require __DIR__ . $url;
         break;
 
     case '/workoutCreator':
-        $url = '/workoutCreator.personalTrainer.php';
+        $url = '/workoutCreator.php';
         require __DIR__ . $url;
         break;
 
     case '/workoutViewer':
-        $url = '/workoutViewer.member.php';
+        $url = '/workoutViewer.php';
         require __DIR__ . $url;
         break;
 
