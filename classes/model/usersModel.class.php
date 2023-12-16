@@ -23,9 +23,10 @@ class usersModel extends dbConnection
     $count = $stmt->fetchColumn();
     if($count == 0)
     {
+      $passwordHash = password_hash($password, PASSWORD_DEFAULT);
       $query = "INSERT INTO user (email,password,user_role) values (?, ?, ?)";
       $stmt = $this->connect()->prepare($query);
-      $stmt->execute([$email, $password, $user_role]);
+      $stmt->execute([$email, $passwordHash, $user_role]);
       $_SESSION['user_id'] = $this->getUserId($email);
       $_SESSION['user_role'] = $user_role;
       header("Location: " . $user_role . "Homepage");
@@ -46,30 +47,33 @@ class usersModel extends dbConnection
 
   protected function signInCheck($email, $password)
   {
-    $query = "SELECT COUNT(*) FROM user WHERE email = ? AND password = ?";
-    $stmt = $this->connect()->prepare($query);
-    $stmt->execute([$email, $password]);
-    $count = $stmt->fetchColumn();
-    if($count == 1)
-    {
-      $query = "SELECT * FROM user WHERE email = ? AND password = ?";
+      $query = "SELECT * FROM user WHERE email = ?";
       $stmt = $this->connect()->prepare($query);
-      $stmt->execute([$email, $password]);
-      $obj = $stmt->fetch();
-      $_SESSION['user_id'] = $obj['user_id'];
-      $_SESSION['user_role'] = $obj['user_role'];
-      if($obj['user_role'] == "member")
-      {
-        $query = "SELECT member_id from member where user_id = ?";
-        $stmt = $this->connect()->prepare($query);
-        $stmt->execute([$_SESSION['user_id']]);
-        $memberObj = $stmt->fetch();
-        $_SESSION['member_id'] = $memberObj['member_id'];
+      $stmt->execute([$email]);
+      $user = $stmt->fetch();
+
+      if ($user && password_verify($password, $user['password'])) {
+          $query = "SELECT * FROM user WHERE email = ?";
+          $stmt = $this->connect()->prepare($query);
+          $stmt->execute([$email]);
+          $obj = $stmt->fetch();
+          $_SESSION['user_id'] = $obj['user_id'];
+          $_SESSION['user_role'] = $obj['user_role'];
+          if ($obj['user_role'] == "member") {
+              $query = "SELECT member_id FROM member WHERE user_id = ?";
+              $stmt = $this->connect()->prepare($query);
+              $stmt->execute([$_SESSION['user_id']]);
+              $memberObj = $stmt->fetch();
+              $_SESSION['member_id'] = $memberObj['member_id'];
+          }
+          header("Location: " . $obj['user_role'] . "Homepage");
+      } else {
+          echo "Wrong password";
       }
-      header("Location: " . $obj['user_role'] . "Homepage");
-    }
-    else{
-      echo "Wrong password";
-    }
   }
 }
+
+?>
+<!-- https://www.php.net/manual/en/function.password-hash.php -->
+<!-- https://www.php.net/manual/en/function.password-verify.php -->
+<!-- References I used to help me implement password_hash and password_verify -->
