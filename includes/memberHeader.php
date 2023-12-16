@@ -26,7 +26,7 @@ $pin = $memberObject->showMemberPin();
   <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
     <div class="container-fluid">
       <a href="memberHomepage" class="navbar-brand ms-xl-5" id="logo">
-        <img class="logo ms-sm-3 ms-xl-4" src="../img/Modernfit_Logo.png" draggable="false">
+        <img class="logo ms-sm-3 ms-xl-4" src="../img/Logo/Modernfit_Logo.png" draggable="false">
       </a>
 
       <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseMember">
@@ -41,7 +41,7 @@ $pin = $memberObject->showMemberPin();
           <a class="nav-link" href="contactForm">Contact</a>
         </div>
 
-        <p><?php echo $pin ?></p>
+        <div class="text-warning me-lg-2 me-xl-3">PIN Number: <?php echo $pin ?></div>
         <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>
       </div>
     </div>

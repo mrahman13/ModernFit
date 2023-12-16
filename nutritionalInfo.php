@@ -11,8 +11,8 @@ if ($_SESSION['user_role'] == 'member') {
 }
 
 //set key
-if (isset($_POST["search"])) {
-  $key = $_POST["key"];
+if (isset($_GET["key"])) {
+  $key = $_GET["key"];
 } else {
   $key = '';
 }
@@ -54,9 +54,9 @@ $ingre_data = $data->showIngredients($key);
 <body>
   <div class="p-2" id="main">
     <div class="container mx-auto my-2" id="search-box">
-      <form class="d-flex" method="post">
-        <input type="text" class="form-control w-100 border-3 me-2" placeholder="Search Ingredient..." name="key" value="<?php isset($_GET['keyword']) ? $_GET['keyword'] : '' ?>">
-        <button name="search" type="submit" class="btn btn-outline-warning border-3">Search</button>
+      <form class="d-flex">
+        <input type="text" class="form-control w-100 border-3 me-2" placeholder="Search Ingredient..." name="key" value="<?php echo $key; ?>">
+        <button type="submit" class="btn btn-outline-warning border-3">Search</button>
       </form>
     </div>
 
@@ -71,7 +71,7 @@ $ingre_data = $data->showIngredients($key);
             <div class="container text-center">
               <div class="row py-2"> <!-- border border-4 border-warning -->
                 <div class="col-xl-6 col-sm-12 m-auto" id="image">
-                  <img class="img-responsive" src="../img/<?php echo $row['image'] ?>" draggable="false">
+                  <img class="img-responsive" src="../img/Ingredient/<?php echo $row['image'] ?>" draggable="false">
                 </div>
 
                 <div class="col-xl-6 col-sm-12" id="info">

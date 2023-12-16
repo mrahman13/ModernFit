@@ -10,7 +10,6 @@ include 'includes/guestHeader.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/desktop.css">
   <title>Registration</title>
   <style>
     .content {
@@ -24,7 +23,7 @@ include 'includes/guestHeader.php';
     <div id="main">
       <div class="display-3 text-center mt-5 p-4 text-warning"><b>Registration</b></div>
       <div class="d-flex justify-content-center w-100">
-      <form class="row content gy-3" method="post" enctype="multipart/form-data">
+      <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
         <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="Please enter your first name:" required>
         <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Please enter your last name:" required>
         <input class="form-control border-3" type="email" id="email" name="email" placeholder="Please enter your email:" required>
@@ -34,7 +33,7 @@ include 'includes/guestHeader.php';
          <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
 
         <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
-        <input class="btn btn-warning sbtn" id="button" type="submit" value="Submit" name="registration"><br><br>
+        <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registration"><br><br>
       </form>
   </div>
       <?php
