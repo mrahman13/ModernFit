@@ -5,7 +5,6 @@ $_SESSION['user_check'] = "member";
 include 'includes/checkLogin.php';
 include 'includes/memberHeader.php';
 
-
 if (isset($_SESSION['meal_id'])) {
   unset($_SESSION['meal_id']);
 }
@@ -18,6 +17,7 @@ foreach ($exercises as $exercise) {
 $exerciseArray = array_unique($exerciseArray);
 
 $mealLogObject = new mealLogView();
+$macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +87,12 @@ $mealLogObject = new mealLogView();
           <input id="button" type="submit" value="<?php echo ucfirst($result) ?>" name="<?php echo $result ?>"><br><br>
         <?php } ?>
       </form>
+      <form method="post">
+        <input id="button" type="submit" value="Calories" name="calories"><br><br>
+        <input id="button" type="submit" value="Protein" name="protein"><br><br>
+        <input id="button" type="submit" value="Carbohydrates" name="carbohydrates"><br><br>
+        <input id="button" type="submit" value="Fat" name="fat"><br><br>
+      </form>
       <div>
         <canvas id="exerciseChart"></canvas>
       </div>
@@ -150,66 +156,84 @@ $mealLogObject = new mealLogView();
               },
             });
           </script>
-      <?php }
+        <?php }
       }
+      foreach ($macrosArray as $macro) {
+        if (isset($_POST[$macro])) {
+          list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog(); ?>
+          <script>
+            const ctx2 = document.getElementById('foodChart')
+            var dateObject = <?php echo json_encode($date_completedArraySorted) ?>;
+            var caloriesObject = <?php echo json_encode($caloriesArraySorted) ?>;
+            var proteinObject = <?php echo json_encode($proteinArraySorted) ?>;
+            var carbohydratesObject = <?php echo json_encode($carbohydratesArraySorted) ?>;
+            var fatObject = <?php echo json_encode($fatArraySorted) ?>;
 
+            var dateArray2 = Object.values(dateObject);
+            var caloriesArray = Object.values(caloriesObject);
+            var proteinArray = Object.values(proteinObject);
+            var carbohydratesArray = Object.values(carbohydratesObject);
+            var fatArray = Object.values(fatObject);
 
-
-      list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog(); ?>
-      <script>
-        const ctx2 = document.getElementById('foodChart')
-        var dateArray2 = <?php echo json_encode($date_completedArraySorted) ?>;
-        var caloriesArray = <?php echo json_encode($caloriesArraySorted) ?>;
-        var proteinArray = <?php echo json_encode($proteinArraySorted) ?>;
-        var carbohydratesArray = <?php echo json_encode($carbohydratesArraySorted) ?>;
-        var fatArray = <?php echo json_encode($fatArraySorted) ?>;
-        console.log(dateArray2, caloriesArray, proteinArray, carbohydratesArray, fatArray);
-        new Chart(ctx2, {
-          type: 'line',
-          data: {
-            labels: dateArray2,
-            datasets: [{
-              label: 'Calories',
-              data: caloriesArray,
-              borderWidth: 1,
-              backgroundColor: 'yellow'
-            }]
-          },
-          options: {
-            hoverRadius: 20,
-            showLine: false,
-            scales: {
-              x: {
-                type: 'timeseries',
-                time: {
-                  unit: 'day'
-                }
-              },
-              y: {
-                beginAtZero: false
-              },
-            },
-            plugins: {
-              tooltip: {
-                callbacks: {
-                  title: context => {
-                    const d = new Date(context[0].parsed.x);
-                    const formattedDate = d.toLocaleString([], {
-                      month: 'short',
-                      day: 'numeric',
-                      year: 'numeric',
-                    });
-                    return formattedDate;
-                  },
-                  label: ((tooltipItem) => {
-                    return caloriesArray[tooltipItem.dataIndex] + 'cal, ' + proteinArray[tooltipItem.dataIndex] + 'g protein, ' + carbohydratesArray[tooltipItem.dataIndex] + 'g carbs, ' + fatArray[tooltipItem.dataIndex] + 'g fat';
-                  })
-                }
-              }
+            var macro = <?php echo json_encode($macro) ?>;
+            var xData = [];
+            if (macro == 'calories') {
+              xData = caloriesArray;
+            } else if (macro == 'protein') {
+              xData = proteinArray;
+            } else if (macro == 'carbohydrates') {
+              xData = carbohydratesArray;
+            } else if (macro == 'fat') {
+              xData = fatArray;
             }
-          },
-        });
-      </script>
+            new Chart(ctx2, {
+              type: 'line',
+              data: {
+                labels: dateArray2,
+                datasets: [{
+                  label: '<?php echo ucfirst($macro) ?>',
+                  data: xData,
+                  borderWidth: 1,
+                  backgroundColor: 'yellow'
+                }]
+              },
+              options: {
+                hoverRadius: 20,
+                showLine: false,
+                scales: {
+                  x: {
+                    type: 'timeseries',
+                    time: {
+                      unit: 'day'
+                    }
+                  },
+                  y: {
+                    beginAtZero: false
+                  },
+                },
+                plugins: {
+                  tooltip: {
+                    callbacks: {
+                      title: context => {
+                        const d = new Date(context[0].parsed.x);
+                        const formattedDate = d.toLocaleString([], {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                        });
+                        return formattedDate;
+                      },
+                      label: ((tooltipItem) => {
+                        return caloriesArray[tooltipItem.dataIndex] + 'cal, ' + proteinArray[tooltipItem.dataIndex] + 'g protein, ' + carbohydratesArray[tooltipItem.dataIndex] + 'g carbs, ' + fatArray[tooltipItem.dataIndex] + 'g fat';
+                      })
+                    }
+                  }
+                }
+              },
+            });
+          </script>
+      <?php }
+      } ?>
 
 
     </div>
