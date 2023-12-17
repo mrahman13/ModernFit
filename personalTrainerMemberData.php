@@ -28,7 +28,7 @@
   <div id="container" class="container">
 
     <div id="main">
-    ` <div class="h1 py-2 text-warning">View members profiles</div>
+      <div class="h1 py-2 text-warning">View members profiles</div>
       <?php
         foreach ($memberDataResult as $row) {
       ?>
