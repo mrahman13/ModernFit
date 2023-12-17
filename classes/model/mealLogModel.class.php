@@ -15,7 +15,6 @@ class mealLogModel extends dbConnection
     $query = "SELECT * from meal_log WHERE member_id = ?";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$_SESSION['member_id']]);
-
     $date_completedArray = [];
     $caloriesArray = [];
     $proteinArray = [];
@@ -28,38 +27,44 @@ class mealLogModel extends dbConnection
       $carbohydratesArray[] = $food['carbohydrates'];
       $fatArray[] = $food['fat'];
     }
+    $date_completedArraySum = [];
+    $caloriesArraySum = [];
+    $proteinArraySum = [];
+    $carbohydratesArraySum = [];
+    $fatArraySum = [];
+    $date_completedArrayCount = count($date_completedArray);
+    for ($i = 0; $i < $date_completedArrayCount; $i++) {
+      $totalCalories = 0;
+      $totalProtein = 0;
+      $totalCarbohydrates = 0;
+      $totalFat = 0;
+      for ($j = 0; $j < $date_completedArrayCount; $j++) {
+        if ($date_completedArray[$j] == $date_completedArray[$i]) {
+          $totalCalories += $caloriesArray[$j];
+          $totalProtein += $proteinArray[$j];
+          $totalCarbohydrates += $carbohydratesArray[$j];
+          $totalFat += $fatArray[$j];
+        }
+      }
+      $date_completedArraySum[] = $date_completedArray[$i];
+      $caloriesArraySum[] = $totalCalories;
+      $proteinArraySum[] = $totalProtein;
+      $carbohydratesArraySum[] = $totalCarbohydrates;
+      $fatArraySum[] = $totalFat;
+    }
+    $date_completedArraySum = array_unique($date_completedArraySum);
     $date_completedArraySorted = [];
     $caloriesArraySorted = [];
     $proteinArraySorted = [];
     $carbohydratesArraySorted = [];
     $fatArraySorted = [];
-    foreach ($date_completedArray as $key) {
-      $totalCalories = 0;
-      $totalProtein = 0;
-      $totalCarbohydrates = 0;
-      $totalFat = 0;
-      for ($i = 0; $i < count($date_completedArray); $i++) {
-        if ($date_completedArray[$i] == $key) {
-          $totalCalories += $caloriesArray[$i];
-          $totalProtein += $proteinArray[$i];
-          $totalCarbohydrates += $carbohydratesArray[$i];
-          $totalFat += $fatArray[$i];
-        }
-      }
-      $date_completedArraySorted[] = $key;
-      $caloriesArraySorted[] = $totalCalories;
-      $proteinArraySorted[] = $totalProtein;
-      $carbohydratesArraySorted[] = $totalCarbohydrates;
-      $fatArraySorted[] = $totalFat;
+    foreach ($date_completedArraySum as $x => $x_value) {
+      $date_completedArraySorted[] = $x_value;
+      $caloriesArraySorted[] = $caloriesArraySum[$x];
+      $proteinArraySorted[] = $proteinArraySum[$x];
+      $carbohydratesArraySorted[] = $carbohydratesArraySum[$x];
+      $fatArraySorted[] = $fatArraySum[$x];
     }
-
-    $date_completedArraySorted = array_unique($date_completedArraySorted);
-    $caloriesArraySorted = array_unique($caloriesArraySorted);
-    $proteinArraySorted = array_unique($proteinArraySorted);
-    $carbohydratesArraySorted = array_unique($carbohydratesArraySorted);
-    $fatArraySorted = array_unique($fatArraySorted);
-
-
     return array($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted);
   }
 }

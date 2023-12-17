@@ -13,3 +13,5 @@ https://www.youtube.com/watch?v=2zgxbiX0tbs
 // hover display
 https://www.youtube.com/watch?v=jIKjm-WThZA
 https://www.youtube.com/watch?v=GnRAbf9MMQI
+// getting array key and value
+https://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_asort
