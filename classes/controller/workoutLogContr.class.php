@@ -2,7 +2,7 @@
 
 class workoutLogContr extends workoutLogModel{
 
-  public function createWorkoutLog($workout_name,$date_completed,$workout_id, $workoutCheck){
-    $this->setWorkoutLog($workout_name,$date_completed,$workout_id, $workoutCheck);
+  public function createWorkoutLog($date_completed, $exercise, $weight, $reps){
+    $this->setWorkoutLog($date_completed, $exercise, $weight, $reps);
   }
 }
