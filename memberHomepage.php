@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/mobile.css">
   <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
-  <title>Program</title>
+  <title>Homepage</title>
   <style>
 
     body {
@@ -29,6 +29,7 @@
      max-width: 100%;
      margin: 0;
      padding: 0;
+     min-height: 120vh;
     }
 
     .gym-image {
@@ -74,6 +75,69 @@
     padding: 10px; 
     }
 
+    h1 {
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 5px;
+   }
+
+   
+   #facilities-content, #services-content {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  background: rgba(0, 0, 0, 0.5);
+  width: 40%; 
+  height: 40%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+#facilities-content{
+  top: 85%;
+  left: 25%;
+}
+
+#services-content{
+  top: 85%;
+  left: 75%;
+}
+
+#facilities-content h2, #services-content h2 {
+  font-size: 20px; 
+  font-weight: bold;
+}
+
+.footer-container {
+  margin-top: 30%;
+  padding: 20px 15%;
+  background: #333;
+  color: white;
+  text-align: left;
+  bottom: 0;
+  width: 80%; 
+  margin-left: -9%;
+}
+.contact-info {
+  display: inline-block;
+  text-align: left;
+  width: 40%;
+}
+
+.copyright {
+  display: inline-block;
+  text-align: left;
+  width: 50%;
+}
+
+.contact-info p,
+.copyright p {
+  margin: 5px 0;
+}
     
   </style>
 </head>
@@ -89,13 +153,50 @@
     <p>Tel: +44 9182 238491</p>
     </div>
     <div id="aboutOverlay-content">
-    <p>Here at ModernFit, we provide first-rate facilities, qualified trainers and a welcoming community in order to support you in your fitness objectives. Whether you're just beginning or an experienced fitness lover, we have the resources and programmes to help you succeed on your journey.</p>
+    <p>Here at ModernFit, we provide first-rate facilities, qualified trainers and a welcoming community in order to support you in your fitness objectives. Whether you're just beginning or an experienced fitness lover, we have the resources and programmes to help you succeed on your journey.</p>
     </div>
+    <div id="facilities-content">
+    <h1>Facilities</h1>
+    <br>
+    <ul>
+  <h2>Sauna Room</h2>
+  <p>Relax and revitalise in our spacious sauna area, the ideal place to unwind and heal your muscles after a workout.</p>
+  <h2>Gym Equipment</h2>
+  <p>Increase your fitness with high-quality gym equipment, including treadmills, barbells, stationary bikes and much more.</p>
+  <h2>Personal Trainer</h2>
+  <p>Enhance your fitness journey with our expert personal trainers, who are committed to tailoring workouts to your individual goals and objectives.</p>
+    </ul>
+    </div>
+    <div id="services-content">
+    <h1>Services</h1>
+    <br>
+    <ul>
+      <h2>Nutrional Information</h2>
+  <p>View nutritional information on your favourite foods, giving you immediate access to vital information like calories, proteins, carbs, and fats.</p>
+  <h2>Tailored Programs</h2>
+  <p>We offer tailored programs catered to each members individual needs, these programs are made by our team of personal trainers.</p>
+    </ul>
+    </div>
+
     <div id="main">
     </div>
-    <footer></footer>
+    <footer>
+  <div class="footer-container">
+    <div class="contact-info">
+      <h3>Contact Us</h3>
+      <p>Address: 123 Exeter Road, Sheffield</p>
+      <p>Phone: +44 9182 238491</p>
+      <p>Email: modernfit09@gmail.com</p>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2009-2023 ModernFit Limited</p>
+    </div>
   </div>
-</body>
+</footer>
 
 </html>
+<!-- https://www.youtube.com/watch?v=lLdzlLL33G8 -->
+<!-- Reference I used to help me implement a footer -->
 
+<!-- https://www.w3schools.com/html/html_symbols.asp -->
+<!-- Reference I used to implement copyright symbol -->
