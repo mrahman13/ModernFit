@@ -15,3 +15,5 @@ https://www.youtube.com/watch?v=jIKjm-WThZA
 https://www.youtube.com/watch?v=GnRAbf9MMQI
 // getting array key and value
 https://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_asort
+// js object to array
+https://www.javascripttutorial.net/object/convert-an-object-to-an-array-in-javascript/
