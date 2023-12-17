@@ -38,7 +38,7 @@
       display: block;
     }
 
-    #titleOverlay-content {
+    #title-img {
     position: absolute;
     top: 20%;
     left: 50%;
@@ -52,7 +52,7 @@
     width: 40%;
     }
 
-    #infoOverlay-content {
+    #info-img {
     position: absolute;
     top: 15%;
     left: 10%;
@@ -62,7 +62,7 @@
     font-family: 'Roboto', sans-serif;
     }
 
-    #aboutOverlay-content {
+    #about-img {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -82,7 +82,7 @@
    }
 
    
-   #facilities-content, #services-content {
+   #facilities, #services {
   position: absolute;
   transform: translate(-50%, -50%);
   color: white;
@@ -97,44 +97,41 @@
   align-items: center;
 }
 
-#facilities-content{
+#facilities{
   top: 85%;
   left: 25%;
 }
 
-#services-content{
+#services{
   top: 85%;
   left: 75%;
 }
 
-#facilities-content h2, #services-content h2 {
+#facilities h2, #services h2 {
   font-size: 20px; 
   font-weight: bold;
 }
-
 .footer-container {
+  width: 100%;
+  background: black;
+  text-align: center;
   margin-top: 30%;
-  padding: 20px 15%;
-  background: #333;
   color: white;
-  text-align: left;
-  bottom: 0;
-  width: 80%; 
-  margin-left: -9%;
+  padding: 20px 15%;
 }
-.contact-info {
+.contactUs {
   display: inline-block;
-  text-align: left;
-  width: 40%;
+  text-align: center;
+  width: 30%;
 }
 
 .copyright {
   display: inline-block;
-  text-align: left;
-  width: 50%;
+  text-align: center;
+  width: 20%;
 }
 
-.contact-info p,
+.contactUs p,
 .copyright p {
   margin: 5px 0;
 }
@@ -143,19 +140,23 @@
 </head>
 
 <body>
+
   <div id="container" class="container">
     <img src="img/Gym.png" class="gym-image">
-    <div id="titleOverlay-content">
+    <div id="title-img">
     <p>ModernFit</p>
     </div>
-    <div id="infoOverlay-content">
+
+    <div id="info-img">
     <p>Mon-Sat: 9:00-21:00</p>
     <p>Tel: +44 9182 238491</p>
     </div>
-    <div id="aboutOverlay-content">
+
+    <div id="about-img">
     <p>Here at ModernFit, we provide first-rate facilities, qualified trainers and a welcoming community in order to support you in your fitness objectives. Whether you're just beginning or an experienced fitness lover, we have the resources and programmes to help you succeed on your journey.</p>
     </div>
-    <div id="facilities-content">
+
+    <div id="facilities">
     <h1>Facilities</h1>
     <br>
     <ul>
@@ -167,7 +168,8 @@
   <p>Enhance your fitness journey with our expert personal trainers, who are committed to tailoring workouts to your individual goals and objectives.</p>
     </ul>
     </div>
-    <div id="services-content">
+
+    <div id="services">
     <h1>Services</h1>
     <br>
     <ul>
@@ -180,9 +182,10 @@
 
     <div id="main">
     </div>
+    
     <footer>
   <div class="footer-container">
-    <div class="contact-info">
+    <div class="contactUs">
       <h3>Contact Us</h3>
       <p>Address: 123 Exeter Road, Sheffield</p>
       <p>Phone: +44 9182 238491</p>
