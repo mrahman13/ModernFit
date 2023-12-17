@@ -19,99 +19,101 @@
   <title>Homepage</title>
   <style>
 
-    body {
-      margin: 0;
-      padding: 0;
-    }
+body {
+  margin: 0;
+  padding: 0;
+}
 
-    .container {
-     width: 100%;
-     max-width: 100%;
-     margin: 0;
-     padding: 0;
-     min-height: 120vh;
-    }
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 120vh;
+}
 
-    .gym-image {
-      width: 100%; 
-      height: 50vh;
-      display: block;
-    }
+.gym-image {
+  width: 100%;
+  height: 50vh;
+  display: block;
+}
 
-    #title-img {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 100px;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    width: 40%;
-    }
+#title-img {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 100px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  width: 40%;
+}
 
-    #info-img {
-    position: absolute;
-    top: 15%;
-    left: 10%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    }
+#info-img {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
 
-    #about-img {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 20px;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    background: rgba(0, 0, 0, 0.5); 
-    padding: 10px; 
-    }
+#about-img {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
 
-    h1 {
+h1 {
   text-decoration: underline;
   text-align: center;
   margin-top: 5px;
-   }
+}
 
-   
-   #facilities, #services {
+#facilities,
+#services {
   position: absolute;
   transform: translate(-50%, -50%);
   color: white;
   font-size: 15px;
   font-family: 'Roboto', sans-serif;
   background: rgba(0, 0, 0, 0.5);
-  width: 40%; 
-  height: 40%; 
+  width: 40%;
+  height: 40%;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
 }
 
-#facilities{
+#facilities {
   top: 85%;
   left: 25%;
 }
 
-#services{
+#services {
   top: 85%;
   left: 75%;
 }
 
-#facilities h2, #services h2 {
-  font-size: 20px; 
+#facilities h2,
+#services h2 {
+  font-size: 20px;
   font-weight: bold;
 }
-.footer-container {
+
+.footer {
   width: 100%;
   background: black;
   text-align: center;
@@ -119,22 +121,18 @@
   color: white;
   padding: 20px 15%;
 }
-.contactUs {
-  display: inline-block;
-  text-align: center;
-  width: 30%;
-}
 
+.contactUs,
 .copyright {
   display: inline-block;
   text-align: center;
-  width: 20%;
 }
 
 .contactUs p,
 .copyright p {
   margin: 5px 0;
 }
+
     
   </style>
 </head>
@@ -180,11 +178,8 @@
     </ul>
     </div>
 
-    <div id="main">
-    </div>
-    
     <footer>
-  <div class="footer-container">
+  <div class="footer">
     <div class="contactUs">
       <h3>Contact Us</h3>
       <p>Address: 123 Exeter Road, Sheffield</p>
