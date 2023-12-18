@@ -8,16 +8,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/mobile.css">
-  <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
+  <style>
+    ul {
+      line-height: 2.5;
+    }
+  </style>
   <title>Services and Facilities</title>
 </head>
 
 <body>
-  <div id="container" class="container">
+  <div id="container" class="m-3 mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
     <div id="main">
       <div id="services-container" class="services-container">
-        <h1>Services</h1>
+        <h1 class="text-warning">Services</h1>
         <ul>
           <li>Monitor your progress with the progress tracker, everything is put into easy-to-read graphs/charts.</li>
           <li>We offer tailored programs catered to each members individual needs, these programs are made by our team of personal trainers.</li>
@@ -25,7 +28,7 @@
         </ul>
       </div>
       <div id="facilities-container" class="facilities-container">
-        <h1>Facilities</h1>
+        <h1 class="text-warning">Facilities</h1>
         <ul>
           <li>Indoor heated swimming pool for exercise in the water.</li>
           <li>In our sauna and steam room, unwind and rest.</li>
