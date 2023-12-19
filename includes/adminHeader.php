@@ -10,7 +10,6 @@
     <style>
       a.none {
         text-decoration: none;
-        color: inherit;
       }
 
       #logo img {
