@@ -38,7 +38,7 @@ body {
   display: block;
 }
 
-#title-img {
+.title-img {
   position: absolute;
   top: 20%;
   left: 50%;
@@ -52,7 +52,7 @@ body {
   width: 40%;
 }
 
-#info-img {
+.info-img {
   position: absolute;
   top: 15%;
   left: 10%;
@@ -62,7 +62,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-#about-img {
+.about-img {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -81,8 +81,8 @@ h1 {
   margin-top: 5px;
 }
 
-#facilities,
-#services {
+.facilities,
+.services {
   position: absolute;
   transform: translate(-50%, -50%);
   color: white;
@@ -97,18 +97,18 @@ h1 {
   align-items: center;
 }
 
-#facilities {
+.facilities {
   top: 85%;
   left: 25%;
 }
 
-#services {
+.services {
   top: 85%;
   left: 75%;
 }
 
-#facilities h2,
-#services h2 {
+.facilities h2,
+.services h2 {
   font-size: 20px;
   font-weight: bold;
 }
@@ -139,40 +139,39 @@ h1 {
 
 <body>
 
-  <div id="container" class="container">
+  <div class="container">
+
     <img src="img/Gym.png" class="gym-image">
-    <div id="title-img">
+    <div class="title-img">
     <p>ModernFit</p>
     </div>
-
-    <div id="info-img">
+    <div class="info-img">
     <p>Mon-Sat: 9:00-21:00</p>
     <p>Tel: +44 9182 238491</p>
     </div>
-
-    <div id="about-img">
+    <div class="about-img">
     <p>Here at ModernFit, we provide first-rate facilities, qualified trainers and a welcoming community in order to support you in your fitness objectives. Whether you're just beginning or an experienced fitness lover, we have the resources and programmes to help you succeed on your journey.</p>
     </div>
 
-    <div id="facilities">
+    <div class="facilities">
     <h1>Facilities</h1>
     <br>
     <ul>
   <h2>Sauna Room</h2>
-  <p>Relax and revitalise in our spacious sauna area, the ideal place to unwind and heal your muscles after a workout.</p>
+  <p>Unwind and heal your muscles after a workout in our spacious sauna.</p>
   <h2>Gym Equipment</h2>
-  <p>Increase your fitness with high-quality gym equipment, including treadmills, barbells, stationary bikes and much more.</p>
+  <p>High-quality gym equipment, including treadmills, barbells, stationary bikes, are available to increase your fitness.</p>
   <h2>Personal Trainer</h2>
-  <p>Enhance your fitness journey with our expert personal trainers, who are committed to tailoring workouts to your individual goals and objectives.</p>
+  <p>Our personal trainers are committed to tailoring workouts to your individual goals and objectives in order to support you in your fitness journey.</p>
     </ul>
     </div>
 
-    <div id="services">
+    <div class="services">
     <h1>Services</h1>
     <br>
     <ul>
       <h2>Nutrional Information</h2>
-  <p>View nutritional information on your favourite foods, giving you immediate access to vital information like calories, proteins, carbs, and fats.</p>
+  <p>View nutritional information on your favourite foods, which includes vital information such as calories, proteins, carbs, and fats.</p>
   <h2>Tailored Programs</h2>
   <p>We offer tailored programs catered to each members individual needs, these programs are made by our team of personal trainers.</p>
     </ul>
@@ -187,7 +186,7 @@ h1 {
       <p>Email: modernfit09@gmail.com</p>
     </div>
     <div class="copyright">
-      <p>&copy; 2009-2023 ModernFit Limited</p>
+      <p>Copyright &copy; 2009-2023 ModernFit Limited</p>
     </div>
   </div>
 </footer>
