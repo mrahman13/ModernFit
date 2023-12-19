@@ -38,13 +38,11 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/mobile.css">
-  <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
   <title>Recipes</title>
 </head>
 
 <body>
-  <div id="container" class="container">
+  <div id="container" class="my-3 mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
     <div id="main">
       <?php
       $workoutObject = new workoutProgramView();
@@ -56,17 +54,19 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
       foreach ($workoutData as $row) {
         if ($row['workout_id'] == $workout_id) { ?>
           <div class="workout">
+            <div id="workout_name" class="h1 text-warning">Workout Name: <?php echo $row['workout_name'] ?></div>
             <?php
             if (isset($_GET['date_completed'])) { ?>
-              <p id='workout_day'><?php echo $row['workout_day'] . " " . $date_completed ?></p>
+              <div id='workout_day' class="py-2">Completed Date: <?php echo $row['workout_day'] . " " . $date_completed ?></div>
             <?php } else { ?>
-              <p id='workout_day'><?php echo $row['workout_day'] ?></p>
+              <div id='workout_day' class="py-2"><b>Assigned Date: </b><?php echo $row['workout_day'] ?></div>
             <?php } ?>
-            <p id="workout_name"><?php echo $row['workout_name'] ?></p>
-            <p id="notes"><?php echo $row['notes'] ?></p>
-            <p id="exercises"><?php echo $row['exercises'] ?></p>
+            
+            <div id="notes" class="py-2"><b>Note: </b><?php echo $row['notes'] ?></div>
+            <div id="exercises" class="py-2"><b>Exercises: </b><?php echo $row['exercises'] ?></div>
 
           </div>
+          <a href="tailoredProgram" class="btn btn-outline-warning">< Back to Tailored Programs</a>
       <?php }
       }
       ?>
