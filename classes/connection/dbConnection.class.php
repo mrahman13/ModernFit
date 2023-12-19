@@ -2,7 +2,9 @@
 
 class dbConnection
 {
-  protected function connect()
+  //protected function connect()
+  public function connect()
+
   {
     $dbhost = "localhost";
     $dbuser = "root";
