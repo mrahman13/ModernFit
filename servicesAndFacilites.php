@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <div id="container" class="m-3 mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
+  <div id="container" class="my-3 mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
     <div id="main">
       <div id="services-container" class="services-container">
         <h1 class="text-warning">Services</h1>

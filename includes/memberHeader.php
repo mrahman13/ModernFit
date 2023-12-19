@@ -41,7 +41,7 @@ $pin = $memberObject->showMemberPin();
           <a class="nav-link" href="contactForm">Contact</a>
         </div>
 
-        <div class="text-warning me-lg-2 me-xl-3">PIN Number: <?php echo $pin ?></div>
+        <div class="text-warning me-lg-2 me-xl-3 my-2 my-lg-auto">PIN Number: <?php echo $pin ?></div>
         <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>
       </div>
     </div>
