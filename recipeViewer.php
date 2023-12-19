@@ -74,7 +74,7 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
             <div id='carbohydrates' class="py-2"><b>Carbohydrates: </b><?php echo $row['carbohydrates'] . "g" ?></div>
             <div id='fat' class="py-2"><b>Fat: </b><?php echo $row['fat'] . "g" ?></div>
           </div>
-          <a href="tailoredProgram" class="btn btn-outline-warning">< Back to Tailored Programs</a>
+          <a class="btn btn-outline-warning" onclick="history.back()">< Back</a>
       <?php }
       } ?>
     </div>
