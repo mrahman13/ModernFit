@@ -10,9 +10,9 @@ class NI_Model extends dbConnection
     // return $ingredient_data;
     
     $input = '%' . $ingredient . '%';
-    $sql = "SELECT * from ingredient where ingredient_name like :ingre";
+    $sql = "SELECT * from ingredient where ingredient_name like ?";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->bindParam(':ingre',$input);
+    $stmt->bindParam(1, $input);
     $stmt->execute();
     return $stmt;
   }
