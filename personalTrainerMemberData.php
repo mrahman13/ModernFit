@@ -39,17 +39,17 @@ $memberDataResult = $memberData->showMemberData($member_id);
       <?php
       }
 
-      $personalTrainersMealObject = new mealProgramView();
-      $personalTrainersMealData = $personalTrainersMealObject->showMealProgramByPersonalTrainer($_SESSION['personal_trainer_id']);
-      foreach ($personalTrainersMealData as $row) { ?>
+      $membersMealObject = new mealProgramView();
+      $membersMealData = $membersMealObject->showMealProgramByMember($member_id);
+      foreach ($membersMealData as $row) { ?>
         <a href="recipeViewer?meal_id=<?php echo $row['meal_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>">
           <p id='food_name'><?php echo $row['food_name'] . " : " . date('H:i', strtotime($row['meal_time'])) ?></p>
         </a>
 
       <?php }
-      $personalTrainersWorkoutObject = new workoutProgramView();
-      $personalTrainersWorkoutData = $personalTrainersWorkoutObject->showWorkoutProgramByPersonalTrainer($_SESSION['personal_trainer_id']);
-      foreach ($personalTrainersWorkoutData as $row) { ?>
+      $membersWorkoutObject = new workoutProgramView();
+      $membersWorkoutData = $membersWorkoutObject->showWorkoutProgramByMember($member_id);
+      foreach ($membersWorkoutData as $row) { ?>
         <a href="workoutViewer?workout_id=<?php echo $row['workout_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>">
           <p id='workout_name'><?php echo $row['workout_name'] . " : " . $row['workout_day'] ?></p>
         </a>
