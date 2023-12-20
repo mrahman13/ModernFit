@@ -33,7 +33,7 @@ $memberDataResult = $memberData->showMemberData($member_id);
       foreach ($memberDataResult as $row) {
       ?>
         <p id='name'>Name: <?php echo $row['first_name'] . ' ' . $row['last_name'] ?></p>
-        <p id='profile_picture'>Profile Picture: <?php echo $row['profile_picture'] ?></p>
+        <img class="img-responsive" src="../img/profilePicture/<?php echo $row['profile_picture'] ?>" draggable="false" width="200px">
         <p id='date_joined'>Date Joined: <?php echo date('Y-m-d', strtotime($row['date_joined'])) ?></p>
         <p id='pin'>PIN: <?php echo $row['pin'] ?></p>
       <?php
