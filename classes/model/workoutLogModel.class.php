@@ -10,23 +10,23 @@ class workoutLogModel extends dbConnection
     $stmt->execute([$exercise, $weight, $reps, $date_completed, $_SESSION['member_id']]);
     echo "Workout logged";
   }
-  protected function getWorkoutLog()
+  protected function getWorkoutLog($member_id)
   {
     $query = "SELECT * from workout_log WHERE member_id = ?";
     $stmt = $this->connect()->prepare($query);
-    $stmt->execute([$_SESSION['member_id']]);
+    $stmt->execute([$member_id]);
     return $stmt;
   }
-  protected function getWorkoutLogByExercise($exercise)
+  protected function getWorkoutLogByExercise($exercise, $member_id)
   {
     $query = "SELECT COUNT(*) from workout_log WHERE member_id = ? AND exercise = ?";
     $stmt = $this->connect()->prepare($query);
-    $stmt->execute([$_SESSION['member_id'], $exercise]);
+    $stmt->execute([$member_id, $exercise]);
     $count = $stmt->fetchColumn();
     if ($count >= 1) {
       $query = "SELECT * from workout_log WHERE member_id = ? AND exercise = ?";
       $stmt = $this->connect()->prepare($query);
-      $stmt->execute([$_SESSION['member_id'], $exercise]);
+      $stmt->execute([$member_id, $exercise]);
       foreach ($stmt as $row) {
         $dateArray[] = $row['date_completed'];
         $weightArray[] = $row['weight'];

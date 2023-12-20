@@ -9,7 +9,7 @@ if (isset($_SESSION['meal_id'])) {
   unset($_SESSION['meal_id']);
 }
 $workoutLogObject = new workoutLogView();
-$exercises = $workoutLogObject->showWorkoutLog();
+$exercises = $workoutLogObject->showWorkoutLog($_SESSION['member_id']);
 $exerciseArray = [];
 foreach ($exercises as $exercise) {
   $exerciseArray[] = $exercise['exercise'];
@@ -103,7 +103,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       foreach ($exerciseArray as $result) {
         $exercise = str_replace(' ', '_', $result);
         if (isset($_POST[$exercise])) {
-          list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result); ?>
+          list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result, $_SESSION['member_id']); ?>
           <script>
             const ctx = document.getElementById('exerciseChart')
             var dateArray = <?php echo json_encode($dateArray) ?>;
@@ -160,7 +160,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       }
       foreach ($macrosArray as $macro) {
         if (isset($_POST[$macro])) {
-          list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog(); ?>
+          list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog($_SESSION['member_id']); ?>
           <script>
             const ctx2 = document.getElementById('foodChart')
             var dateObject = <?php echo json_encode($date_completedArraySorted) ?>;
