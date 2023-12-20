@@ -73,8 +73,8 @@ $user_id = $_SESSION['user_id'];
           
               <tr onclick="window.location.href='workoutViewer?workout_id=<?php echo $row['workout_id']; ?>'">
                 <th><?php echo $i++ ?></th>
-                <td><?php echo $row['workout_name'] ?></td>
-                <td><?php echo $row['workout_day'] ?></td>
+                <td><?php echo ucfirst($row['workout_name']) ?></td>
+                <td><?php echo ucfirst($row['workout_day']) ?></td>
               </tr>
           <?php } ?>
             </tbody>
