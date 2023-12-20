@@ -11,8 +11,9 @@
     {
       $search = '';
     }
-    $searchMember = new memberDataContr();
+    $searchMember = new memberContr();
     $members = $searchMember->searchMember($search);
+
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +45,7 @@
           <?php
           
           foreach ($members as $member) {
-            echo "<p><a class='none text-warning' href='personalTrainerMembersData?member_id={$member['member_id']}' target='_blank'>{$member['first_name']} {$member['last_name']}</a></p>";
+            echo "<p><a class='none text-warning' href='personalTrainerMembersData?member_id={$member['member_id']}'>{$member['first_name']} {$member['last_name']}</a></p>";
           }
               
           ?>

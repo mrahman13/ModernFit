@@ -11,7 +11,7 @@ if (isset($_GET['member_id']) && $_GET['member_id'] !== '') {
   header("Location: 404");
 }
 
-$memberData = new memberDataView();
+$memberData = new memberView();
 $memberDataResult = $memberData->showMemberData($member_id);
 ?>
 
