@@ -59,7 +59,7 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
             if (isset($_GET['date_completed'])) { ?>
               <div id='workout_day' class="py-2">Completed Date: <?php echo $row['workout_day'] . " " . $date_completed ?></div>
             <?php } else { ?>
-              <div id='workout_day' class="py-2"><b>Assigned Date: </b><?php echo $row['workout_day'] ?></div>
+              <div id='workout_day' class="py-2"><b>Assigned Day: </b><?php echo $row['workout_day'] ?></div>
             <?php } ?>
             
             <div id="notes" class="py-2"><b>Note: </b><?php echo $row['notes'] ?></div>
