@@ -41,7 +41,7 @@ include 'includes/guestHeader.php';
         //gets form data
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
-
+        $goals = $_POST['goals'];
         // Process profile picture upload
         $filename = $_FILES['profile_pic']['name'];
         $extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -63,7 +63,7 @@ include 'includes/guestHeader.php';
 
         $userIdObj = new usersView();
         $memberRegistrationObj = new memberContr();
-        $memberRegistrationObj->createMember($first_name, $last_name, $profile_picture, $date_joined, $userIdObj->showUserId($email));
+        $memberRegistrationObj->createMember($first_name, $last_name, $profile_picture, $goals, $date_joined, $userIdObj->showUserId($email));
       }
       ?>
     </div>

@@ -24,9 +24,6 @@
         <a href="home" class="navbar-brand ms-xl-5" id="logo">
           <img class="logo ms-sm-3 ms-xl-4" src="../img/Logo/Modernfit_Logo.png" draggable="false">
         </a>
-        <!-- <div id="logo" class="logo">
-          <a href="home"><img src="" alt="ModernFit Logo"></a>
-        </div> -->
 
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>

@@ -28,10 +28,6 @@ if (isset($_GET['personal_trainer_id']) && $_GET['personal_trainer_id'] !== '') 
   $personal_trainer_id = $_GET['personal_trainer_id'];
   $ptCheck = true;
 }
-
-if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
-  $date_completed = $_GET['date_completed'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -40,42 +36,40 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/mobile.css">
-  <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
   <title>Recipes</title>
 </head>
 
 <body>
-  <div id="container" class="container">
+  <div id="container" class="my-3 mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
     <div id="main">
       <?php
       $mealObject = new mealProgramView();
 
-
       if ($ptCheck == true) {
         $data = $mealObject->showMealProgramByPersonalTrainer($personal_trainer_id);
-      } else if ($mCheck == true){
+      } else if ($mCheck == true) {
         $data = $mealObject->showMealProgramByMember($member_id);
       }
       foreach ($data as $row) {
         if ($row['meal_id'] == $meal_id) { ?>
           <div class="meal">
-            <?php
-            if (isset($_GET['date_completed'])) { ?>
-              <p id='food_name'><?php echo $row['food_name'] . " " . $date_completed ?></p>
-            <?php } else { ?>
-              <p id='food_name'><?php echo $row['food_name'] ?></p>
-            <?php } ?>
-            <p id='meal_time'><?php echo date('H:i', strtotime($row['meal_time'])) ?></p>
-            <p id='notes'><?php echo $row['notes'] ?></p>
-            <p id='ingredients'><?php echo $row['ingredients'] ?></p>
-            <p id='method'><?php echo $row['method'] ?></p>
-            <p id='calories'><?php echo "Calories: " . $row['calories'] . "cal" ?></p>
-            <p id='protein'><?php echo "Protein: " . $row['protein'] . "g" ?></p>
-            <p id='carbohydrates'><?php echo "Carbohydrates: " . $row['carbohydrates'] . "g" ?></p>
-            <p id='fat'><?php echo "Fat: " . $row['fat'] . "g" ?></p>
+            <div id='food_name' class="h1 text-warning">
+              <?php echo $row['food_name']; ?>
+            </div>
+            <div id='meal_time' class="py-2"><b>Meal Time: </b><?php echo date('H:i', strtotime($row['meal_time'])) ?></div>
+            <div id='notes' class="py-2"><b>Notes: </b><?php echo $row['notes'] ?></div>
+            <div id='ingredients' class="py-2"><b>Ingredients: </b><?php echo $row['ingredients'] ?></div>
+            <div id='method' class="py-2"><b>Method: </b><?php echo $row['method'] ?></div>
+            <hr class="border border-2">
+            <div class="h4 text-warning">Nutritional Information</div>
+            <div id='calories' class="py-2"><b>Calories: </b><?php echo $row['calories'] . "cal" ?></div>
+            <div id='protein' class="py-2"><b>Protein: </b><?php echo $row['protein'] . "g" ?></div>
+            <div id='carbohydrates' class="py-2"><b>Carbohydrates: </b><?php echo $row['carbohydrates'] . "g" ?></div>
+            <div id='fat' class="py-2"><b>Fat: </b><?php echo $row['fat'] . "g" ?></div>
           </div>
-      <?php }
+          <a class="btn btn-outline-warning" onclick="history.back()">
+            < Back</a>
+          <?php }
       } ?>
     </div>
     <footer></footer>
