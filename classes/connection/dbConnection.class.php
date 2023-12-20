@@ -2,7 +2,9 @@
 
 class dbConnection
 {
-  protected function connect()
+  //protected function connect()
+  public function connect()
+
   {
     $dbhost = "localhost";
     $dbuser = "root";
@@ -31,4 +33,5 @@ class dbConnection
       echo "Failed: " . $exception->getMessage();
     }
   }
+  
 }
