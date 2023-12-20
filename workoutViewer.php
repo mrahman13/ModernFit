@@ -27,9 +27,6 @@ if (isset($_GET['personal_trainer_id']) && $_GET['personal_trainer_id'] !== '') 
   $personal_trainer_id = $_GET['personal_trainer_id'];
   $ptCheck = true;
 }
-if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
-  $date_completed = $_GET['date_completed'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -48,28 +45,23 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
       $workoutObject = new workoutProgramView();
       if ($ptCheck == true) {
         $workoutData = $workoutObject->showWorkoutProgramByPersonalTrainer($personal_trainer_id);
-      } else if ($mCheck == true){
+      } else if ($mCheck == true) {
         $workoutData = $workoutObject->showWorkoutProgramByMember($member_id);
       }
       foreach ($workoutData as $row) {
         if ($row['workout_id'] == $workout_id) { ?>
           <div class="workout">
             <div id="workout_name" class="h1 text-warning">Workout Name: <?php echo $row['workout_name'] ?></div>
-            <?php
-            if (isset($_GET['date_completed'])) { ?>
-              <div id='workout_day' class="py-2">Completed Date: <?php echo $row['workout_day'] . " " . $date_completed ?></div>
-            <?php } else { ?>
-              <div id='workout_day' class="py-2"><b>Assigned Day: </b><?php echo $row['workout_day'] ?></div>
-            <?php } ?>
-            
+            <div id='workout_day' class="py-2"><b>Assigned Day: </b><?php echo $row['workout_day'] ?></div>
             <div id="notes" class="py-2"><b>Note: </b><?php echo $row['notes'] ?></div>
             <div id="exercises" class="py-2"><b>Exercises: </b><?php echo $row['exercises'] ?></div>
 
           </div>
-          <a class="btn btn-outline-warning" onclick="history.back()">< Back</a>
-      <?php }
+          <a class="btn btn-outline-warning" onclick="history.back()">
+            < Back</a>
+          <?php }
       }
-      ?>
+          ?>
     </div>
     <footer></footer>
   </div>

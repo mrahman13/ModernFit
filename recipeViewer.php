@@ -28,10 +28,6 @@ if (isset($_GET['personal_trainer_id']) && $_GET['personal_trainer_id'] !== '') 
   $personal_trainer_id = $_GET['personal_trainer_id'];
   $ptCheck = true;
 }
-
-if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
-  $date_completed = $_GET['date_completed'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -51,17 +47,14 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
 
       if ($ptCheck == true) {
         $data = $mealObject->showMealProgramByPersonalTrainer($personal_trainer_id);
-      } else if ($mCheck == true){
+      } else if ($mCheck == true) {
         $data = $mealObject->showMealProgramByMember($member_id);
       }
       foreach ($data as $row) {
         if ($row['meal_id'] == $meal_id) { ?>
           <div class="meal">
             <div id='food_name' class="h1 text-warning">
-              <?php
-                if (isset($_GET['date_completed'])) { echo $row['food_name'] . " " . $date_completed; }
-                else { echo $row['food_name']; }
-              ?>
+              <?php echo $row['food_name']; ?>
             </div>
             <div id='meal_time' class="py-2"><b>Meal Time: </b><?php echo date('H:i', strtotime($row['meal_time'])) ?></div>
             <div id='notes' class="py-2"><b>Notes: </b><?php echo $row['notes'] ?></div>
@@ -74,8 +67,9 @@ if (isset($_GET['date_completed']) && $_GET['date_completed'] !== '') {
             <div id='carbohydrates' class="py-2"><b>Carbohydrates: </b><?php echo $row['carbohydrates'] . "g" ?></div>
             <div id='fat' class="py-2"><b>Fat: </b><?php echo $row['fat'] . "g" ?></div>
           </div>
-          <a class="btn btn-outline-warning" onclick="history.back()">< Back</a>
-      <?php }
+          <a class="btn btn-outline-warning" onclick="history.back()">
+            < Back</a>
+          <?php }
       } ?>
     </div>
     <footer></footer>
