@@ -10,11 +10,11 @@ class mealLogModel extends dbConnection
     $stmt->execute([$food_name, $calories, $protein, $carbohydrates, $fat, $date_completed, $_SESSION['member_id']]);
     echo "Meal logged";
   }
-  protected function getMealLog()
+  protected function getMealLog($member_id)
   {
     $query = "SELECT * from meal_log WHERE member_id = ?";
     $stmt = $this->connect()->prepare($query);
-    $stmt->execute([$_SESSION['member_id']]);
+    $stmt->execute([$member_id]);
     $date_completedArray = [];
     $caloriesArray = [];
     $proteinArray = [];

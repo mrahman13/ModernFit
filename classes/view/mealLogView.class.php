@@ -2,8 +2,8 @@
 
 class mealLogView extends mealLogModel{
 
-  public function showMealLog(){
-    $mealLog = $this->getMealLog();
+  public function showMealLog($member_id){
+    $mealLog = $this->getMealLog($member_id);
     return $mealLog;
   }
 }
