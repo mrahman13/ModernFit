@@ -2,13 +2,6 @@
 
 class memberModel extends dbConnection
 {
-  // protected $member_id;
-  // protected $first_name;
-  // protected $last_name;
-  // protected $profile_picture;
-  // protected $date_joined;
-  // protected $pin;
-
   protected function getMember($user_id)
   {
     $query = "SELECT * from member where user_id = ?";
@@ -39,7 +32,7 @@ class memberModel extends dbConnection
     }
     return $pin;
   }
-  protected function setMember($first_name, $last_name, $profile_picture, $date_joined, $user_id)
+  protected function setMember($first_name, $last_name, $profile_picture, $goals, $date_joined, $user_id)
   {
     $query = "SELECT COUNT(*) FROM member WHERE user_id = ?";
     $stmt = $this->connect()->prepare($query);
@@ -55,14 +48,46 @@ class memberModel extends dbConnection
       $stmt->execute([$user_id]);
       $obj = $stmt->fetch();
       $_SESSION['member_id'] = $obj['member_id'];
+
+      $query = "SELECT COUNT(*) FROM goals WHERE goal LIKE ?";
+      $stmt = $this->connect()->prepare($query);
+      $stmt->execute(["%$goals%"]);
+      $count = $stmt->fetchColumn();
+      if ($count != 0) {
+        //adding new goal to goal table
+        $query = "INSERT INTO goals (goal) values (?)";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute([$goals]);
+        echo $_SESSION['member_id'];
+
+        //getting new goal goal_id
+        $query = "SELECT goal_id from goals where goal = ?";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute([$goals]);
+        $obj = $stmt->fetch();
+        $goal_id = $obj['goal_id'];
+
+        //adding goal_id and member_id to member_goals table
+        $query = "INSERT INTO member_goals (goal_id,member_id) values (?, ?)";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute([$goal_id, $_SESSION['member_id']]);
+      } else {
+        //getting goal_id
+        $query = "SELECT goal_id from goals where goal = ?";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute([$goals]);
+        $obj = $stmt->fetch();
+        $goal_id = $obj['goal_id'];
+
+        //adding goal_id and member_id to member_goals table
+        $query = "INSERT INTO member_goals (goal_id,member_id) values (?, ?)";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute([$goal_id, $_SESSION['member_id']]);
+      }
     }
   }
   protected function searchMemberName($search)
   {
-    // $query = "SELECT * FROM member WHERE first_name LIKE ?";
-    // $stmt = $this->connect()->prepare($query);
-    // $stmt->execute(["%$search%"]);
-    // return $stmt;
     $query = "SELECT COUNT(*) FROM member WHERE first_name LIKE ?";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute(["%$search%"]);

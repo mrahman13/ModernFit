@@ -2,11 +2,6 @@
 
 class usersModel extends dbConnection
 {
-  // protected $user_id;
-  // protected $email;
-  // protected $password;
-  // protected $user_role;
-
   protected function getUser($user_id)
   {
     $query = "SELECT * from user where user_id = ?";
@@ -21,16 +16,14 @@ class usersModel extends dbConnection
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$email]);
     $count = $stmt->fetchColumn();
-    if($count == 0)
-    {
+    if ($count == 0) {
       $query = "INSERT INTO user (email,password,user_role) values (?, ?, ?)";
       $stmt = $this->connect()->prepare($query);
       $stmt->execute([$email, $password, $user_role]);
       $_SESSION['user_id'] = $this->getUserId($email);
       $_SESSION['user_role'] = $user_role;
       header("Location: " . $user_role . "Homepage");
-    }
-    else{
+    } else {
       echo "Email already in use";
     }
   }
@@ -50,23 +43,20 @@ class usersModel extends dbConnection
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$email, $password]);
     $count = $stmt->fetchColumn();
-    if($count == 1)
-    {
+    if ($count == 1) {
       $query = "SELECT * FROM user WHERE email = ? AND password = ?";
       $stmt = $this->connect()->prepare($query);
       $stmt->execute([$email, $password]);
       $obj = $stmt->fetch();
       $_SESSION['user_id'] = $obj['user_id'];
       $_SESSION['user_role'] = $obj['user_role'];
-      if($obj['user_role'] == "member")
-      {
+      if ($obj['user_role'] == "member") {
         $query = "SELECT member_id from member where user_id = ?";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute([$_SESSION['user_id']]);
         $memberObj = $stmt->fetch();
         $_SESSION['member_id'] = $memberObj['member_id'];
-      } else if($obj['user_role'] == "personalTrainer")
-      {
+      } else if ($obj['user_role'] == "personalTrainer") {
         $query = "SELECT personal_trainer_id from personal_trainer where user_id = ?";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute([$_SESSION['user_id']]);
@@ -74,8 +64,7 @@ class usersModel extends dbConnection
         $_SESSION['personal_trainer_id'] = $personalTrainerObj['personal_trainer_id'];
       }
       header("Location: " . $obj['user_role'] . "Homepage");
-    }
-    else{
+    } else {
       echo "Wrong password";
     }
   }
