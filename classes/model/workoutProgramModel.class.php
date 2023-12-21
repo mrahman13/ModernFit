@@ -24,4 +24,11 @@ class workoutProgramModel extends dbConnection
     $count = $stmt->fetchColumn();
     return $count;
   }
+  protected function SaveWorkoutProgram($workout_name, $notes, $workout_day, $excercises)
+  {
+    $query = "INSERT INTO workout_program (workout_name, notes, workout_day,excercises) VALUES (?, ?, ?, ?)";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$workout_name, $notes, $workout_day, $excercises]);
+  }
+
 }
