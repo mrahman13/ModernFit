@@ -54,8 +54,8 @@ $ingre_data = $data->showIngredients($key);
 <body>
   <div class="p-2" id="main">
     <div class="container mx-auto my-2" id="search-box">
-      <form class="d-flex">
-        <input type="text" class="form-control w-100 border-3 me-2" placeholder="Search Ingredient..." name="key" value="<?php echo $key; ?>">
+      <form class="input-group">
+        <input type="text" class="form-control border-3 border-end-0" placeholder="Search Ingredient..." name="key" value="<?php echo $key; ?>">
         <button type="submit" class="btn btn-outline-warning border-3">Search</button>
       </form>
     </div>
