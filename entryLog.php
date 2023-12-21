@@ -26,78 +26,121 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="css/mobile.css">
-  <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css"> -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
   <title>Entry Log</title>
+  <style>
+    input {
+      color-scheme: dark;
+    }
+    .graph {
+      background-color: white;
+      border-radius: 15px;
+      display: none;
+    }
+    .graph.active {
+      display: block;
+    }
+  </style>
 </head>
-
 <body>
-  <div id="container" class="container">
+  <div id="container" class="mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
     <div id="main">
-      <div class="logMeals">
-        <h1>Log meals</h1>
-        <form method="post">
-          <input type="date" id="date_completed" name="date_completed" required>
-          <input type="text" id="food_name" name="food_name" placeholder="Food name:" required>
-          <input type="text" id="calories" name="calories" placeholder="Calories:" required>
-          <input type="text" id="protein" name="protein" placeholder="Protein:" required>
-          <input type="text" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
-          <input type="text" id="fat" name="fat" placeholder="Fat:" required>
-          <input id="button" type="submit" value="Submit" name="mealLog"><br><br>
-        </form>
-        <?php
-        if (isset($_POST['mealLog'])) {
-          $mealLogObj = new mealLogContr();
-          $date_completed = $_POST['date_completed'];
-          $food_name = $_POST['food_name'];
-          $calories = $_POST['calories'];
-          $protein = $_POST['protein'];
-          $carbohydrates = $_POST['carbohydrates'];
-          $fat = $_POST['fat'];
-          $mealLogObj->createMealLog($date_completed, $food_name, $calories, $protein, $carbohydrates, $fat);
-        }
-        ?>
-      </div>
-      <div class="logWorkout">
-        <h1>Log workout</h1>
-        <form method="post">
-          <input type="date" id="date_completed" name="date_completed" required>
-          <input type="text" id="exercise" name="exercise" placeholder="Exercise:" required>
-          <input type="text" id="weight" name="weight" placeholder="Weight:" required>
-          <input type="text" id="reps" name="reps" placeholder="Reps:" required>
-          <input id="button" type="submit" value="Submit" name="workoutLog"><br><br>
-        </form>
-        <?php
-        if (isset($_POST['workoutLog'])) {
-          $workoutLogObj = new workoutLogContr();
-          $date_completed = $_POST['date_completed'];
-          $exercise = $_POST['exercise'];
-          $weight = $_POST['weight'];
-          $reps = $_POST['reps'];
-          $workoutLogObj->createWorkoutLog($date_completed, $exercise, $weight, $reps);
-        }
-        ?>
+      <div class="row">
+
+        <div class="logMeals col-md-12 col-lg-6 p-3">
+          <div class="h1 text-warning mb-3">Log meals</div>
+
+          <form class="row content mx-1 gy-2" method="post">
+            <input class="form-control border-3" type="date" id="date_completed" name="date_completed" required>
+            <input class="form-control border-3" type="text" id="food_name" name="food_name" placeholder="Food name:" required>
+            <input class="form-control border-3" type="text" id="calories" name="calories" placeholder="Calories:" required>
+            <input class="form-control border-3" type="text" id="protein" name="protein" placeholder="Protein:" required>
+            <input class="form-control border-3" type="text" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
+            <input class="form-control border-3" type="text" id="fat" name="fat" placeholder="Fat:" required>
+            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="mealLog"><br><br>
+          </form>
+          <?php
+          if (isset($_POST['mealLog'])) {
+            $mealLogObj = new mealLogContr();
+            $date_completed = $_POST['date_completed'];
+            $food_name = $_POST['food_name'];
+            $calories = $_POST['calories'];
+            $protein = $_POST['protein'];
+            $carbohydrates = $_POST['carbohydrates'];
+            $fat = $_POST['fat'];
+            $mealLogObj->createMealLog($date_completed, $food_name, $calories, $protein, $carbohydrates, $fat);
+          }
+          ?>
+        </div>
+
+        <div class="logWorkout col-md-12 col-lg-6 p-3">
+          <div class="h1 text-warning mb-3">Log workout</div>
+
+          <form class="row content mx-1 gy-2" method="post">
+            <input class="form-control border-3" type="date" id="date_completed" name="date_completed" required>
+            <input class="form-control border-3" type="text" id="exercise" name="exercise" placeholder="Exercise:" required>
+            <input class="form-control border-3" type="text" id="weight" name="weight" placeholder="Weight:" required>
+            <input class="form-control border-3" type="text" id="reps" name="reps" placeholder="Reps:" required>
+            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="workoutLog"><br><br>
+          </form>
+          <?php
+          if (isset($_POST['workoutLog'])) {
+            $workoutLogObj = new workoutLogContr();
+            $date_completed = $_POST['date_completed'];
+            $exercise = $_POST['exercise'];
+            $weight = $_POST['weight'];
+            $reps = $_POST['reps'];
+            $workoutLogObj->createWorkoutLog($date_completed, $exercise, $weight, $reps);
+          }
+          ?>
+        </div>
 
       </div>
-      <form method="post">
-        <?php
-        foreach ($exerciseArray as $result) { ?>
-          <input id="button" type="submit" value="<?php echo ucfirst($result) ?>" name="<?php echo $result ?>"><br><br>
-        <?php } ?>
-      </form>
-      <form method="post">
-        <input id="button" type="submit" value="Calories" name="calories"><br><br>
-        <input id="button" type="submit" value="Protein" name="protein"><br><br>
-        <input id="button" type="submit" value="Carbohydrates" name="carbohydrates"><br><br>
-        <input id="button" type="submit" value="Fat" name="fat"><br><br>
-      </form>
-      <div>
-        <canvas id="exerciseChart"></canvas>
+      
+      <hr class="border border-2">
+
+      <div class="row">
+        <div class="col-md-12 col-lg-6 p-3">
+          <div class="h3 text-warning">Macros</div>
+
+          <form method="post">
+            <div class="input-group">
+              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Calories" name="calories">
+              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Protein" name="protein">
+              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Carbohydrates" name="carbohydrates">
+              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Fat" name="fat">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-12 col-lg-6 p-3">
+          <div class="h3 text-warning">Workouts</div>
+
+          <div class="dropdown" data-bs-theme="dark">
+            <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Select Workout
+            </button>
+
+            <ul class="dropdown-menu">
+              <form id="workout" method="post">
+                <?php
+                foreach ($exerciseArray as $result) { ?>
+                  <li>
+                    <input class="dropdown-item" id="button" type="submit" value="<?php echo ucfirst($result) ?>" name="<?php echo $result ?>">
+                  </li>
+                <?php } ?>
+              </form>
+            </ul>
+          </div>
+
+        </div>
       </div>
       <div>
-        <canvas id="foodChart"></canvas>
+        <canvas id="exerciseChart" class="graph w-100 h-100 mb-3 p-3"></canvas>
+      </div>
+      <div>
+        <canvas id="foodChart" class="graph w-100 h-100 mb-3 p-3"></canvas>
       </div>
       <?php
       foreach ($exerciseArray as $result) {
@@ -105,7 +148,8 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
         if (isset($_POST[$exercise])) {
           list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result, $_SESSION['member_id']); ?>
           <script>
-            const ctx = document.getElementById('exerciseChart')
+            const ctx = document.getElementById('exerciseChart');
+            ctx.classList.add("active");
             var dateArray = <?php echo json_encode($dateArray) ?>;
             var weightArray = <?php echo json_encode($weightArray) ?>;
             var repsArray = <?php echo json_encode($repsArray) ?>;
@@ -162,7 +206,8 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
         if (isset($_POST[$macro])) {
           list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog($_SESSION['member_id']); ?>
           <script>
-            const ctx2 = document.getElementById('foodChart')
+            const ctx2 = document.getElementById('foodChart');
+            ctx2.classList.add("active");
             var dateObject = <?php echo json_encode($date_completedArraySorted) ?>;
             var caloriesObject = <?php echo json_encode($caloriesArraySorted) ?>;
             var proteinObject = <?php echo json_encode($proteinArraySorted) ?>;
