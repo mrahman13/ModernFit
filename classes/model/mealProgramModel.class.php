@@ -37,8 +37,13 @@ class mealProgramModel extends dbConnection
   protected function SaveMealProgram($food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $selected_member_id,$personal_trainer_id) {
     $query = "INSERT INTO meal_program (food_name, meal_time, notes, ingredients, method, calories, protein, carbohydrates, fat, member_id, personal_trainer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     $stmt = $this->connect()->prepare($query);
-    $stmt->execute([$food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $selected_member_id, $personal_trainer_id]);
-}
+    $success = $stmt->execute([$food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $selected_member_id, $personal_trainer_id]);
+    if ($success) {
+      echo "Form has been submitted successfully!";
+  } else {
+      echo "Error: form unable to be submitted.";
+  }
+  }
 
     protected function GetMembers($personal_trainer_id)
     {
