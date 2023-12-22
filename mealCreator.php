@@ -63,7 +63,7 @@
                <!-- Meal plan form -->
         <form method="post">
           <h1>Meal plan</h1>
-        <input type="text" id="food_name" name="food_name" placeholder="Food Name:" required>
+        <input type="text" id="food_name" name="food_name" placeholder="Please enter the food name:" required>
         <input type="time" id="meal_time" name="meal_time" placeholder="Meal Time:" required>
         <input type="text" id="notes" name="notes" placeholder="Notes:" required>
         <input type="text" id="ingredients" name="ingredients" placeholder="Ingredients:" required>
