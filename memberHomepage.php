@@ -141,7 +141,7 @@ h1 {
 
   <div class="container">
 
-    <img src="img/Gym.png" class="gym-image">
+    <img src="img/Homepage/Gym.png" class="gym-image">
     <div class="title-img">
     <p>ModernFit</p>
     </div>
