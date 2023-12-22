@@ -162,7 +162,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
                   label: '<?php echo ucfirst($result) ?>',
                   data: weightArray,
                   borderWidth: 1,
-                  backgroundColor: 'yellow'
+                  backgroundColor: '#FFD700'
                 }]
               },
               options: {
@@ -239,7 +239,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
                   label: '<?php echo ucfirst($macro) ?>',
                   data: xData,
                   borderWidth: 1,
-                  backgroundColor: 'yellow'
+                  backgroundColor: '#FFD700'
                 }]
               },
               options: {
