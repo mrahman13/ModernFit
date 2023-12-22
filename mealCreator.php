@@ -63,14 +63,23 @@
                <!-- Meal plan form -->
         <form method="post">
           <h1>Meal plan</h1>
-        <input type="text" id="food_name" name="food_name" placeholder="Please enter the food name:" required>
-        <input type="time" id="meal_time" name="meal_time" placeholder="Meal Time:" required>
-        <input type="text" id="notes" name="notes" placeholder="Notes:" required>
-        <input type="text" id="ingredients" name="ingredients" placeholder="Ingredients:" required>
-        <input type="text" id="method" name="method" placeholder="Method:" required>
-        <input type="number" id="calories" name="calories" placeholder="Calories:" required>
-        <input type="number" id="protein" name="protein" placeholder="Protein:" required>
+  <label for="food_name">Food Name:</label>
+        <input type="text" id="food_name" name="food_name" required>
+  <label for="meal_time">Meal Time:</label>
+        <input type="time" id="meal_time" name="meal_time" required>
+  <label for="notes">Notes:</label>
+        <input type="text" id="notes" name="notes"required>
+  <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" name="ingredients"required>
+  <label for="method">Method:</label>
+        <input type="text" id="method" name="method" required>
+  <label for="calories">Calories:</label>
+        <input type="number" id="calories" name="calories" required>
+  <label for="protein">Protein:</label>
+        <input type="number" id="protein" name="protein" required>
+  <label for="carbohydrates">Carbohydrates:</label>
         <input type="number" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
+  <label for="fat">Fat:</label>
         <input type="number" id="fat" name="fat" placeholder="Fat:" required>
         <input id="button" type="submit" name="meal_submit">
         </form>

@@ -57,10 +57,14 @@
 </form>
     <form method="post">
     <h1>Workout plan</h1>
-        <input type="text" id="workout_name" name="workout_name" placeholder="Workout Name:" required>
-        <input type="text" id="notes" name="notes" placeholder="Notes:" required>
-        <input type="text" id="workout_day" name="workout_day" placeholder="Workout Day:" required>
-        <input type="text" id="excercises" name="excercises" placeholder="Excercises:" required>
+    <label for="workout_name">Workout Name:</label>
+        <input type="text" id="workout_name" name="workout_name" required>
+    <label for="notes">Notes:</label>
+        <input type="text" id="notes" name="notes" required>
+    <label for="workout_day">Workout Day:</label>
+        <input type="text" id="workout_day" name="workout_day" required>
+    <label for="excercises">Excercises:</label>
+        <input type="text" id="excercises" name="excercises" required>
         <input id="button" type="submit" value="Submit" name="workout_submit"><br><br>
         </form>
     </div>
