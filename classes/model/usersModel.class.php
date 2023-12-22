@@ -66,12 +66,17 @@ class usersModel extends dbConnection
               $memberObj = $stmt->fetch();
               $_SESSION['member_id'] = $memberObj['member_id'];
           }
-          header("Location: " . $obj['user_role'] . "Homepage");
+        } else if ($obj['user_role'] == "personalTrainer") {
+          $query = "SELECT personal_trainer_id from personal_trainer where user_id = ?";
+          $stmt = $this->connect()->prepare($query);
+          $stmt->execute([$_SESSION['user_id']]);
+          $personalTrainerObj = $stmt->fetch();
+          $_SESSION['personal_trainer_id'] = $personalTrainerObj['personal_trainer_id'];
+        }
+        header("Location: " . $obj['user_role'] . "Homepage");
       } else {
-          echo "Wrong password";
+        echo "Wrong password";
       }
-  }
-}
 
 ?>
 <!-- https://www.php.net/manual/en/function.password-hash.php -->
