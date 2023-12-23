@@ -92,7 +92,10 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
     window.location.href = 'workoutCreator?member_id=' + memberId;
   }
   function redirectToMealCreator() {
-    window.location.href = 'mealCreator';
+    var memberId = <?php echo json_encode($member_id); ?>;
+    <?php echo "var memberId = $member_id;"; ?>
+    <?php echo "sessionStorage.setItem('member_id', $member_id);"; ?>
+    window.location.href = 'mealCreator?member_id=' + memberId;
   }
 </script>
 

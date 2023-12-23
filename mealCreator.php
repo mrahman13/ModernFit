@@ -6,12 +6,12 @@
     include 'includes/personalTrainerHeader.php';
 
     $personal_trainer_id = $_SESSION['personal_trainer_id']; 
-
-    $membersMealObject = new mealProgramView();
-    $members = $membersMealObject->showMembers($personal_trainer_id);
-
-    $selected_member_id = isset($_POST['member']) ? $_POST['member'] : $_SESSION['selected_member_id'];
-    $_SESSION['selected_member_id'] = $selected_member_id;
+    if (isset($_GET['member_id']) && $_GET['member_id'] !== '') {
+      $member_id = $_GET['member_id'];
+    } else {
+      echo "Member ID null";
+    }
+   
 
     if (isset($_POST['meal_submit'])) {
         $food_name = $_POST['food_name'];
@@ -25,9 +25,7 @@
         $fat = $_POST['fat'];
 
         $mealProgramObject = new mealProgramContr();
-        $mealProgramObject->MealProgramData($food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $selected_member_id,$personal_trainer_id);
-
-        $_SESSION['selected_member_id'] = $selected_member_id;
+        $mealProgramObject->MealProgramData($food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $member_id,$personal_trainer_id);
     }
 ?>
 
@@ -47,19 +45,7 @@
   <div id="container" class="container">
 
     <div id="main">
-               <!-- Member drop down box -->
-        <label for="member">Select Member:</label>
-        <form method="post">
-<select id="member" name="member">
-    <?php
-    foreach ($members as $member) {
-        $selected = ($member['member_id'] == $_SESSION['selected_member_id']) ? 'selected' : '';
-        echo '<option value="' . $member['member_id'] . '" ' . $selected . '>' . $member['first_name'] . ' ' . $member['last_name'] . '</option>';
-    }
-    ?>
-</select>
-<button type="submit" name="select_member">Select Member</button>
-</form>
+
                <!-- Meal plan form -->
         <form method="post">
           <h1>Meal plan</h1>

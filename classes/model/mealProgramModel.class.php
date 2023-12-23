@@ -34,28 +34,16 @@ class mealProgramModel extends dbConnection
     return $count;
   }
 
-  protected function SaveMealProgram($food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $selected_member_id,$personal_trainer_id) {
+  protected function SaveMealProgram($food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $member_id,$personal_trainer_id) {
     $query = "INSERT INTO meal_program (food_name, meal_time, notes, ingredients, method, calories, protein, carbohydrates, fat, member_id, personal_trainer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     $stmt = $this->connect()->prepare($query);
-    $success = $stmt->execute([$food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $selected_member_id, $personal_trainer_id]);
+    $success = $stmt->execute([$food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $member_id, $personal_trainer_id]);
     if ($success) {
       echo "Form has been submitted successfully!";
   } else {
       echo "Error: form unable to be submitted.";
   }
   }
-
-    protected function GetMembers($personal_trainer_id)
-    {
-        $query = "SELECT member.*
-        FROM member
-        JOIN personal_trainer_members ON member.member_id = personal_trainer_members.member_id
-        WHERE personal_trainer_members.personal_trainer_id = ?";
-        $stmt = $this->connect()->prepare($query);
-        $stmt->execute([$personal_trainer_id]);
-        $members = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $members;
-    }
 }
   
 
