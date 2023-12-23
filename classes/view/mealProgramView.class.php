@@ -14,4 +14,5 @@ class mealProgramView extends mealProgramModel{
     $count = $this->checkMealExists($meal_name, $personal_trainer_id);
     return $count;
   }
+
 }

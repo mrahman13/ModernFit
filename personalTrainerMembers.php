@@ -23,12 +23,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PT Member Profiles</title>
-  <style>
-    a.none {
-      text-decoration: none;
-      color: inherit;
-    }
-  </style>
 </head>
 
 <body>
@@ -36,8 +30,8 @@
 
     <div id="main">
       <div class="h1 py-2 text-warning">View members profiles</div>
-        <form class="d-flex" method="post">
-          <input type="text" class="form-control w-100 border-3 me-2" name="searchMember" id="searchMember" placeholder="Search for a member" value="<?php echo $search; ?>">
+        <form class="input-group" method="post">
+          <input type="text" class="form-control border-3 border-end-0" name="searchMember" id="searchMember" placeholder="Search for a member" value="<?php echo $search; ?>">
           <input type="submit" class="btn btn-outline-warning border-3" name="search" id="button">
         </form>
 
