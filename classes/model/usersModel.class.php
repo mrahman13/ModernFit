@@ -24,7 +24,7 @@ class usersModel extends dbConnection
       $_SESSION['user_role'] = $user_role;
       header("Location: " . $user_role . "Homepage");
     } else {
-      echo "Email already in use";
+      echo "</div><div class='fs-5 text-warning text-center p-2'>Email already in use.";
     }
   }
 
@@ -65,7 +65,7 @@ class usersModel extends dbConnection
       }
       header("Location: " . $obj['user_role'] . "Homepage");
     } else {
-      echo "Wrong password";
+      echo "</div><div class='fs-5 text-warning text-center p-2'>Invalid email and/or password";
     }
   }
 }
