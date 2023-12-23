@@ -35,6 +35,16 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
   <title>PT Member Profiles</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <style>
+    .graph {
+      background-color: white;
+      border-radius: 15px;
+      display: none;
+    }
+    .graph.active {
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
@@ -69,24 +79,49 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       <?php } ?>
 
 
-      <form method="post">
-        <?php
-        foreach ($exerciseArray as $result) { ?>
-          <input id="button" type="submit" value="<?php echo ucfirst($result) ?>" name="<?php echo $result ?>"><br><br>
-        <?php } ?>
-      </form>
-      <form method="post">
-        <input id="button" type="submit" value="Calories" name="calories"><br><br>
-        <input id="button" type="submit" value="Protein" name="protein"><br><br>
-        <input id="button" type="submit" value="Carbohydrates" name="carbohydrates"><br><br>
-        <input id="button" type="submit" value="Fat" name="fat"><br><br>
-      </form>
+      
+      <div class="row">
+        <div class="col-md-12 col-lg-6 p-3">
+          <div class="h3 text-warning">Macros</div>
+
+          <form method="post">
+            <div class="input-group">
+              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Calories" name="calories">
+              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Protein" name="protein">
+              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Carbohydrates" name="carbohydrates">
+              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Fat" name="fat">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-12 col-lg-6 p-3">
+          <div class="h3 text-warning">Workouts</div>
+
+          <div class="dropdown" data-bs-theme="dark">
+            <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Select Workout
+            </button>
+
+            <ul class="dropdown-menu">
+              <form id="workout" method="post">
+                <?php
+                foreach ($exerciseArray as $result) { ?>
+                  <li>
+                    <input class="dropdown-item" id="button" type="submit" value="<?php echo ucfirst($result) ?>" name="<?php echo $result ?>">
+                  </li>
+                <?php } ?>
+              </form>
+            </ul>
+          </div>
+
+        </div>
+      </div>
 
       <div>
-        <canvas id="exerciseChart"></canvas>
+        <canvas id="exerciseChart" class="graph w-100 h-100 mb-3 p-3"></canvas>
       </div>
       <div>
-        <canvas id="foodChart"></canvas>
+        <canvas id="foodChart" class="graph w-100 h-100 mb-3 p-3"></canvas>
       </div>
       <?php
       foreach ($exerciseArray as $result) {
@@ -107,7 +142,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
                   label: '<?php echo ucfirst($result) ?>',
                   data: weightArray,
                   borderWidth: 1,
-                  backgroundColor: 'yellow'
+                  backgroundColor: '#FFD700'
                 }]
               },
               options: {
@@ -183,7 +218,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
                   label: '<?php echo ucfirst($macro) ?>',
                   data: xData,
                   borderWidth: 1,
-                  backgroundColor: 'yellow'
+                  backgroundColor: '#FFD700'
                 }]
               },
               options: {
