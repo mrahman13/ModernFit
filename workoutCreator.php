@@ -6,12 +6,11 @@
     include 'includes/personalTrainerHeader.php';
 
     $personal_trainer_id = $_SESSION['personal_trainer_id']; 
-
-    $membersWorkoutObject = new workoutProgramView();
-    $members = $membersWorkoutObject->showMembers($personal_trainer_id);
-
-    $selected_member_id = isset($_POST['member']) ? $_POST['member'] : $_SESSION['selected_member_id'];
-    $_SESSION['selected_member_id'] = $selected_member_id;
+    if (isset($_GET['member_id']) && $_GET['member_id'] !== '') {
+      $member_id = $_GET['member_id'];
+    } else {
+      echo "Member ID null";
+    }
 
     if (isset($_POST['workout_submit'])) {
       $workout_name = $_POST['workout_name'];
@@ -20,10 +19,10 @@
       $excercises = $_POST['excercises'];
 
       $workoutProgramObject = new workoutProgramContr();
-      $workoutProgramObject->WorkoutProgram($workout_name, $notes, $workout_day, $excercises,$selected_member_id,$personal_trainer_id);
-
-      $_SESSION['selected_member_id'] = $selected_member_id;
+      $workoutProgramObject->WorkoutProgram($workout_name, $notes, $workout_day, $excercises,$member_id,$personal_trainer_id);
     }
+  
+  
 ?>
 
 <!DOCTYPE html>
@@ -40,18 +39,6 @@
 <body>
   <div id="container" class="container">
     <div id="main">
-               <!-- Member drop down box -->
-               <label for="member">Select Member:</label>
-        <form method="post">
-<select id="member" name="member">
-    <?php
-    foreach ($members as $member) {
-        $selected = ($member['member_id'] == $_SESSION['selected_member_id']) ? 'selected' : '';
-        echo '<option value="' . $member['member_id'] . '" ' . $selected . '>' . $member['first_name'] . ' ' . $member['last_name'] . '</option>';
-    }
-    ?>
-</select>
-<button type="submit" name="select_member">Select Member</button>
               
                <!-- Workout form -->
 </form>

@@ -81,6 +81,20 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
         <input id="button" type="submit" value="Carbohydrates" name="carbohydrates"><br><br>
         <input id="button" type="submit" value="Fat" name="fat"><br><br>
       </form>
+      <button type="button" onclick="redirectToWorkoutCreator()">Create workout program</button>
+      <button type="button" onclick="redirectToMealCreator()">Create meal program</button>
+
+<script>
+    function redirectToWorkoutCreator() {
+    var memberId = <?php echo json_encode($member_id); ?>;
+    <?php echo "var memberId = $member_id;"; ?>
+    <?php echo "sessionStorage.setItem('member_id', $member_id);"; ?>
+    window.location.href = 'workoutCreator?member_id=' + memberId;
+  }
+  function redirectToMealCreator() {
+    window.location.href = 'mealCreator';
+  }
+</script>
 
       <div>
         <canvas id="exerciseChart"></canvas>
