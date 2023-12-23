@@ -16,15 +16,18 @@ class usersModel extends dbConnection
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$email]);
     $count = $stmt->fetchColumn();
-    if ($count == 0) {
+    if($count == 0)
+    {
+      $passwordHash = password_hash($password, PASSWORD_DEFAULT);
       $query = "INSERT INTO user (email,password,user_role) values (?, ?, ?)";
       $stmt = $this->connect()->prepare($query);
-      $stmt->execute([$email, $password, $user_role]);
+      $stmt->execute([$email, $passwordHash, $user_role]);
       $_SESSION['user_id'] = $this->getUserId($email);
       $_SESSION['user_role'] = $user_role;
       header("Location: " . $user_role . "Homepage");
-    } else {
-      echo "</div><div class='fs-5 text-warning text-center p-2'>Email already in use.";
+    }
+    else{
+      echo "Email already in use";
     }
   }
 
