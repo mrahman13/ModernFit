@@ -1,8 +1,8 @@
 <?php
     session_start();
     include 'includes/autoloader.php';
-    //include 'includes/checkLogin.php';
-    //include 'includes/adminHeader.php';
+    include 'includes/checkLogin.php';
+    include 'includes/adminHeader.php';
 ?>
 
 <!DOCTYPE html>
