@@ -147,6 +147,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result, $member_id); ?>
           <script>
             const ctx = document.getElementById('exerciseChart')
+            ctx.classList.add("active");
             var dateArray = <?php echo json_encode($dateArray) ?>;
             var weightArray = <?php echo json_encode($weightArray) ?>;
             var repsArray = <?php echo json_encode($repsArray) ?>;
@@ -204,6 +205,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog($member_id); ?>
           <script>
             const ctx2 = document.getElementById('foodChart')
+            ctx2.classList.add("active");
             var dateObject = <?php echo json_encode($date_completedArraySorted) ?>;
             var caloriesObject = <?php echo json_encode($caloriesArraySorted) ?>;
             var proteinObject = <?php echo json_encode($proteinArraySorted) ?>;
