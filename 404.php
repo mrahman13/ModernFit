@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+if(isset($_SESSION['user_role'])){
+    if ($_SESSION['user_role'] == 'member') {
+        $home = "memberHomepage";
+    } else if ($_SESSION['user_role'] == 'personalTrainer') {
+        $home = "personalTrainerHomepage";
+    } else if ($_SESSION['user_role'] == 'manager') {
+        $home = "managerHomepage";
+    } else if ($_SESSION['user_role'] == 'admin') {
+        $home = "adminHomepage";
+    }    
+}
+else {
+    $home = "home";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +47,10 @@
             <div class="display-1 text-warning px-2 mb-0"><b><b>404</b></b></div>
             <div class="h5 align-self-end">Page not found.</div>
         </div>
-        <button class="btn btn-link text-warning" onclick="history.back()">Go Back</button>
+        <div class="d-flex">
+            <button class="btn btn-link text-warning" onclick="history.back()">Go Back</button>
+            <a class="btn btn-link text-warning" href="<?php echo $home; ?>">Go Home</a>
+        </div>
     </div>
 </body>
 </html>

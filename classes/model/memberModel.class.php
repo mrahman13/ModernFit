@@ -86,22 +86,31 @@ class memberModel extends dbConnection
       }
     }
   }
+
   protected function searchMemberName($search)
   {
-    $query = "SELECT COUNT(*) FROM member WHERE first_name LIKE ?";
-    $stmt = $this->connect()->prepare($query);
-    $stmt->execute(["%$search%"]);
-    $count = $stmt->fetchColumn();
-    if ($count != 0) {
-      $query = "SELECT * FROM member WHERE first_name LIKE ?";
+    if ($search == '') {
+      $query = "SELECT * FROM member WHERE member_id IN (SELECT member_id FROM personal_trainer_members WHERE personal_trainer_id = ?)";
       $stmt = $this->connect()->prepare($query);
-      $stmt->execute(["%$search%"]);
+      $stmt->execute([$_SESSION['personal_trainer_id']]);
       return $stmt;
     } else {
-      echo "Name not found";
-      $query = "SELECT * FROM member WHERE first_name LIKE ?";
+      $query = "SELECT COUNT(*) FROM member WHERE member_id IN (SELECT member_id FROM personal_trainer_members WHERE personal_trainer_id = ?) AND first_name LIKE ?";
       $stmt = $this->connect()->prepare($query);
-      $stmt->execute(["%$search%"]);
+      $stmt->execute([$_SESSION['personal_trainer_id'], "%$search%"]);
+      $count = $stmt->fetchColumn();
+      if ($count != 0) {
+        $query = "SELECT * FROM member WHERE member_id IN (SELECT member_id FROM personal_trainer_members WHERE personal_trainer_id = ?) AND first_name LIKE ?";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute([$_SESSION['personal_trainer_id'], "%$search%"]);
+        return $stmt;
+      } else {
+        echo "Name not found";
+        $query = "SELECT * FROM member WHERE member_id IN (SELECT member_id FROM personal_trainer_members WHERE personal_trainer_id = ?)";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute([$_SESSION['personal_trainer_id']]);
+        return $stmt;
+      }
       return $stmt;
     }
   }
