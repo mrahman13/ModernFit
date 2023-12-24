@@ -37,77 +37,110 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
   <style>
-    .graph {
-      background-color: white;
-      border-radius: 15px;
-      display: none;
+    .table {
+      --bs-table-color: var(--txt-color);
+      --bs-table-bg: var(--content-color);
+      --bs-table-hover-color: var(--txt-color);
+      --bs-table-hover-bg: var(--bg-color);
     }
-
-    .graph.active {
-      display: block;
+    .clickable {
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
-  <div id="container" class="container">
+  <div id="container" class="mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
 
     <div id="main">
       <div class="h1 py-2 text-warning">View members profiles</div>
       <?php
       foreach ($memberDataResult as $row) {
       ?>
-        <p id='name'>Name: <?php echo $row['first_name'] . ' ' . $row['last_name'] ?></p>
+        <div class="mb-2" id='name'>Name: <?php echo $row['first_name'] . ' ' . $row['last_name'] ?></div>
         <img class="img-responsive" src="../img/profilePicture/<?php echo $row['profile_picture'] ?>" draggable="false" width="200px">
-        <p id='date_joined'>Date Joined: <?php echo date('Y-m-d', strtotime($row['date_joined'])) ?></p>
-        <p id='pin'>PIN: <?php echo $row['pin'] ?></p>
+        <div class="my-2" id='date_joined'>Date Joined: <?php echo date('Y-m-d', strtotime($row['date_joined'])) ?></div>
+        <div class="my-2" id='pin'>PIN: <?php echo $row['pin'] ?></div>
       <?php
-      }
+      } ?>
 
-      $membersMealObject = new mealProgramView();
-      $membersMealData = $membersMealObject->showMealProgramByMember($member_id);
-      foreach ($membersMealData as $row) { ?>
-        <a href="recipeViewer?meal_id=<?php echo $row['meal_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>">
-          <p id='food_name'><?php echo $row['food_name'] . " : " . date('H:i', strtotime($row['meal_time'])) ?></p>
-        </a>
+      <div class="row">
+        
+        <div class="col-md-12 col-lg-6 p-3">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"><div class="text-warning">No.</div></th>
+                <th scope="col"><div class="text-warning">Food Name</div></th>
+                <th scope="col"><div class="text-warning">Time<div></th>
+              </tr>
+            </thead>
 
-      <?php }
-      $membersWorkoutObject = new workoutProgramView();
-      $membersWorkoutData = $membersWorkoutObject->showWorkoutProgramByMember($member_id);
-      foreach ($membersWorkoutData as $row) { ?>
-        <a href="workoutViewer?workout_id=<?php echo $row['workout_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>">
-          <p id='workout_name'><?php echo $row['workout_name'] . " : " . $row['workout_day'] ?></p>
-        </a>
-      <?php } ?>
+            <tbody class="table-group-divider">
+              <?php
+              $membersMealObject = new mealProgramView();
+              $membersMealData = $membersMealObject->showMealProgramByMember($member_id);
+              $i = 1;
 
+              foreach ($membersMealData as $row) { ?>
+
+              <tr class="clickable" onclick="window.location.href='recipeViewer?meal_id=<?php echo $row['meal_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>'">
+                <th><?php echo $i++ ?></th>
+                <td><?php echo $row['food_name'] ?></td>
+                <td><?php echo date('H:i', strtotime($row['meal_time'])) ?></td>
+              </tr>
+              
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-12 col-lg-6 p-3">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"><div class="text-warning">No.</div></th>
+                <th scope="col"><div class="text-warning">Workout Name</div></th>
+                <th scope="col"><div class="text-warning">Workout Day</div></th>
+              </tr>
+            </thead>
+            
+            <tbody class="table-group-divider">
+              <?php
+              $membersWorkoutObject = new workoutProgramView();
+              $membersWorkoutData = $membersWorkoutObject->showWorkoutProgramByMember($member_id);
+              $i = 1;
+
+              foreach ($membersWorkoutData as $row) { ?>
+
+              <tr class="clickable" onclick="window.location.href='workoutViewer?workout_id=<?php echo $row['workout_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>'">
+                <th><?php echo $i++ ?></th>
+                <td><?php echo ucfirst($row['workout_name']) ?></td>
+                <td><?php echo ucfirst($row['workout_day']) ?></td>
+              </tr>
+              
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
 
 
       <div class="row">
-        <!-- <div class="col-md-12 col-lg-6 p-3">
-          <div class="h3 text-warning">Macros</div>
-
-          <form method="post">
-            <div class="input-group">
-              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Calories" name="calories">
-              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Protein" name="protein">
-              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Carbohydrates" name="carbohydrates">
-              <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Fat" name="fat">
-            </div>
-          </form>
-        </div> -->
-
         <div class="col-md-12 col-lg-6 p-3">
-
+          
           <div class="d-flex">
-            <div class="input-group px-3">
+            <div class="input-group">
               <button class="btn btn-outline-warning w-50" type="button" onclick="redirectToWorkoutCreator()">Create workout program</button>
               <button class="btn btn-outline-warning w-50" type="button" onclick="redirectToMealCreator()">Create meal program</button>
             </div>
           </div>
 
-          <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="entryLog?member_id=<?php echo $member_id?>">Entry Log</a>
+        </div>
 
-
+        <div class="col-md-12 col-lg-6 p-3">
+          <a class="btn btn-warning w-100 me-lg-3 me-xl-5" href="entryLog?member_id=<?php echo $member_id?>">Entry Log</a>
         </div>
       </div>
 
