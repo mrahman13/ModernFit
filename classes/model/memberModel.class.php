@@ -49,16 +49,15 @@ class memberModel extends dbConnection
       $obj = $stmt->fetch();
       $_SESSION['member_id'] = $obj['member_id'];
 
-      $query = "SELECT COUNT(*) FROM goals WHERE goal LIKE ?";
+      $query = "SELECT COUNT(*) FROM goals WHERE goal = ?";
       $stmt = $this->connect()->prepare($query);
-      $stmt->execute(["%$goals%"]);
+      $stmt->execute(["$goals"]);
       $count = $stmt->fetchColumn();
-      if ($count != 0) {
+      if ($count == 0) {
         //adding new goal to goal table
         $query = "INSERT INTO goals (goal) values (?)";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute([$goals]);
-        echo $_SESSION['member_id'];
 
         //getting new goal goal_id
         $query = "SELECT goal_id from goals where goal = ?";
