@@ -64,10 +64,10 @@ include 'includes/guestHeader.php';
         $memberRegistrationObj->createMember($first_name, $last_name, $profile_picture, $goals, $date_joined, $userIdObj->showUserId($email));
         
         if ($success) {
-          if (!move_uploaded_file($_FILES['profile_pic']['tmp_name'], __DIR__ . "/Profile_picture/" . $profile_picture)) {
+          if (!move_uploaded_file($_FILES['profile_pic']['tmp_name'], __DIR__ . "/img/profilePicture/" . $profile_picture)) {
             die("Failed to upload profile picture");
           }
-          header("Location: " . $user_role . "Homepage");
+          header("Location: homepage");
         }
       }
       ?>
