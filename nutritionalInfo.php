@@ -64,31 +64,37 @@ $ingre_data = $data->showIngredients($key);
       <div class="row mx-auto gy-2" id="ingredient-row"> <!-- border -->
 
         <?php
+        if ($ingre_data) {
+          foreach ($ingre_data as $row) { ?>
 
-        foreach ($ingre_data as $row) { ?>
-
-          <div class="col-md-6 col-sm-12 p-1 rounded-3" id="ingre"><!-- border border-4 border-danger -->
-            <div class="container text-center">
-              <div class="row py-2"> <!-- border border-4 border-warning -->
-                <div class="col-xl-6 col-sm-12 m-auto" id="image">
-                  <img class="img-responsive" src="../img/Ingredient/<?php echo $row['image'] ?>" draggable="false">
-                </div>
-
-                <div class="col-xl-6 col-sm-12" id="info">
-                  <div class="container px-0 py-1">
-                    <p id='ingredient_name'><b>Name: </b><?php echo $row['ingredient_name'] ?></p>
-                    <p id='ingredient_type'><b>Type: </b><?php echo $row['food_type'] ?></p>
-                    <p id='calorie'><b>Calorie Count: </b><?php echo $row['calories'] . "kcal" ?></p>
-                    <p id='protein'><b>Protein: </b><?php echo $row['protein'] . "g" ?></p>
-                    <p id='carbohydrates'><b>Carbohydrates: </b><?php echo $row['carbohydrates'] . "g" ?></p>
-                    <p id='fat'><b>Fat: </b><?php echo $row['fat'] . "g" ?></p>
+            <div class="col-md-6 col-sm-12 p-1 rounded-3" id="ingre"><!-- border border-4 border-danger -->
+              <div class="container text-center">
+                <div class="row py-2"> <!-- border border-4 border-warning -->
+                  <div class="col-xl-6 col-sm-12 m-auto" id="image">
+                    <img class="img-responsive" src="../img/Ingredient/<?php echo $row['image'] ?>" draggable="false">
+                  </div>
+  
+                  <div class="col-xl-6 col-sm-12" id="info">
+                    <div class="container px-0 py-1">
+                      <p id='ingredient_name'><b>Name: </b><?php echo $row['ingredient_name'] ?></p>
+                      <p id='ingredient_type'><b>Type: </b><?php echo $row['food_type'] ?></p>
+                      <p id='calorie'><b>Calorie Count: </b><?php echo $row['calories'] . "kcal" ?></p>
+                      <p id='protein'><b>Protein: </b><?php echo $row['protein'] . "g" ?></p>
+                      <p id='carbohydrates'><b>Carbohydrates: </b><?php echo $row['carbohydrates'] . "g" ?></p>
+                      <p id='fat'><b>Fat: </b><?php echo $row['fat'] . "g" ?></p>
+                    </div>
                   </div>
                 </div>
               </div>
+          
             </div>
-          </div>
-
-        <?php } ?>
+        <?php
+          }
+        }
+        else {
+          echo "<div class='fs-3 text-warning text-center'>\"".$key."\" is not found.</div>";
+        }
+        ?>
 
       </div>
     </div>
