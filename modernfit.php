@@ -3,14 +3,6 @@
 $request = $_SERVER['PATH_INFO'];
 
 switch ($request) {
-    case '':
-        /*case '/':
-        require __DIR__ . $viewDir . 'home.php';
-        break;*/
-
-        /*case '/views/users':
-        require __DIR__ . $viewDir . 'users.php';
-        break;*/
     case '/404':
         $url = '/404.php';
         require __DIR__ . $url;
