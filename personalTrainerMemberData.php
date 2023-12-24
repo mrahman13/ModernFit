@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'includes/autoloader.php';
+$_SESSION['user_check'] = "personalTrainer";
 include 'includes/checkLogin.php';
 include 'includes/personalTrainerheader.php';
 
@@ -41,6 +42,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       border-radius: 15px;
       display: none;
     }
+
     .graph.active {
       display: block;
     }
@@ -79,9 +81,9 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       <?php } ?>
 
 
-      
+
       <div class="row">
-        <div class="col-md-12 col-lg-6 p-3">
+        <!-- <div class="col-md-12 col-lg-6 p-3">
           <div class="h3 text-warning">Macros</div>
 
           <form method="post">
@@ -92,200 +94,40 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
               <input class="btn btn-outline-warning w-25" id="button" type="submit" value="Fat" name="fat">
             </div>
           </form>
-        </div>
+        </div> -->
 
         <div class="col-md-12 col-lg-6 p-3">
-          <div class="h3 text-warning">Workouts</div>
 
           <div class="d-flex">
-            <div class="dropdown" data-bs-theme="dark">
-              <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Select Workout
-              </button>
-
-              <ul class="dropdown-menu">
-                <form id="workout" method="post">
-                  <?php
-                  foreach ($exerciseArray as $result) { ?>
-                    <li>
-                      <input class="dropdown-item" id="button" type="submit" value="<?php echo ucfirst($result) ?>" name="<?php echo $result ?>">
-                    </li>
-                  <?php } ?>
-                </form>
-              </ul>
-            </div>
-
             <div class="input-group px-3">
               <button class="btn btn-outline-warning w-50" type="button" onclick="redirectToWorkoutCreator()">Create workout program</button>
               <button class="btn btn-outline-warning w-50" type="button" onclick="redirectToMealCreator()">Create meal program</button>
             </div>
           </div>
-          
+
+          <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="entryLog?member_id=<?php echo $member_id?>">Entry Log</a>
+
+
         </div>
       </div>
-      
-      
-
-<script>
-    function redirectToWorkoutCreator() {
-    var memberId = <?php echo json_encode($member_id); ?>;
-    <?php echo "var memberId = $member_id;"; ?>
-    <?php echo "sessionStorage.setItem('member_id', $member_id);"; ?>
-    window.location.href = 'workoutCreator?member_id=' + memberId;
-  }
-  function redirectToMealCreator() {
-    var memberId = <?php echo json_encode($member_id); ?>;
-    <?php echo "var memberId = $member_id;"; ?>
-    <?php echo "sessionStorage.setItem('member_id', $member_id);"; ?>
-    window.location.href = 'mealCreator?member_id=' + memberId;
-  }
-</script>
-
-      <div>
-        <canvas id="exerciseChart" class="graph w-100 h-100 mb-3 p-3"></canvas>
-      </div>
-      <div>
-        <canvas id="foodChart" class="graph w-100 h-100 mb-3 p-3"></canvas>
-      </div>
-      <?php
-      foreach ($exerciseArray as $result) {
-        $exercise = str_replace(' ', '_', $result);
-        if (isset($_POST[$exercise])) {
-          list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result, $member_id); ?>
-          <script>
-            const ctx = document.getElementById('exerciseChart')
-            ctx.classList.add("active");
-            var dateArray = <?php echo json_encode($dateArray) ?>;
-            var weightArray = <?php echo json_encode($weightArray) ?>;
-            var repsArray = <?php echo json_encode($repsArray) ?>;
-
-            new Chart(ctx, {
-              type: 'line',
-              data: {
-                labels: dateArray,
-                datasets: [{
-                  label: '<?php echo ucfirst($result) ?>',
-                  data: weightArray,
-                  borderWidth: 1,
-                  backgroundColor: '#FFD700'
-                }]
-              },
-              options: {
-                hoverRadius: 20,
-                showLine: false,
-                scales: {
-                  x: {
-                    type: 'timeseries',
-                    time: {
-                      unit: 'day'
-                    }
-                  },
-                  y: {
-                    beginAtZero: false
-                  },
-                },
-                plugins: {
-                  tooltip: {
-                    callbacks: {
-                      title: context => {
-                        const d = new Date(context[0].parsed.x);
-                        const formattedDate = d.toLocaleString([], {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric',
-                        });
-                        return formattedDate;
-                      },
-                      label: ((tooltipItem) => {
-                        return weightArray[tooltipItem.dataIndex] + 'kg x ' + repsArray[tooltipItem.dataIndex];
-                      })
-                    }
-                  }
-                }
-              },
-            });
-          </script>
-        <?php }
-      }
-      foreach ($macrosArray as $macro) {
-        if (isset($_POST[$macro])) {
-          list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog($member_id); ?>
-          <script>
-            const ctx2 = document.getElementById('foodChart')
-            ctx2.classList.add("active");
-            var dateObject = <?php echo json_encode($date_completedArraySorted) ?>;
-            var caloriesObject = <?php echo json_encode($caloriesArraySorted) ?>;
-            var proteinObject = <?php echo json_encode($proteinArraySorted) ?>;
-            var carbohydratesObject = <?php echo json_encode($carbohydratesArraySorted) ?>;
-            var fatObject = <?php echo json_encode($fatArraySorted) ?>;
-
-            var dateArray2 = Object.values(dateObject);
-            var caloriesArray = Object.values(caloriesObject);
-            var proteinArray = Object.values(proteinObject);
-            var carbohydratesArray = Object.values(carbohydratesObject);
-            var fatArray = Object.values(fatObject);
-
-            var macro = <?php echo json_encode($macro) ?>;
-            var xData = [];
-            if (macro == 'calories') {
-              xData = caloriesArray;
-            } else if (macro == 'protein') {
-              xData = proteinArray;
-            } else if (macro == 'carbohydrates') {
-              xData = carbohydratesArray;
-            } else if (macro == 'fat') {
-              xData = fatArray;
-            }
-            new Chart(ctx2, {
-              type: 'line',
-              data: {
-                labels: dateArray2,
-                datasets: [{
-                  label: '<?php echo ucfirst($macro) ?>',
-                  data: xData,
-                  borderWidth: 1,
-                  backgroundColor: '#FFD700'
-                }]
-              },
-              options: {
-                hoverRadius: 20,
-                showLine: false,
-                scales: {
-                  x: {
-                    type: 'timeseries',
-                    time: {
-                      unit: 'day'
-                    }
-                  },
-                  y: {
-                    beginAtZero: false
-                  },
-                },
-                plugins: {
-                  tooltip: {
-                    callbacks: {
-                      title: context => {
-                        const d = new Date(context[0].parsed.x);
-                        const formattedDate = d.toLocaleString([], {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric',
-                        });
-                        return formattedDate;
-                      },
-                      label: ((tooltipItem) => {
-                        return caloriesArray[tooltipItem.dataIndex] + 'cal, ' + proteinArray[tooltipItem.dataIndex] + 'g protein, ' + carbohydratesArray[tooltipItem.dataIndex] + 'g carbs, ' + fatArray[tooltipItem.dataIndex] + 'g fat';
-                      })
-                    }
-                  }
-                }
-              },
-            });
-          </script>
-      <?php }
-      } ?>
 
 
+
+      <script>
+        function redirectToWorkoutCreator() {
+          var memberId = <?php echo json_encode($member_id); ?>;
+          <?php echo "var memberId = $member_id;"; ?>
+          <?php echo "sessionStorage.setItem('member_id', $member_id);"; ?>
+          window.location.href = 'workoutCreator?member_id=' + memberId;
+        }
+
+        function redirectToMealCreator() {
+          var memberId = <?php echo json_encode($member_id); ?>;
+          <?php echo "var memberId = $member_id;"; ?>
+          <?php echo "sessionStorage.setItem('member_id', $member_id);"; ?>
+          window.location.href = 'mealCreator?member_id=' + memberId;
+        }
+      </script>
     </div>
 
     <footer></footer>
