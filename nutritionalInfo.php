@@ -1,8 +1,8 @@
 <?php
 session_start();
 include 'includes/autoloader.php';
-include 'includes/checkLogin.php';
 $_SESSION['user_check'] = "memberpersonalTrainer";
+include 'includes/checkLogin.php';
 
 if ($_SESSION['user_role'] == 'member') {
   include 'includes/memberHeader.php';
