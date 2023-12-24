@@ -75,7 +75,7 @@ class usersModel extends dbConnection
                   $_SESSION['personal_trainer_id'] = $personalTrainerObj['personal_trainer_id'];
               }
   
-              header("Location: " . $user['user_role'] . "Homepage");
+              header("Location: homepage");
           } else {
             echo "<div class='fs-5 text-warning text-center p-2'>Wrong password</div>";
           }

@@ -1,30 +1,34 @@
 <?php
-    session_start();
-    include 'includes/autoloader.php';
-    include 'includes/checkLogin.php';
-    include 'includes/adminHeader.php';
+session_start();
+include 'includes/autoloader.php';
+$_SESSION['user_check'] = "admin";
+include 'includes/checkLogin.php';
+include 'includes/adminHeader.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Send Email</title>
 </head>
+
 <body>
-    <form class = "" action="" method="post">
-    Subject <input type = "text" name ="subject" value = ""> <br>
-    Message <input type = "text" name ="message" value = ""> <br>
-    <button type = "submit" name = "send"> Send</button>
+    <form class="" action="" method="post">
+        Subject <input type="text" name="subject" value=""> <br>
+        Message <input type="text" name="message" value=""> <br>
+        <button type="submit" name="send"> Send</button>
     </form>
     <?php
-        	if (isset($_POST['send'])) {
-            $subject = $_POST['subject'];
-            $message = $_POST['message'];
-            $sendEmail = new emailContr();
-            $sendEmail->sendEmails( $subject, $message);
-          }
-        ?>
+    if (isset($_POST['send'])) {
+        $subject = $_POST['subject'];
+        $message = $_POST['message'];
+        $sendEmail = new emailContr();
+        $sendEmail->sendEmails($subject, $message);
+    }
+    ?>
 </body>
+
 </html>

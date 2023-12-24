@@ -9,7 +9,7 @@
     if (isset($_GET['member_id']) && $_GET['member_id'] !== '') {
       $member_id = $_GET['member_id'];
     } else {
-      echo "Member ID null";
+      header("Location: 404");
     }
    
 

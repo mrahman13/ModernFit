@@ -1,15 +1,20 @@
 <?php
 session_start();
 include 'includes/autoloader.php';
-$_SESSION['user_check'] = "member";
+$_SESSION['user_check'] = "memberpersonalTrainer";
 include 'includes/checkLogin.php';
-include 'includes/memberHeader.php';
 
-if (isset($_SESSION['meal_id'])) {
-  unset($_SESSION['meal_id']);
+if ($_SESSION['user_role'] == 'member') {
+  $member_id = $_SESSION['member_id'];
+  include 'includes/memberHeader.php';
+} else if ($_SESSION['user_role'] == 'personalTrainer') {
+  include 'includes/personalTrainerHeader.php';
+}
+if (isset($_GET['member_id']) && $_GET['member_id'] !== '') {
+  $member_id = $_GET['member_id'];
 }
 $workoutLogObject = new workoutLogView();
-$exercises = $workoutLogObject->showWorkoutLog($_SESSION['member_id']);
+$exercises = $workoutLogObject->showWorkoutLog($member_id);
 $exerciseArray = [];
 foreach ($exercises as $exercise) {
   $exerciseArray[] = $exercise['exercise'];
@@ -33,21 +38,25 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
     input {
       color-scheme: dark;
     }
+
     .graph {
       background-color: white;
       border-radius: 15px;
       display: none;
     }
+
     .graph.active {
       display: block;
     }
   </style>
 </head>
+
 <body>
   <div id="container" class="mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
     <div id="main">
       <div class="row">
 
+      <?php if ($_SESSION['user_role'] == 'member') { ?>
         <div class="logMeals col-md-12 col-lg-6 p-3">
           <div class="h1 text-warning mb-3">Log meals</div>
 
@@ -95,9 +104,10 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           }
           ?>
         </div>
+      <?php } ?>
 
       </div>
-      
+
       <hr class="border border-2">
 
       <div class="row">
@@ -146,7 +156,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       foreach ($exerciseArray as $result) {
         $exercise = str_replace(' ', '_', $result);
         if (isset($_POST[$exercise])) {
-          list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result, $_SESSION['member_id']); ?>
+          list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result, $member_id); ?>
           <script>
             const ctx = document.getElementById('exerciseChart');
             ctx.classList.add("active");
@@ -204,7 +214,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       }
       foreach ($macrosArray as $macro) {
         if (isset($_POST[$macro])) {
-          list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog($_SESSION['member_id']); ?>
+          list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog($member_id); ?>
           <script>
             const ctx2 = document.getElementById('foodChart');
             ctx2.classList.add("active");
