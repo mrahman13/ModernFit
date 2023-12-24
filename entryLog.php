@@ -58,7 +58,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
             <input class="form-control border-3" type="text" id="protein" name="protein" placeholder="Protein:" required>
             <input class="form-control border-3" type="text" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
             <input class="form-control border-3" type="text" id="fat" name="fat" placeholder="Fat:" required>
-            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="mealLog"><br><br>
+            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="mealLog">
           </form>
           <?php
           if (isset($_POST['mealLog'])) {
@@ -82,7 +82,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
             <input class="form-control border-3" type="text" id="exercise" name="exercise" placeholder="Exercise:" required>
             <input class="form-control border-3" type="text" id="weight" name="weight" placeholder="Weight:" required>
             <input class="form-control border-3" type="text" id="reps" name="reps" placeholder="Reps:" required>
-            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="workoutLog"><br><br>
+            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="workoutLog">
           </form>
           <?php
           if (isset($_POST['workoutLog'])) {

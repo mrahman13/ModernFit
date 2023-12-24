@@ -60,8 +60,8 @@ $ingre_data = $data->showIngredients($key);
       </form>
     </div>
 
-    <div class="container p-1 mx-auto" id="ingre-body"> <!-- border -->
-      <div class="row mx-auto" id="ingredient-row"> <!-- border -->
+    <div class="container p-1 mx-auto mt-3" id="ingre-body"> <!-- border -->
+      <div class="row mx-auto gy-2" id="ingredient-row"> <!-- border -->
 
         <?php
 
@@ -78,7 +78,7 @@ $ingre_data = $data->showIngredients($key);
                   <div class="container px-0 py-1">
                     <p id='ingredient_name'><b>Name: </b><?php echo $row['ingredient_name'] ?></p>
                     <p id='ingredient_type'><b>Type: </b><?php echo $row['food_type'] ?></p>
-                    <p id='calorie'><b>Calorie Count: </b><?php echo $row['calories'] . "cal" ?></p>
+                    <p id='calorie'><b>Calorie Count: </b><?php echo $row['calories'] . "kcal" ?></p>
                     <p id='protein'><b>Protein: </b><?php echo $row['protein'] . "g" ?></p>
                     <p id='carbohydrates'><b>Carbohydrates: </b><?php echo $row['carbohydrates'] . "g" ?></p>
                     <p id='fat'><b>Fat: </b><?php echo $row['fat'] . "g" ?></p>

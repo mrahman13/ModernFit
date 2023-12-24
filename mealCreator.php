@@ -36,38 +36,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/mobile.css">
-  <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
   <title>Create program - Meal</title>
+  <style>
+      input {
+            color-scheme: dark;
+      }
+  </style>
 </head>
 
 <body>
-  <div id="container" class="container">
+  <div id="container" class="mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
 
     <div id="main">
+      <div class="h1 text-warning mb-3">Meal plan</div>
 
-               <!-- Meal plan form -->
-        <form method="post">
-          <h1>Meal plan</h1>
-  <label for="food_name">Food Name:</label>
-        <input type="text" id="food_name" name="food_name" required>
-  <label for="meal_time">Meal Time:</label>
-        <input type="time" id="meal_time" name="meal_time" required>
-  <label for="notes">Notes:</label>
-        <input type="text" id="notes" name="notes"required>
-  <label for="ingredients">Ingredients:</label>
-        <input type="text" id="ingredients" name="ingredients"required>
-  <label for="method">Method:</label>
-        <input type="text" id="method" name="method" required>
-  <label for="calories">Calories:</label>
-        <input type="number" id="calories" name="calories" required>
-  <label for="protein">Protein:</label>
-        <input type="number" id="protein" name="protein" required>
-  <label for="carbohydrates">Carbohydrates:</label>
-        <input type="number" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
-  <label for="fat">Fat:</label>
-        <input type="number" id="fat" name="fat" placeholder="Fat:" required>
-        <input id="button" type="submit" name="meal_submit">
+      <!-- Meal plan form -->
+        <form class="row content mx-1 gy-2" method="post">
+            <input class="form-control border-3" type="text" id="food_name" name="food_name" placeholder="Food Name:" required>
+            <input class="form-control border-3" type="time" id="meal_time" name="meal_time" required>
+            <input class="form-control border-3" type="text" id="notes" name="notes" placeholder="Notes:" required>
+            <input class="form-control border-3" type="text" id="ingredients" name="ingredients" placeholder="Ingredients:" required>
+            <input class="form-control border-3" type="text" id="method" name="method" placeholder="Method:" required>
+            <input class="form-control border-3" type="number" id="calories" name="calories" placeholder="Calories:" required>
+            <input class="form-control border-3" type="number" id="protein" name="protein" placeholder="Protein:" required>
+            <input class="form-control border-3" type="number" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
+            <input class="form-control border-3" type="number" id="fat" name="fat" placeholder="Fat:" required>
+            <input class="btn btn-warning" id="button" type="submit" name="meal_submit">
         </form>
     </div>
           

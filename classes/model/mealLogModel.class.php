@@ -8,7 +8,7 @@ class mealLogModel extends dbConnection
     $query = "INSERT INTO meal_log (food_name,calories,protein,carbohydrates,fat,date_completed,member_id) values (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$food_name, $calories, $protein, $carbohydrates, $fat, $date_completed, $_SESSION['member_id']]);
-    echo "Meal logged";
+    echo "<div class='fs-5 text-warning text-center p-2'>Meal logged</div>";
   }
   protected function getMealLog($member_id)
   {

@@ -8,7 +8,7 @@ class workoutLogModel extends dbConnection
     $query = "INSERT INTO workout_log (exercise,weight,reps,date_completed,member_id) values (?, ?, ?, ?, ?)";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$exercise, $weight, $reps, $date_completed, $_SESSION['member_id']]);
-    echo "Workout logged";
+    echo "<div class='fs-5 text-warning text-center p-2'>Workout logged</div>";
   }
   protected function getWorkoutLog($member_id)
   {
