@@ -29,10 +29,8 @@
 
         <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseMember">
           <div class="navbar-nav me-auto">
-            <a class="nav-link" href="mealCreator">Create Meal</a>
             <a class="nav-link" href="nutrition">Nutritional Info</a>
             <a class="nav-link" href="personalTrainerMembers">Members</a>
-            <a class="nav-link" href="workoutCreator">Workouts</a>
           </div>
           
           <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>

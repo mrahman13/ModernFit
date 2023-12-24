@@ -24,10 +24,11 @@ class usersModel extends dbConnection
       $stmt->execute([$email, $passwordHash, $user_role]);
       $_SESSION['user_id'] = $this->getUserId($email);
       $_SESSION['user_role'] = $user_role;
-      header("Location: " . $user_role . "Homepage");
+      return true;
     }
     else{
-      echo "Email already in use";
+      echo "<div class='fs-5 text-warning text-center p-2'>Email already in use.</div>";
+      return false;
     }
   }
 
@@ -76,10 +77,10 @@ class usersModel extends dbConnection
   
               header("Location: " . $user['user_role'] . "Homepage");
           } else {
-              echo "Wrong password";
+            echo "<div class='fs-5 text-warning text-center p-2'>Wrong password</div>";
           }
       } else {
-          echo "User not found";
+        echo "<div class='fs-5 text-warning text-center p-2'>User not found</div>";
       }
   }
 }  

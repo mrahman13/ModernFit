@@ -23,23 +23,26 @@ include 'includes/guestHeader.php';
   <div id="container" class="container">
     <div id="main">
       <div class="display-3 text-center mt-5 p-4 text-warning"><b>Sign In</b></div>
+
       <div class="d-flex justify-content-center w-100">
         <form class="row content mx-1 gy-3" method="post">
           <input class="form-control border-3" type="email" id="email" name="email" placeholder="Please enter your email:" required>
           <input class="form-control border-3" type="password" id="password" name="password" placeholder="Please enter your password:" required>
-          <input class="btn btn-warning" id="button" type="submit" value="Submit" name="signIn"><br><br>
+          <input class="btn btn-warning" id="button" type="submit" value="Submit" name="signIn">
         </form>
-        <?php
-            if (isset($_POST['signIn'])) {
-              // $mealLogObj = new fitnessLogContr();
-              //gets form data
-              $email = $_POST['email'];
-              $password = $_POST['password'];
-              $signIn = new usersContr();
-              $signIn->signIn($email, $password);
-            }
-          ?>
-        </div>
+      </div>
+
+      <?php
+        if (isset($_POST['signIn'])) {
+          // $mealLogObj = new fitnessLogContr();
+          //gets form data
+          $email = $_POST['email'];
+          $password = $_POST['password'];
+          $signIn = new usersContr();
+          $signIn->signIn($email, $password);
+        }
+      ?>
+      
     </div>
     <footer></footer>
   </div>

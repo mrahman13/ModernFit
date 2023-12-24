@@ -97,27 +97,34 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
         <div class="col-md-12 col-lg-6 p-3">
           <div class="h3 text-warning">Workouts</div>
 
-          <div class="dropdown" data-bs-theme="dark">
-            <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Select Workout
-            </button>
+          <div class="d-flex">
+            <div class="dropdown" data-bs-theme="dark">
+              <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Workout
+              </button>
 
-            <ul class="dropdown-menu">
-              <form id="workout" method="post">
-                <?php
-                foreach ($exerciseArray as $result) { ?>
-                  <li>
-                    <input class="dropdown-item" id="button" type="submit" value="<?php echo ucfirst($result) ?>" name="<?php echo $result ?>">
-                  </li>
-                <?php } ?>
-              </form>
-            </ul>
+              <ul class="dropdown-menu">
+                <form id="workout" method="post">
+                  <?php
+                  foreach ($exerciseArray as $result) { ?>
+                    <li>
+                      <input class="dropdown-item" id="button" type="submit" value="<?php echo ucfirst($result) ?>" name="<?php echo $result ?>">
+                    </li>
+                  <?php } ?>
+                </form>
+              </ul>
+            </div>
+
+            <div class="input-group px-3">
+              <button class="btn btn-outline-warning w-50" type="button" onclick="redirectToWorkoutCreator()">Create workout program</button>
+              <button class="btn btn-outline-warning w-50" type="button" onclick="redirectToMealCreator()">Create meal program</button>
+            </div>
           </div>
-
+          
         </div>
       </div>
-      <button type="button" onclick="redirectToWorkoutCreator()">Create workout program</button>
-      <button type="button" onclick="redirectToMealCreator()">Create meal program</button>
+      
+      
 
 <script>
     function redirectToWorkoutCreator() {
