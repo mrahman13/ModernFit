@@ -13,8 +13,6 @@ include 'includes/managerHeader.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/mobile.css">
-  <link rel="stylesheet" media="only screen and (min-width: 720px)" href="css/desktop.css">
   <title>Personal Trainer Manager</title>
 </head>
 
@@ -22,13 +20,18 @@ include 'includes/managerHeader.php';
   <div id="container" class="container">
 
     <div id="main">
+      <div class="h1 py-2 text-warning">Personal Trainer Manager</div>
+
       <?php
       $personalTrainersObject = new personalTrainerView();
       $personalTrainersData = $personalTrainersObject->showAllPersonalTrainers();
       foreach ($personalTrainersData as $row) { ?>
-        <a href="programManager?personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>">
-          <p id='personal_trainer_name'><?php echo $row['first_name'] . " " . $row['last_name'] ?></p>
+      <p id='personal_trainer'>
+        <a class='none text-warning' href="programManager?personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>">
+          <?php echo $row['first_name'] . " " . $row['last_name'] ?>
         </a>
+      </p>
+      
       <?php }
       ?>
     </div>
