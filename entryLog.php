@@ -54,9 +54,10 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
 <body>
   <div id="container" class="mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
     <div id="main">
-      <div class="row">
+      
 
       <?php if ($_SESSION['user_role'] == 'member') { ?>
+      <div class="row">
         <div class="logMeals col-md-12 col-lg-6 p-3">
           <div class="h1 text-warning mb-3">Log meals</div>
 
@@ -104,12 +105,12 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           }
           ?>
         </div>
+      </div>
+      
+      <hr class="border border-2">
       <?php } ?>
 
-      </div>
-
-      <hr class="border border-2">
-
+      
       <div class="row">
         <div class="col-md-12 col-lg-6 p-3">
           <div class="h3 text-warning">Macros</div>
