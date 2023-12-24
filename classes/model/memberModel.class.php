@@ -105,10 +105,10 @@ class memberModel extends dbConnection
         $stmt->execute([$_SESSION['personal_trainer_id'], "%$search%"]);
         return $stmt;
       } else {
-        echo "Name not found";
-        $query = "SELECT * FROM member WHERE member_id IN (SELECT member_id FROM personal_trainer_members WHERE personal_trainer_id = ?)";
-        $stmt = $this->connect()->prepare($query);
-        $stmt->execute([$_SESSION['personal_trainer_id']]);
+        echo "<div class='fs-5 text-warning text-center p-2'>Member not found</div>";
+        // $query = "SELECT * FROM member WHERE member_id IN (SELECT member_id FROM personal_trainer_members WHERE personal_trainer_id = ?)";
+        // $stmt = $this->connect()->prepare($query);
+        // $stmt->execute([$_SESSION['personal_trainer_id']]);
         return $stmt;
       }
       return $stmt;
