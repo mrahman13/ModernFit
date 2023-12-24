@@ -2,15 +2,7 @@
 session_start();
 
 if(isset($_SESSION['user_role'])){
-    if ($_SESSION['user_role'] == 'member') {
-        $home = "memberHomepage";
-    } else if ($_SESSION['user_role'] == 'personalTrainer') {
-        $home = "personalTrainerHomepage";
-    } else if ($_SESSION['user_role'] == 'manager') {
-        $home = "managerHomepage";
-    } else if ($_SESSION['user_role'] == 'admin') {
-        $home = "adminHomepage";
-    }    
+    $home = "homepage"; 
 }
 else {
     $home = "home";
