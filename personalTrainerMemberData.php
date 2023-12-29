@@ -53,7 +53,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
   <div id="container" class="mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
 
     <div id="main">
-      <div class="h1 py-2 text-warning">View members profiles</div>
+      <div class="h1 py-2 text-warning">View members data</div>
       <?php
       foreach ($memberDataResult as $row) {
       ?>

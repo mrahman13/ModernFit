@@ -33,7 +33,7 @@
   <div id="container" class="mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
 
     <div id="main">
-      <div class="h1 text-warning mb-3">Meal plan</div>
+      <div class="h1 text-warning py-2">Meal plan</div>
 
       <!-- Meal plan form -->
         <form class="row content mx-1 gy-2" method="post">
