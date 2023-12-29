@@ -30,8 +30,8 @@ include 'includes/guestHeader.php';
           <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
           <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
           <input class="form-control border-3" type="text" id="goals" name="goals" placeholder="Goals and Determinations:" required>
-          <div class="mt-2 p-0">
-            <div class="h5 text-warning mb-2">Upload profile picture: </div>
+          <div class="d-flex mt-2 p-0">
+            <div class="h5 text-warning text-nowrap my-auto me-2">Upload profile picture:</div>
             <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*">
           </div>
           
