@@ -30,9 +30,9 @@ class workoutProgramModel extends dbConnection
     $stmt = $this->connect()->prepare($query);
     $success = $stmt->execute([$workout_name, $notes, $workout_day, $excercises, $member_id, $personal_trainer_id]);
     if ($success) {
-    echo "Form has been submitted successfully!";
+    echo "<div class='fs-5 text-warning text-center p-2'>Form has been submitted successfully!</div>";
   } else {
-      echo "Error: form unable to be submitted.";
+      echo "<div class='fs-5 text-warning text-center p-2'>Error: form unable to be submitted.</div>";
   }
   }
 

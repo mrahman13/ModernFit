@@ -11,16 +11,6 @@
     } else {
       header("Location: 404");
     }
-
-    if (isset($_POST['workout_submit'])) {
-      $workout_name = $_POST['workout_name'];
-      $notes = $_POST['notes'];
-      $workout_day = $_POST['workout_day'];
-      $excercises = $_POST['excercises'];
-
-      $workoutProgramObject = new workoutProgramContr();
-      $workoutProgramObject->WorkoutProgram($workout_name, $notes, $workout_day, $excercises,$member_id,$personal_trainer_id);
-    }
   
   
 ?>
@@ -46,6 +36,18 @@
         <input class="form-control border-3" type="text" id="workout_day" name="workout_day" placeholder="Workout Day:" required>
         <input class="form-control border-3" type="text" id="excercises" name="excercises" placeholder="Excercises:" required>
         <input class="btn btn-warning" type="submit" value="Submit" name="workout_submit">
+        
+        <?php 
+          if (isset($_POST['workout_submit'])) {
+            $workout_name = $_POST['workout_name'];
+            $notes = $_POST['notes'];
+            $workout_day = $_POST['workout_day'];
+            $excercises = $_POST['excercises'];
+      
+            $workoutProgramObject = new workoutProgramContr();
+            $workoutProgramObject->WorkoutProgram($workout_name, $notes, $workout_day, $excercises,$member_id,$personal_trainer_id);
+          }
+        ?>
       </form>
     </div>
     <footer></footer>
