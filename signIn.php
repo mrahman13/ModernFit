@@ -26,8 +26,8 @@ include 'includes/guestHeader.php';
 
       <div class="d-flex justify-content-center w-100">
         <form class="row content mx-1 gy-3" method="post">
-          <input class="form-control border-3" type="email" id="email" name="email" placeholder="Please enter your email:" required>
-          <input class="form-control border-3" type="password" id="password" name="password" placeholder="Please enter your password:" required>
+          <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email Address:" required>
+          <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
           <input class="btn btn-warning" id="button" type="submit" value="Submit" name="signIn">
         </form>
       </div>

@@ -62,7 +62,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           <div class="h1 text-warning mb-3">Log meals</div>
 
           <form class="row content mx-1 gy-2" method="post">
-            <input class="form-control border-3" type="date" id="date_completed" name="date_completed" required>
+            <input class="form-control border-3" onblur="(this.type='text')" onfocus="(this.type='date')" id="date_completed" name="date_completed" placeholder="Date:" required>
             <input class="form-control border-3" type="text" id="food_name" name="food_name" placeholder="Food name:" required>
             <input class="form-control border-3" type="text" id="calories" name="calories" placeholder="Calories:" required>
             <input class="form-control border-3" type="text" id="protein" name="protein" placeholder="Protein:" required>
@@ -88,7 +88,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           <div class="h1 text-warning mb-3">Log workout</div>
 
           <form class="row content mx-1 gy-2" method="post">
-            <input class="form-control border-3" type="date" id="date_completed" name="date_completed" required>
+            <input class="form-control border-3" onblur="(this.type='text')" onfocus="(this.type='date')" id="date_completed" name="date_completed" placeholder="Date:" required>
             <input class="form-control border-3" type="text" id="exercise" name="exercise" placeholder="Exercise:" required>
             <input class="form-control border-3" type="text" id="weight" name="weight" placeholder="Weight:" required>
             <input class="form-control border-3" type="text" id="reps" name="reps" placeholder="Reps:" required>
