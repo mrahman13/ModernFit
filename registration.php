@@ -25,12 +25,16 @@ include 'includes/guestHeader.php';
       
       <div class="d-flex justify-content-center w-100">
         <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
-          <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="Please enter your first name:" required>
-          <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Please enter your last name:" required>
-          <input class="form-control border-3" type="email" id="email" name="email" placeholder="Please enter your email:" required>
-          <input class="form-control border-3" type="password" id="password" name="password" placeholder="Please enter your password:" required>
-          <input class="form-control border-3" type="text" id="goals" name="goals" placeholder="Please enter your goals and determinations:" required>
-          <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*">
+          <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
+          <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Last name:" required>
+          <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
+          <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
+          <input class="form-control border-3" type="text" id="goals" name="goals" placeholder="Goals and Determinations:" required>
+          <div class="mt-2 p-0">
+            <div class="h5 text-warning mb-2">Upload profile picture: </div>
+            <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*">
+          </div>
+          
           <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
 
           <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
