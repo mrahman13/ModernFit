@@ -12,21 +12,6 @@
       header("Location: 404");
     }
    
-
-    if (isset($_POST['meal_submit'])) {
-        $food_name = $_POST['food_name'];
-        $meal_time = $_POST['meal_time'];
-        $notes = $_POST['notes'];
-        $ingredients = $_POST['ingredients'];
-        $method = $_POST['method'];
-        $calories = $_POST['calories'];
-        $protein = $_POST['protein'];
-        $carbohydrates = $_POST['carbohydrates'];
-        $fat = $_POST['fat'];
-
-        $mealProgramObject = new mealProgramContr();
-        $mealProgramObject->MealProgramData($food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $member_id,$personal_trainer_id);
-    }
 ?>
 
 
@@ -62,6 +47,23 @@
             <input class="form-control border-3" type="number" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
             <input class="form-control border-3" type="number" id="fat" name="fat" placeholder="Fat:" required>
             <input class="btn btn-warning" id="button" type="submit" name="meal_submit">
+            
+            <?php
+              if (isset($_POST['meal_submit'])) {
+                $food_name = $_POST['food_name'];
+                $meal_time = $_POST['meal_time'];
+                $notes = $_POST['notes'];
+                $ingredients = $_POST['ingredients'];
+                $method = $_POST['method'];
+                $calories = $_POST['calories'];
+                $protein = $_POST['protein'];
+                $carbohydrates = $_POST['carbohydrates'];
+                $fat = $_POST['fat'];
+        
+                $mealProgramObject = new mealProgramContr();
+                $mealProgramObject->MealProgramData($food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $member_id,$personal_trainer_id);
+              }
+            ?>
         </form>
     </div>
           
