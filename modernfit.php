@@ -3,21 +3,8 @@
 $request = $_SERVER['PATH_INFO'];
 
 switch ($request) {
-    case '':
-        /*case '/':
-        require __DIR__ . $viewDir . 'home.php';
-        break;*/
-
-        /*case '/views/users':
-        require __DIR__ . $viewDir . 'users.php';
-        break;*/
     case '/404':
         $url = '/404.php';
-        require __DIR__ . $url;
-        break;
-
-    case '/adminHomepage':
-        $url = '/adminHomepage.php';
         require __DIR__ . $url;
         break;
 
@@ -36,28 +23,18 @@ switch ($request) {
         require __DIR__ . $url;
         break;
 
-    case '/managerHomepage':
-        $url = '/managerHomepage.php';
-        require __DIR__ . $url;
-        break;
-
     case '/mealCreator':
         $url = '/mealCreator.php';
         require __DIR__ . $url;
         break;
 
-    case '/memberHomepage':
-        $url = '/memberHomepage.php';
+    case '/homepage':
+        $url = '/homepage.php';
         require __DIR__ . $url;
         break;
 
     case '/nutrition':
         $url = '/nutritionalInfo.php';
-        require __DIR__ . $url;
-        break;
-
-    case '/personalTrainerHomepage':
-        $url = '/personalTrainerHomepage.php';
         require __DIR__ . $url;
         break;
 
@@ -88,6 +65,11 @@ switch ($request) {
 
     case '/registration':
         $url = '/registration.php';
+        require __DIR__ . $url;
+        break;
+
+    case '/sendEmail':
+        $url = '/sendEmailAdmin.php';
         require __DIR__ . $url;
         break;
 

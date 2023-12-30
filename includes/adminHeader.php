@@ -21,7 +21,7 @@
   <body>
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-black">
       <div class="container-fluid">
-        <a href="adminHomepage" class="navbar-brand ms-xl-5" id="logo">
+        <a href="homepage" class="navbar-brand ms-xl-5" id="logo">
           <img class="logo ms-sm-3 ms-xl-4" src="../img/Logo/Modernfit_Logo.png" draggable="false">
         </a>
 
@@ -31,9 +31,8 @@
 
         <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseAdmin">
           <div class="navbar-nav me-auto">
-            <!-- <a class="nav-link" href="entryLog">Entry Log</a>
-            <a class="nav-link" href="nutrition">Nutritional Info</a>
-            <a class="nav-link" href="tailoredProgram">Tailored Program</a> -->
+            <a class="nav-link" href="sendEmail">Send Email</a>
+
           </div>
 
           <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>

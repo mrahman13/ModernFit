@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'includes/autoloader.php';
+$_SESSION['user_check'] = "personalTrainer";
 include 'includes/checkLogin.php';
 include 'includes/personalTrainerheader.php';
 
@@ -35,196 +36,131 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
   <title>PT Member Profiles</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <style>
+    .table {
+      --bs-table-color: var(--txt-color);
+      --bs-table-bg: var(--content-color);
+      --bs-table-hover-color: var(--txt-color);
+      --bs-table-hover-bg: var(--bg-color);
+    }
+    .clickable {
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="container" class="container">
+  <div id="container" class="mx-sm-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
 
     <div id="main">
-      <div class="h1 py-2 text-warning">View members profiles</div>
+      <div class="h1 py-2 text-warning">View members data</div>
       <?php
       foreach ($memberDataResult as $row) {
       ?>
-        <p id='name'>Name: <?php echo $row['first_name'] . ' ' . $row['last_name'] ?></p>
+        <div class="mb-2" id='name'>Name: <?php echo $row['first_name'] . ' ' . $row['last_name'] ?></div>
         <img class="img-responsive" src="../img/profilePicture/<?php echo $row['profile_picture'] ?>" draggable="false" width="200px">
-        <p id='date_joined'>Date Joined: <?php echo date('Y-m-d', strtotime($row['date_joined'])) ?></p>
-        <p id='pin'>PIN: <?php echo $row['pin'] ?></p>
+        <div class="my-2" id='date_joined'>Date Joined: <?php echo date('Y-m-d', strtotime($row['date_joined'])) ?></div>
+        <div class="my-2" id='pin'>PIN: <?php echo $row['pin'] ?></div>
       <?php
-      }
-
-      $membersMealObject = new mealProgramView();
-      $membersMealData = $membersMealObject->showMealProgramByMember($member_id);
-      foreach ($membersMealData as $row) { ?>
-        <a href="recipeViewer?meal_id=<?php echo $row['meal_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>">
-          <p id='food_name'><?php echo $row['food_name'] . " : " . date('H:i', strtotime($row['meal_time'])) ?></p>
-        </a>
-
-      <?php }
-      $membersWorkoutObject = new workoutProgramView();
-      $membersWorkoutData = $membersWorkoutObject->showWorkoutProgramByMember($member_id);
-      foreach ($membersWorkoutData as $row) { ?>
-        <a href="workoutViewer?workout_id=<?php echo $row['workout_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>">
-          <p id='workout_name'><?php echo $row['workout_name'] . " : " . $row['workout_day'] ?></p>
-        </a>
-      <?php } ?>
-
-
-      <form method="post">
-        <?php
-        foreach ($exerciseArray as $result) { ?>
-          <input id="button" type="submit" value="<?php echo ucfirst($result) ?>" name="<?php echo $result ?>"><br><br>
-        <?php } ?>
-      </form>
-      <form method="post">
-        <input id="button" type="submit" value="Calories" name="calories"><br><br>
-        <input id="button" type="submit" value="Protein" name="protein"><br><br>
-        <input id="button" type="submit" value="Carbohydrates" name="carbohydrates"><br><br>
-        <input id="button" type="submit" value="Fat" name="fat"><br><br>
-      </form>
-
-      <div>
-        <canvas id="exerciseChart"></canvas>
-      </div>
-      <div>
-        <canvas id="foodChart"></canvas>
-      </div>
-      <?php
-      foreach ($exerciseArray as $result) {
-        $exercise = str_replace(' ', '_', $result);
-        if (isset($_POST[$exercise])) {
-          list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result, $member_id); ?>
-          <script>
-            const ctx = document.getElementById('exerciseChart')
-            var dateArray = <?php echo json_encode($dateArray) ?>;
-            var weightArray = <?php echo json_encode($weightArray) ?>;
-            var repsArray = <?php echo json_encode($repsArray) ?>;
-
-            new Chart(ctx, {
-              type: 'line',
-              data: {
-                labels: dateArray,
-                datasets: [{
-                  label: '<?php echo ucfirst($result) ?>',
-                  data: weightArray,
-                  borderWidth: 1,
-                  backgroundColor: 'yellow'
-                }]
-              },
-              options: {
-                hoverRadius: 20,
-                showLine: false,
-                scales: {
-                  x: {
-                    type: 'timeseries',
-                    time: {
-                      unit: 'day'
-                    }
-                  },
-                  y: {
-                    beginAtZero: false
-                  },
-                },
-                plugins: {
-                  tooltip: {
-                    callbacks: {
-                      title: context => {
-                        const d = new Date(context[0].parsed.x);
-                        const formattedDate = d.toLocaleString([], {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric',
-                        });
-                        return formattedDate;
-                      },
-                      label: ((tooltipItem) => {
-                        return weightArray[tooltipItem.dataIndex] + 'kg x ' + repsArray[tooltipItem.dataIndex];
-                      })
-                    }
-                  }
-                }
-              },
-            });
-          </script>
-        <?php }
-      }
-      foreach ($macrosArray as $macro) {
-        if (isset($_POST[$macro])) {
-          list($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted) = $mealLogObject->showMealLog($member_id); ?>
-          <script>
-            const ctx2 = document.getElementById('foodChart')
-            var dateObject = <?php echo json_encode($date_completedArraySorted) ?>;
-            var caloriesObject = <?php echo json_encode($caloriesArraySorted) ?>;
-            var proteinObject = <?php echo json_encode($proteinArraySorted) ?>;
-            var carbohydratesObject = <?php echo json_encode($carbohydratesArraySorted) ?>;
-            var fatObject = <?php echo json_encode($fatArraySorted) ?>;
-
-            var dateArray2 = Object.values(dateObject);
-            var caloriesArray = Object.values(caloriesObject);
-            var proteinArray = Object.values(proteinObject);
-            var carbohydratesArray = Object.values(carbohydratesObject);
-            var fatArray = Object.values(fatObject);
-
-            var macro = <?php echo json_encode($macro) ?>;
-            var xData = [];
-            if (macro == 'calories') {
-              xData = caloriesArray;
-            } else if (macro == 'protein') {
-              xData = proteinArray;
-            } else if (macro == 'carbohydrates') {
-              xData = carbohydratesArray;
-            } else if (macro == 'fat') {
-              xData = fatArray;
-            }
-            new Chart(ctx2, {
-              type: 'line',
-              data: {
-                labels: dateArray2,
-                datasets: [{
-                  label: '<?php echo ucfirst($macro) ?>',
-                  data: xData,
-                  borderWidth: 1,
-                  backgroundColor: 'yellow'
-                }]
-              },
-              options: {
-                hoverRadius: 20,
-                showLine: false,
-                scales: {
-                  x: {
-                    type: 'timeseries',
-                    time: {
-                      unit: 'day'
-                    }
-                  },
-                  y: {
-                    beginAtZero: false
-                  },
-                },
-                plugins: {
-                  tooltip: {
-                    callbacks: {
-                      title: context => {
-                        const d = new Date(context[0].parsed.x);
-                        const formattedDate = d.toLocaleString([], {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric',
-                        });
-                        return formattedDate;
-                      },
-                      label: ((tooltipItem) => {
-                        return caloriesArray[tooltipItem.dataIndex] + 'cal, ' + proteinArray[tooltipItem.dataIndex] + 'g protein, ' + carbohydratesArray[tooltipItem.dataIndex] + 'g carbs, ' + fatArray[tooltipItem.dataIndex] + 'g fat';
-                      })
-                    }
-                  }
-                }
-              },
-            });
-          </script>
-      <?php }
       } ?>
 
+      <div class="row">
+        
+        <div class="col-md-12 col-lg-6 p-3">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"><div class="text-warning">No.</div></th>
+                <th scope="col"><div class="text-warning">Food Name</div></th>
+                <th scope="col"><div class="text-warning">Time<div></th>
+              </tr>
+            </thead>
 
+            <tbody class="table-group-divider">
+              <?php
+              $membersMealObject = new mealProgramView();
+              $membersMealData = $membersMealObject->showMealProgramByMember($member_id);
+              $i = 1;
+
+              foreach ($membersMealData as $row) { ?>
+
+              <tr class="clickable" onclick="window.location.href='recipeViewer?meal_id=<?php echo $row['meal_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>'">
+                <th><?php echo $i++ ?></th>
+                <td><?php echo $row['food_name'] ?></td>
+                <td><?php echo date('H:i', strtotime($row['meal_time'])) ?></td>
+              </tr>
+              
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-12 col-lg-6 p-3">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"><div class="text-warning">No.</div></th>
+                <th scope="col"><div class="text-warning">Workout Name</div></th>
+                <th scope="col"><div class="text-warning">Workout Day</div></th>
+              </tr>
+            </thead>
+            
+            <tbody class="table-group-divider">
+              <?php
+              $membersWorkoutObject = new workoutProgramView();
+              $membersWorkoutData = $membersWorkoutObject->showWorkoutProgramByMember($member_id);
+              $i = 1;
+
+              foreach ($membersWorkoutData as $row) { ?>
+
+              <tr class="clickable" onclick="window.location.href='workoutViewer?workout_id=<?php echo $row['workout_id']; ?>&personal_trainer_id=<?php echo $row['personal_trainer_id']; ?>'">
+                <th><?php echo $i++ ?></th>
+                <td><?php echo ucfirst($row['workout_name']) ?></td>
+                <td><?php echo ucfirst($row['workout_day']) ?></td>
+              </tr>
+              
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-12 col-lg-6 p-3">
+          
+          <div class="d-flex">
+            <div class="input-group">
+              <button class="btn btn-outline-warning w-50" type="button" onclick="redirectToWorkoutCreator()">Create workout program</button>
+              <button class="btn btn-outline-warning w-50" type="button" onclick="redirectToMealCreator()">Create meal program</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-12 col-lg-6 p-3">
+          <a class="btn btn-warning w-100 me-lg-3 me-xl-5" href="entryLog?member_id=<?php echo $member_id?>">Entry Log</a>
+        </div>
+      </div>
+
+
+
+      <script>
+        function redirectToWorkoutCreator() {
+          var memberId = <?php echo json_encode($member_id); ?>;
+          <?php echo "var memberId = $member_id;"; ?>
+          <?php echo "sessionStorage.setItem('member_id', $member_id);"; ?>
+          window.location.href = 'workoutCreator?member_id=' + memberId;
+        }
+
+        function redirectToMealCreator() {
+          var memberId = <?php echo json_encode($member_id); ?>;
+          <?php echo "var memberId = $member_id;"; ?>
+          <?php echo "sessionStorage.setItem('member_id', $member_id);"; ?>
+          window.location.href = 'mealCreator?member_id=' + memberId;
+        }
+      </script>
     </div>
 
     <footer></footer>

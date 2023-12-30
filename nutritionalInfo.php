@@ -1,8 +1,8 @@
 <?php
 session_start();
 include 'includes/autoloader.php';
-include 'includes/checkLogin.php';
 $_SESSION['user_check'] = "memberpersonalTrainer";
+include 'includes/checkLogin.php';
 
 if ($_SESSION['user_role'] == 'member') {
   include 'includes/memberHeader.php';
@@ -54,41 +54,47 @@ $ingre_data = $data->showIngredients($key);
 <body>
   <div class="p-2" id="main">
     <div class="container mx-auto my-2" id="search-box">
-      <form class="d-flex">
-        <input type="text" class="form-control w-100 border-3 me-2" placeholder="Search Ingredient..." name="key" value="<?php echo $key; ?>">
+      <form class="input-group">
+        <input type="text" class="form-control border-3 border-end-0" placeholder="Search Ingredient..." name="key" value="<?php echo $key; ?>">
         <button type="submit" class="btn btn-outline-warning border-3">Search</button>
       </form>
     </div>
 
-    <div class="container p-1 mx-auto" id="ingre-body"> <!-- border -->
-      <div class="row mx-auto" id="ingredient-row"> <!-- border -->
+    <div class="container p-1 mx-auto mt-3" id="ingre-body"> <!-- border -->
+      <div class="row mx-auto gy-2" id="ingredient-row"> <!-- border -->
 
         <?php
+        if ($ingre_data) {
+          foreach ($ingre_data as $row) { ?>
 
-        foreach ($ingre_data as $row) { ?>
-
-          <div class="col-md-6 col-sm-12 p-1 rounded-3" id="ingre"><!-- border border-4 border-danger -->
-            <div class="container text-center">
-              <div class="row py-2"> <!-- border border-4 border-warning -->
-                <div class="col-xl-6 col-sm-12 m-auto" id="image">
-                  <img class="img-responsive" src="../img/Ingredient/<?php echo $row['image'] ?>" draggable="false">
-                </div>
-
-                <div class="col-xl-6 col-sm-12" id="info">
-                  <div class="container px-0 py-1">
-                    <p id='ingredient_name'><b>Name: </b><?php echo $row['ingredient_name'] ?></p>
-                    <p id='ingredient_type'><b>Type: </b><?php echo $row['food_type'] ?></p>
-                    <p id='calorie'><b>Calorie Count: </b><?php echo $row['calories'] . "cal" ?></p>
-                    <p id='protein'><b>Protein: </b><?php echo $row['protein'] . "g" ?></p>
-                    <p id='carbohydrates'><b>Carbohydrates: </b><?php echo $row['carbohydrates'] . "g" ?></p>
-                    <p id='fat'><b>Fat: </b><?php echo $row['fat'] . "g" ?></p>
+            <div class="col-md-6 col-sm-12 p-1 rounded-4" id="ingre"><!-- border border-4 border-danger -->
+              <div class="container text-center">
+                <div class="row py-2"> <!-- border border-4 border-warning -->
+                  <div class="col-xl-6 col-sm-12 m-auto" id="image">
+                    <img class="rounded-4 img-responsive" src="../img/Ingredient/<?php echo $row['image'] ?>" draggable="false">
+                  </div>
+  
+                  <div class="col-xl-6 col-sm-12" id="info">
+                    <div class="container px-0 py-1">
+                      <p id='ingredient_name'><b>Name: </b><?php echo $row['ingredient_name'] ?></p>
+                      <p id='ingredient_type'><b>Type: </b><?php echo $row['food_type'] ?></p>
+                      <p id='calorie'><b>Calorie Count: </b><?php echo $row['calories'] . "kcal" ?></p>
+                      <p id='protein'><b>Protein: </b><?php echo $row['protein'] . "g" ?></p>
+                      <p id='carbohydrates'><b>Carbohydrates: </b><?php echo $row['carbohydrates'] . "g" ?></p>
+                      <p id='fat'><b>Fat: </b><?php echo $row['fat'] . "g" ?></p>
+                    </div>
                   </div>
                 </div>
               </div>
+          
             </div>
-          </div>
-
-        <?php } ?>
+        <?php
+          }
+        }
+        else {
+          echo "<div class='fs-3 text-warning text-center'>\"".$key."\" is not found.</div>";
+        }
+        ?>
 
       </div>
     </div>

@@ -49,16 +49,15 @@ class memberModel extends dbConnection
       $obj = $stmt->fetch();
       $_SESSION['member_id'] = $obj['member_id'];
 
-      $query = "SELECT COUNT(*) FROM goals WHERE goal LIKE ?";
+      $query = "SELECT COUNT(*) FROM goals WHERE goal = ?";
       $stmt = $this->connect()->prepare($query);
-      $stmt->execute(["%$goals%"]);
+      $stmt->execute(["$goals"]);
       $count = $stmt->fetchColumn();
-      if ($count != 0) {
+      if ($count == 0) {
         //adding new goal to goal table
         $query = "INSERT INTO goals (goal) values (?)";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute([$goals]);
-        echo $_SESSION['member_id'];
 
         //getting new goal goal_id
         $query = "SELECT goal_id from goals where goal = ?";
@@ -105,10 +104,10 @@ class memberModel extends dbConnection
         $stmt->execute([$_SESSION['personal_trainer_id'], "%$search%"]);
         return $stmt;
       } else {
-        echo "Name not found";
-        $query = "SELECT * FROM member WHERE member_id IN (SELECT member_id FROM personal_trainer_members WHERE personal_trainer_id = ?)";
-        $stmt = $this->connect()->prepare($query);
-        $stmt->execute([$_SESSION['personal_trainer_id']]);
+        echo "<div class='fs-5 text-warning text-center p-2'>Member not found</div>";
+        // $query = "SELECT * FROM member WHERE member_id IN (SELECT member_id FROM personal_trainer_members WHERE personal_trainer_id = ?)";
+        // $stmt = $this->connect()->prepare($query);
+        // $stmt->execute([$_SESSION['personal_trainer_id']]);
         return $stmt;
       }
       return $stmt;

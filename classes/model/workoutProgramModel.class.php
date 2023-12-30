@@ -24,4 +24,16 @@ class workoutProgramModel extends dbConnection
     $count = $stmt->fetchColumn();
     return $count;
   }
+  protected function SaveWorkoutProgram($workout_name, $notes, $workout_day, $excercises,$member_id,$personal_trainer_id)
+  {
+    $query = "INSERT INTO workout_program (workout_name, notes, workout_day,exercises,member_id, personal_trainer_id) VALUES (?, ?, ?, ?,?,?)";
+    $stmt = $this->connect()->prepare($query);
+    $success = $stmt->execute([$workout_name, $notes, $workout_day, $excercises, $member_id, $personal_trainer_id]);
+    if ($success) {
+    echo "<div class='fs-5 text-warning text-center p-2'>Form has been submitted successfully!</div>";
+  } else {
+      echo "<div class='fs-5 text-warning text-center p-2'>Error: form unable to be submitted.</div>";
+  }
+  }
+
 }

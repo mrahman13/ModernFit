@@ -24,4 +24,27 @@ class mealProgramModel extends dbConnection
     $count = $stmt->fetchColumn();
     return $count;
   }
+
+  protected function setMealProgram($meal_name, $personal_trainer_id)
+  {
+    $query = "SELECT COUNT(*) from meal_program WHERE meal_name = ? AND member_id = ? AND personal_trainer_id = ?";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$meal_name, $_SESSION['member_id'], $personal_trainer_id]);
+    $count = $stmt->fetchColumn();
+    return $count;
+  }
+
+  protected function SaveMealProgram($food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $member_id,$personal_trainer_id) {
+    $query = "INSERT INTO meal_program (food_name, meal_time, notes, ingredients, method, calories, protein, carbohydrates, fat, member_id, personal_trainer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+    $stmt = $this->connect()->prepare($query);
+    $success = $stmt->execute([$food_name, $meal_time, $notes, $ingredients, $method, $calories, $protein, $carbohydrates, $fat, $member_id, $personal_trainer_id]);
+    if ($success) {
+      echo "<div class='fs-5 text-warning text-center p-2'>Form has been submitted successfully!</div>";
+  } else {
+      echo "<div class='fs-5 text-warning text-center p-2'>Error: form unable to be submitted.</div>";
+  }
+  }
 }
+  
+
+  
