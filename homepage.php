@@ -91,7 +91,7 @@ $user_id = $_SESSION['user_id'];
       position: absolute;
       transform: translate(-50%, -50%);
       color: white;
-      font-size: 15px;
+      font-size: 16px;
       font-family: 'Roboto', sans-serif;
       background: rgba(0, 0, 0, 0.5);
       width: 40%;
