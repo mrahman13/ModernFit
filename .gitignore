@@ -1,2 +1,2 @@
 # Ignore the connection credentials file
-connectionCredentials.php
+connectionCredentials.class.php
