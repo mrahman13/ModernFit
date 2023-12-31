@@ -46,7 +46,7 @@ include 'includes/adminHeader.php';
             <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Last name:" required>
             <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
             <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
-            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="register">
+            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registerAdmin">
           </form>
         </div>
       <?php } else if (isset($_POST['manager'])) { ?>
@@ -56,7 +56,7 @@ include 'includes/adminHeader.php';
             <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Last name:" required>
             <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
             <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
-            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="register">
+            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registerManager">
           </form>
         </div>
       <?php } else if (isset($_POST['personalTrainer'])) { ?>
@@ -72,68 +72,62 @@ include 'includes/adminHeader.php';
             </div>
             <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
             <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
-            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="register">
+            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registerPersonalTrainer">
           </form>
         </div>
       <?php } ?>
 
       <?php
-      if (isset($_POST['register'])) {
-        echo "r";
-        if (isset($_POST['admin']) || isset($_POST['manager'])) {
-          echo "a1";
-          //gets form data
-          $first_name = $_POST['first_name'];
-          $last_name = $_POST['last_name'];
-          $email = $_POST['email'];
-          $password = $_POST['password'];
+      if (isset($_POST['registerAdmin']) || isset($_POST['registerManager'])) {
+        //gets form data
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-          if (isset($_POST['admin'])) {
-            echo "a";
-            $user_role = "admin";
-            $userRegistrationObj = new usersContr();
-            $userRegistrationObj->createUser($email, $password, $user_role);
-            $adminRegistrationObj = new adminContr();
-            $userIdObj = new usersView();
-            $adminRegistrationObj->createAdmin($first_name, $last_name, $userIdObj->showUserId($email));
-          } else if (isset($_POST['manager'])) {
-            echo "m";
-            $user_role = "manager";
-            $userRegistrationObj = new usersContr();
-            $userRegistrationObj->createUser($email, $password, $user_role);
-            $managerRegistrationObj = new managerContr();
-            $userIdObj = new usersView();
-            $managerRegistrationObj->createManager($first_name, $last_name, $userIdObj->showUserId($email));
-          }
-        } else if (isset($_POST['personalTrainer'])) {
-          echo "p";
-          //gets form data
-          $first_name = $_POST['first_name'];
-          $last_name = $_POST['last_name'];
-          $goals = $_POST['goals'];
-          // Process profile picture upload
-          $filename = $_FILES['profile_pic']['name'];
-          $extension = pathinfo($filename, PATHINFO_EXTENSION);
+        $userRegistrationObj = new usersContr();
+        $userIdObj = new usersView();
+        if (isset($_POST['registerAdmin'])) {
+          $user_role = "admin";
+          // $userRegistrationObj = new usersContr();
+          $userRegistrationObj->createUser($email, $password, $user_role);
+          $adminRegistrationObj = new adminContr();
+          // $userIdObj = new usersView();
+          $adminRegistrationObj->createAdmin($first_name, $last_name, $userIdObj->showUserId($email));
+        } else if (isset($_POST['registerManager'])) {
+          $user_role = "manager";
+          // $userRegistrationObj = new usersContr();
+          $userRegistrationObj->createUser($email, $password, $user_role);
+          $managerRegistrationObj = new managerContr();
+          // $userIdObj = new usersView();
+          $managerRegistrationObj->createManager($first_name, $last_name, $userIdObj->showUserId($email));
+        }
+      } else if (isset($_POST['registerPersonalTrainer'])) {
+        //gets form data
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        // Process profile picture upload
+        $filename = $_FILES['profile_pic']['name'];
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
-          $profile_picture = uniqid() . '.' . $extension;
+        $profile_picture = uniqid() . '.' . $extension;
 
-          $date_joined = date("Y-m-d");
+        $date_joined = date("Y-m-d");
 
-          $email = $_POST['email'];
-          $password = $_POST['password'];
-          $user_role = "member";
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $user_role = "personalTrainer";
 
-          $userRegistrationObj = new usersContr();
-          $success = $userRegistrationObj->createUser($email, $password, $user_role);
+        $userRegistrationObj = new usersContr();
+        $success = $userRegistrationObj->createUser($email, $password, $user_role);
 
-          $userIdObj = new usersView();
-          $personalTrainerRegistrationObj = new personalTrainerContr();
-          $personalTrainerRegistrationObj->createPersonalTrainer($first_name, $last_name, $profile_picture, $userIdObj->showUserId($email));
+        $userIdObj = new usersView();
+        $personalTrainerRegistrationObj = new personalTrainerContr();
+        $personalTrainerRegistrationObj->createPersonalTrainer($first_name, $last_name, $profile_picture, $userIdObj->showUserId($email));
 
-          if ($success) {
-            if (!move_uploaded_file($_FILES['profile_pic']['tmp_name'], __DIR__ . "/img/profilePicture/" . $profile_picture)) {
-              die("Failed to upload profile picture");
-            }
+        if ($success) {
+          if (!move_uploaded_file($_FILES['profile_pic']['tmp_name'], __DIR__ . "/img/profilePicture/" . $profile_picture)) {
+            die("Failed to upload profile picture");
           }
         }
       }

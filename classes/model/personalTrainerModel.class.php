@@ -22,7 +22,7 @@ class personalTrainerModel extends dbConnection
       $stmt->execute([$user_id]);
       $count = $stmt->fetchColumn();
       if ($count == 0) {
-        $query = "INSERT INTO personal_trainer (first_name,last_name,user_id) values (?, ?, ?, ?)";
+        $query = "INSERT INTO personal_trainer (first_name,last_name,profile_picture,user_id) values (?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute([$first_name, $last_name, $profile_picture, $user_id]);
       }
