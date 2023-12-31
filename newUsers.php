@@ -17,7 +17,12 @@ include 'includes/adminHeader.php';
     .content {
       width: 500px;
     }
-  </style>
+    </style>
+    <script>
+      function selectRole(role) {
+        document.getElementById('selected_role').innerHTML = role;
+      }
+  </script>
 </head>
 
 <body>
@@ -26,7 +31,7 @@ include 'includes/adminHeader.php';
       <div class="display-3 text-center mt-5 p-4 text-warning"><b>Create Users</b></div>
 
       <div class="dropdown py-3" data-bs-theme="dark">
-        <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Select User </button>
+        <button class="btn btn-warning dropdown-toggle" id="selected_role" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Select Role </button>
 
         <ul class="dropdown-menu">
           <form id="workout" method="post">
@@ -40,6 +45,7 @@ include 'includes/adminHeader.php';
       </div>
 
       <?php if (isset($_POST['admin'])) { ?>
+        <script> selectRole('Admin')</script>
         <div class="d-flex justify-content-center w-100">
           <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
             <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
@@ -50,6 +56,7 @@ include 'includes/adminHeader.php';
           </form>
         </div>
       <?php } else if (isset($_POST['manager'])) { ?>
+        <script> selectRole('Manager')</script>
         <div class="d-flex justify-content-center w-100">
           <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
             <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
@@ -60,6 +67,7 @@ include 'includes/adminHeader.php';
           </form>
         </div>
       <?php } else if (isset($_POST['personalTrainer'])) { ?>
+        <script> selectRole('Personal Trainer')</script>
         <div class="d-flex justify-content-center w-100">
           <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
             <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
