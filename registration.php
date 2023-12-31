@@ -38,8 +38,6 @@ include 'includes/guestHeader.php';
           <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
           <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
 
-          <!-- https://www.youtube.com/watch?v=BATVa4vGZto&t=315s-->
-          <!-- The  source I used to help me add an upload icon for the profile picture-->
           <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registration">
         </form>
       </div>
