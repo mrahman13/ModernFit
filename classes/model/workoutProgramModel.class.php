@@ -49,3 +49,5 @@ class workoutProgramModel extends dbConnection
 }
 }
 }
+//https://www.php.net/manual/en/function.ctype-alpha.php
+//Reference I used to validate only text is being inputted.

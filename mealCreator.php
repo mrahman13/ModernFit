@@ -37,15 +37,15 @@
 
       <!-- Meal plan form -->
         <form class="row content mx-1 gy-2" method="post">
-            <input class="form-control border-3" type="text" id="food_name" name="food_name" placeholder="Food Name:" required>
-            <input class="form-control border-3" onblur="(this.type='text')" onfocus="(this.type='time')" id="meal_time" name="meal_time" placeholder="Meal time:" required>
-            <input class="form-control border-3" type="text" id="notes" name="notes" placeholder="Notes:" required>
-            <input class="form-control border-3" type="text" id="ingredients" name="ingredients" placeholder="Ingredients:" required>
-            <input class="form-control border-3" type="text" id="method" name="method" placeholder="Method:" required>
-            <input class="form-control border-3" type="number" id="calories" name="calories" placeholder="Calories:" required>
-            <input class="form-control border-3" type="number" id="protein" name="protein" placeholder="Protein:" required>
-            <input class="form-control border-3" type="number" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
-            <input class="form-control border-3" type="number" id="fat" name="fat" placeholder="Fat:" required>
+            <input class="form-control border-3" type="text" id="food_name" name="food_name" placeholder="Food Name:">
+            <input class="form-control border-3" onblur="(this.type='text')" onfocus="(this.type='time')" id="meal_time" name="meal_time" placeholder="Meal time:">
+            <input class="form-control border-3" type="text" id="notes" name="notes" placeholder="Notes:">
+            <input class="form-control border-3" type="text" id="ingredients" name="ingredients" placeholder="Ingredients:">
+            <input class="form-control border-3" type="text" id="method" name="method" placeholder="Method:">
+            <input class="form-control border-3" type="number" id="calories" name="calories" placeholder="Calories:">
+            <input class="form-control border-3" type="number" id="protein" name="protein" placeholder="Protein:">
+            <input class="form-control border-3" type="number" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:">
+            <input class="form-control border-3" type="number" id="fat" name="fat" placeholder="Fat:">
             <input class="btn btn-warning" id="button" type="submit" name="meal_submit">
             
             <?php
