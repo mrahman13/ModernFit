@@ -31,10 +31,10 @@
 
       <!-- Workout form -->
       <form class="row content mx-1 gy-2" method="post">
-        <input class="form-control border-3" type="text" id="workout_name" name="workout_name" placeholder="Workout Name:" required>
+        <input class="form-control border-3" type="text" id="workout_name" name="workout_name" placeholder="Workout Name:">
         <input class="form-control border-3" type="text" id="notes" name="notes" placeholder="Notes:" required>
-        <input class="form-control border-3" type="text" id="workout_day" name="workout_day" placeholder="Workout Day:" required>
-        <input class="form-control border-3" type="text" id="excercises" name="excercises" placeholder="Excercises:" required>
+        <input class="form-control border-3" type="text" id="workout_day" name="workout_day" placeholder="Workout Day:">
+        <input class="form-control border-3" type="text" id="excercises" name="excercises" placeholder="Excercises:">
         <input class="btn btn-warning" type="submit" value="Submit" name="workout_submit">
         
         <?php 

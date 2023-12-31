@@ -26,6 +26,8 @@ class workoutProgramModel extends dbConnection
   }
   protected function SaveWorkoutProgram($workout_name, $notes, $workout_day, $excercises,$member_id,$personal_trainer_id)
   {
+    $this->ValidateInput($workout_name, $notes, $workout_day, $excercises);
+
     $query = "INSERT INTO workout_program (workout_name, notes, workout_day,exercises,member_id, personal_trainer_id) VALUES (?, ?, ?, ?,?,?)";
     $stmt = $this->connect()->prepare($query);
     $success = $stmt->execute([$workout_name, $notes, $workout_day, $excercises, $member_id, $personal_trainer_id]);
@@ -36,4 +38,14 @@ class workoutProgramModel extends dbConnection
   }
   }
 
+  protected function ValidateInput($workout_name, $notes, $workout_day, $excercises)
+  {
+    if (empty($workout_name) || empty($notes) || empty($workout_day) || empty($excercises)) {
+        die("All fields are required.");
+    }
+
+  if (!ctype_alpha($workout_day)) {
+    die("Workout Day should only contain letters.");
+}
+}
 }
