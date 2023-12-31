@@ -21,11 +21,11 @@ include 'includes/adminHeader.php';
 </head>
 
 <body>
-  <div id="container" class="container">
+  <div id="container" class="mx-4 mx-xl-5 px-2 px-sm-3 px-xl-5">
     <div id="main">
       <div class="display-3 text-center mt-5 p-4 text-warning"><b>Create Users</b></div>
 
-      <div class="dropdown" data-bs-theme="dark">
+      <div class="dropdown py-3" data-bs-theme="dark">
         <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Select User </button>
 
         <ul class="dropdown-menu">
