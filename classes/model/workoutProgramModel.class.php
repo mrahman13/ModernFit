@@ -46,7 +46,7 @@ class workoutProgramModel extends dbConnection
   {
     $errors = [];
 
-    if (!ctype_alpha($workout_day)) {
+    if (!preg_match("/^[a-zA-Z]+$/", $workout_day)) {
         $errors[] = "Workout Day should only contain letters.";
       }
   

@@ -33,7 +33,10 @@ class memberModel extends dbConnection
     return $pin;
   }
   protected function setMember($first_name, $last_name, $profile_picture, $goals, $date_joined, $user_id)
-  {
+  {    
+    if (!$this->ValidateInput($first_name, $last_name, $profile_picture, $goals, $date_joined)) {
+    return; 
+}
     $query = "SELECT COUNT(*) FROM member WHERE user_id = ?";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$user_id]);
@@ -121,4 +124,28 @@ class memberModel extends dbConnection
     $stmt->execute([$member_id]);
     return $stmt;
   }
+
+  protected function ValidateInput($first_name, $last_name, $profile_picture, $goals, $date_joined)
+  {
+    $errors = [];
+
+    if (!preg_match("/^[a-zA-Z]+$/", $first_name)) {
+      $errors[] = "First name must only contain letters.";
+  }
+
+    if (!preg_match("/^[a-zA-Z]+$/", $last_name)) {
+      $errors[] = "Last name must only contain letters.";
+  }
+  
+if (!empty($errors)) {
+  foreach ($errors as $error) {
+      echo $error;
+  }
+
+  return false; 
+}
+
+return true;
+}
+
 }
