@@ -26,7 +26,10 @@ class workoutProgramModel extends dbConnection
   }
   protected function SaveWorkoutProgram($workout_name, $notes, $workout_day, $excercises,$member_id,$personal_trainer_id)
   {
-    $this->ValidateInput($workout_name, $notes, $workout_day, $excercises);
+    {
+      if (!$this->ValidateInput($workout_name, $notes, $workout_day, $excercises)) {
+        return; 
+    }
 
     $query = "INSERT INTO workout_program (workout_name, notes, workout_day,exercises,member_id, personal_trainer_id) VALUES (?, ?, ?, ?,?,?)";
     $stmt = $this->connect()->prepare($query);
@@ -37,14 +40,27 @@ class workoutProgramModel extends dbConnection
       echo "<div class='fs-5 text-warning text-center p-2'>Error: form unable to be submitted.</div>";
   }
   }
+}
 
   protected function ValidateInput($workout_name, $notes, $workout_day, $excercises)
   {
+    $errors = [];
 
-  if (!ctype_alpha($workout_day)) {
-    die("Workout Day should only contain letters.");
-}
-}
+    if (!ctype_alpha($workout_day)) {
+        $errors[] = "Workout Day should only contain letters.";
+      }
+  
+      if (!empty($errors)) {
+          foreach ($errors as $error) {
+              echo $error;
+          }
+
+          return false; 
+      }
+  
+      return true;
+  }
+  
 }
 //https://www.php.net/manual/en/function.ctype-alpha.php
 //Reference I used to validate only text is being inputted.
