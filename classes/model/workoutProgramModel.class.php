@@ -40,9 +40,6 @@ class workoutProgramModel extends dbConnection
 
   protected function ValidateInput($workout_name, $notes, $workout_day, $excercises)
   {
-    if (empty($workout_name) || empty($notes) || empty($workout_day) || empty($excercises)) {
-        die("All fields are required.");
-    }
 
   if (!ctype_alpha($workout_day)) {
     die("Workout Day should only contain letters.");
