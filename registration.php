@@ -16,24 +16,8 @@ include 'includes/guestHeader.php';
       width: 500px;
     }
 
-    #profile_pic {
-    display: none;
-  }
-  
-  .cloud-icon{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 55%;
-  }
-
-  .cloud-icon i {
-    font-size: 3em; 
-  }
-
   </style>
 </head>
-<script src="https://kit.fontawesome.com/ff0a1528ba.js" crossorigin="anonymous"></script>
 <body>
   <div id="container" class="container">
     <div id="main">
@@ -47,11 +31,9 @@ include 'includes/guestHeader.php';
           <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
           <input class="form-control border-3" type="text" id="goals" name="goals" placeholder="Goals and Determinations:" required>
       <div class="d-flex mt-2 p-0">
-          <label for="profile_pic" class="h5 text-warning text-nowrap my-auto me-2 cloud-icon">
-          <i class="fas fa-cloud-upload-alt"></i>
-          </label>
-          <input type="file" id="profile_pic" name="profile_pic" accept="image/*">
-      </div>
+      <div class="h5 text-warning text-nowrap my-auto me-2">Upload profile picture:</div>
+            <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*" required>
+          </div>
           
           <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
           <!-- The source I used to help me allow the user to upload a file for their profile picture.-->

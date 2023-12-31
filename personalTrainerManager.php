@@ -13,14 +13,14 @@ include 'includes/managerHeader.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manage Tailored Programs</title>
+  <title>Personal Trainer Manager</title>
 </head>
 
 <body>
   <div id="container" class="container">
 
     <div id="main">
-      <div class="h1 py-2 text-warning">Manage Tailored Programs</div>
+      <div class="h1 py-2 text-warning">Personal Trainer Manager</div>
 
       <?php
       $personalTrainersObject = new personalTrainerView();
