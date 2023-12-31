@@ -17,7 +17,20 @@ include 'includes/adminHeader.php';
     .content {
       width: 500px;
     }
+    .hide {
+      display: none !important;
+    }
   </style>
+
+  <script>
+    function selectRole(role) {
+      document.getElementById('role').innerHTML = role;
+      document.getElementById('Admin').classList.add('hide');
+      document.getElementById('Manager').classList.add('hide');
+      document.getElementById('Personal Trainer').classList.add('hide');
+      document.getElementById(role).classList.remove('hide');
+    }
+  </script>
 </head>
 
 <body>
@@ -26,56 +39,53 @@ include 'includes/adminHeader.php';
       <div class="display-3 text-center mt-5 p-4 text-warning"><b>Create Users</b></div>
 
       <div class="dropdown py-3" data-bs-theme="dark">
-        <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Select User </button>
+        <button class="btn btn-warning dropdown-toggle" id="role" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Select Role </button>
 
         <ul class="dropdown-menu">
-          <form id="workout" method="post">
             <li>
-              <input class="dropdown-item" id="button" type="submit" value="Admin" name="admin">
-              <input class="dropdown-item" id="button" type="submit" value="Manager" name="manager">
-              <input class="dropdown-item" id="button" type="submit" value="Personal Trainer" name="personalTrainer">
+              <button class="dropdown-item" onclick="selectRole('Admin')">Admin</button>
+              <button class="dropdown-item" onclick="selectRole('Manager')">Manager</button>
+              <button class="dropdown-item" onclick="selectRole('Personal Trainer')">Personal Trainer</button>
             </li>
-          </form>
         </ul>
       </div>
 
-      <?php if (isset($_POST['admin'])) { ?>
-        <div class="d-flex justify-content-center w-100">
-          <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
-            <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
-            <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Last name:" required>
-            <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
-            <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
-            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registerAdmin">
-          </form>
-        </div>
-      <?php } else if (isset($_POST['manager'])) { ?>
-        <div class="d-flex justify-content-center w-100">
-          <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
-            <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
-            <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Last name:" required>
-            <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
-            <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
-            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registerManager">
-          </form>
-        </div>
-      <?php } else if (isset($_POST['personalTrainer'])) { ?>
-        <div class="d-flex justify-content-center w-100">
-          <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
-            <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
-            <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Last name:" required>
-            <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
-            <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
-            <div class="d-flex mt-2 p-0">
-              <div class="h5 text-warning text-nowrap my-auto me-2">Upload profile picture:</div>
-              <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*">
-            </div>
-            <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
-            <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
-            <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registerPersonalTrainer">
-          </form>
-        </div>
-      <?php } ?>
+
+      <div class="d-flex justify-content-center w-100 hide" id="Admin">
+        <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
+          <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
+          <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Last name:" required>
+          <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
+          <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
+          <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registerAdmin">
+        </form>
+      </div>
+
+      <div class="d-flex justify-content-center w-100 hide" id="Manager">
+        <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
+          <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
+          <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Last name:" required>
+          <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
+          <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
+          <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registerManager">
+        </form>
+      </div>
+
+      <div class="d-flex justify-content-center w-100 hide" id="Personal Trainer">
+        <form class="row content mx-1 gy-3" method="post" enctype="multipart/form-data">
+          <input class="form-control border-3" type="text" id="first_name" name="first_name" placeholder="First name:" required>
+          <input class="form-control border-3" type="text" id="last_name" name="last_name" placeholder="Last name:" required>
+          <input class="form-control border-3" type="email" id="email" name="email" placeholder="Email:" required>
+          <input class="form-control border-3" type="password" id="password" name="password" placeholder="Password:" required>
+          <div class="d-flex mt-2 p-0">
+            <div class="h5 text-warning text-nowrap my-auto me-2">Upload profile picture:</div>
+            <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*">
+          </div>
+          <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
+          <!-- The source I used to help me allow the user to upload a file for their profile picture.-->
+          <input class="btn btn-warning" id="button" type="submit" value="Submit" name="registerPersonalTrainer">
+        </form>
+      </div>
 
       <?php
       if (isset($_POST['registerAdmin']) || isset($_POST['registerManager'])) {
