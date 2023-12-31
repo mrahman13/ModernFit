@@ -32,6 +32,8 @@
         <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseAdmin">
           <div class="navbar-nav me-auto">
             <a class="nav-link" href="sendEmail">Send Email</a>
+            <a class="nav-link" href="newUsers">Create Users</a>
+
 
           </div>
 

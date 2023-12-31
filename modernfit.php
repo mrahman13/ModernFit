@@ -33,6 +33,11 @@ switch ($request) {
         require __DIR__ . $url;
         break;
 
+    case '/newUsers':
+        $url = '/newUsers.php';
+        require __DIR__ . $url;
+        break;
+
     case '/nutrition':
         $url = '/nutritionalInfo.php';
         require __DIR__ . $url;

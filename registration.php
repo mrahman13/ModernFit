@@ -32,7 +32,7 @@ include 'includes/guestHeader.php';
           <input class="form-control border-3" type="text" id="goals" name="goals" placeholder="Goals and Determinations:" required>
           <div class="d-flex mt-2 p-0">
             <div class="h5 text-warning text-nowrap my-auto me-2">Upload profile picture:</div>
-            <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*">
+            <input class="form-control border-3" type="file" id="profile_pic" name="profile_pic" accept="image/*" required>
           </div>
           
           <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file-->
