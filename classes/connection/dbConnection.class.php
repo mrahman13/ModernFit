@@ -1,6 +1,6 @@
 <?php
 
-include 'connectionCredentials.class.php';
+include 'connectionCredentials.php';
 
 class dbConnection
 {
