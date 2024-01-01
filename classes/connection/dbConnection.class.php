@@ -1,15 +1,13 @@
 <?php
 
+include 'connectionCredentials.php';
+
 class dbConnection
 {
   //protected function connect()
   public function connect()
 
   {
-    $dbhost = "localhost";
-    $dbuser = "root";
-    $dbpass = "";
-    $dbname = "modernfit";
 
     // try
     // {
@@ -21,6 +19,8 @@ class dbConnection
     // {
     //   echo "Failed " . $exception->getMessage();
     // }
+
+    global $dbhost, $dbuser, $dbpass, $dbname;
 
     try 
     {
@@ -35,3 +35,5 @@ class dbConnection
   }
   
 }
+//Reference I used to help me hide the connection credentials 
+//https://stackoverflow.com/questions/57901879/git-how-to-deal-with-files-which-will-contain-sensitive-data-in-the-future

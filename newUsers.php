@@ -97,17 +97,13 @@ include 'includes/adminHeader.php';
         $userIdObj = new usersView();
         if (isset($_POST['registerAdmin'])) {
           $user_role = "admin";
-          // $userRegistrationObj = new usersContr();
           $userRegistrationObj->createUser($email, $password, $user_role);
           $adminRegistrationObj = new adminContr();
-          // $userIdObj = new usersView();
           $adminRegistrationObj->createAdmin($first_name, $last_name, $userIdObj->showUserId($email));
         } else if (isset($_POST['registerManager'])) {
           $user_role = "manager";
-          // $userRegistrationObj = new usersContr();
           $userRegistrationObj->createUser($email, $password, $user_role);
           $managerRegistrationObj = new managerContr();
-          // $userIdObj = new usersView();
           $managerRegistrationObj->createManager($first_name, $last_name, $userIdObj->showUserId($email));
         }
       } else if (isset($_POST['registerPersonalTrainer'])) {
