@@ -11,14 +11,14 @@ class emailContr extends emailModel
 {
     public function sendEmails($subject, $message)
     {
-        $dbConnection = new dbConnection();
-        $pdo = $dbConnection->connect();
+        // $dbConnection = new dbConnection();
+        // $pdo = $dbConnection->connect();
 
-        $emails = $this->getEmailAddresses();
-
-        //$query = $pdo->prepare("SELECT email FROM user");
-        //$query->execute();
-        // $emails = $query->fetchAll(PDO::FETCH_COLUMN);
+        if ($_SESSION['user_role'] == 'admin') {
+            $emails = $this->getEmailAddresses("admin");
+        } else if ($_SESSION['user_role'] == 'manager') {
+            $emails = $this->getEmailAddresses("manager");
+        }
 
         foreach ($emails as $email) {
             $mail = new PHPMailer(true);
@@ -26,28 +26,26 @@ class emailContr extends emailModel
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            if($_SESSION['user_role'] == 'admin'){
+            if ($_SESSION['user_role'] == 'admin') {
                 $mail->Username = 'modernfit09@gmail.com';
-                $mail->Password = 'migimlrqhnjlffll';   
-            }
-            else if($_SESSION['user_role'] == 'manager'){
+                $mail->Password = 'migimlrqhnjlffll';
+            } else if ($_SESSION['user_role'] == 'manager') {
                 $mail->Username = 'modernfittrainingreminder@gmail.com';
                 $mail->Password = 'tjnnyeusthrojwnk';
             }
-            $mail->SMTPSecure = 'ssl'; 
-            $mail->Port = 465; 
-            if($_SESSION['user_role'] == 'admin'){              
-            $mail->setFrom('modernfit09@gmail.com'); 
-            }
-            else if ($_SESSION['user_role'] == 'manager'){
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+            if ($_SESSION['user_role'] == 'admin') {
+                $mail->setFrom('modernfit09@gmail.com');
+            } else if ($_SESSION['user_role'] == 'manager') {
                 $mail->setFrom('modernfittrainingreminder@gmail.com');
             }
 
-            $mail->addAddress($email);  
+            $mail->addAddress($email);
             $mail->isHTML(true);
 
             $mail->Subject = $subject;
-            $mail->Body = $message; 
+            $mail->Body = $message;
 
             $mail->send();
 
