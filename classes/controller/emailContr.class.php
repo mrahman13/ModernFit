@@ -15,7 +15,7 @@ class emailContr extends emailModel
         // $pdo = $dbConnection->connect();
 
         if ($_SESSION['user_role'] == 'admin') {
-            $emails = $this->getEmailAddresses("admin");
+            $emails = $this->getEmailAddresses("member");
             foreach ($emails as $email) {
                 $mail = new PHPMailer(true);
                 echo "hi";
@@ -45,7 +45,7 @@ class emailContr extends emailModel
                 ";
             }
         } else if ($_SESSION['user_role'] == 'manager') {
-            $emails = $this->getEmailAddresses("manager");
+            $emails = $this->getEmailAddresses("personalTrainer");
             foreach ($emails as $email) {
                 $mail = new PHPMailer(true);
                 echo "hi";
