@@ -74,7 +74,7 @@ switch ($request) {
         break;
 
     case '/sendEmail':
-        $url = '/sendEmailAdmin.php';
+        $url = '/sendEmail.php';
         require __DIR__ . $url;
         break;
 
