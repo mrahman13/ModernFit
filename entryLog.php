@@ -49,6 +49,11 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       display: block;
     }
   </style>
+  <script>
+    function selectWorkout(exercise) {
+      document.getElementById('selected_workout').innerHTML = exercise;
+    }
+  </script>
 </head>
 
 <body>
@@ -129,7 +134,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           <div class="h3 text-warning">Workouts</div>
 
           <div class="dropdown" data-bs-theme="dark">
-            <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-warning dropdown-toggle" id="selected_workout" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Select Workout
             </button>
 
@@ -157,6 +162,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       foreach ($exerciseArray as $result) {
         $exercise = str_replace(' ', '_', $result);
         if (isset($_POST[$exercise])) {
+          echo "<script> selectWorkout('".$_POST[$exercise]."')</script>";
           list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result, $member_id); ?>
           <script>
             const ctx = document.getElementById('exerciseChart');
