@@ -121,4 +121,12 @@ class memberModel extends dbConnection
     $stmt->execute([$member_id]);
     return $stmt;
   }
+
+  public function getMemberGoal($member_id)
+  {
+    $query = "SELECT * FROM goals WHERE goal_id IN (SELECT goal_id FROM member_goals WHERE member_id= ?)";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$member_id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

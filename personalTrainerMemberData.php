@@ -8,6 +8,8 @@ include 'includes/personalTrainerheader.php';
 
 if (isset($_GET['member_id']) && $_GET['member_id'] !== '') {
   $member_id = $_GET['member_id'];
+  $member_goal = isset($_GET['member_goal']) ? $_GET['member_goal']:null;
+
 } else {
   header("Location: 404");
 }
@@ -60,7 +62,8 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
         <div class="mb-2" id='name'>Name: <?php echo $row['first_name'] . ' ' . $row['last_name'] ?></div>
         <img class="img-responsive" src="../img/profilePicture/<?php echo $row['profile_picture'] ?>" draggable="false" width="200px">
         <div class="my-2" id='date_joined'>Date Joined: <?php echo date('Y-m-d', strtotime($row['date_joined'])) ?></div>
-      <?php
+        <div class="my-2" id='member_goal'>Member Goal: <?php echo $member_goal; ?></div>
+        <?php
       } ?>
 
       <div class="row">

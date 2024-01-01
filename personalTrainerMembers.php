@@ -38,8 +38,10 @@ if (isset($_POST['search'])) {
         $members = $searchMember->searchMember($search);
 
         foreach ($members as $member) {
-          echo "<p><a class='none text-warning' href='personalTrainerMembersData?member_id={$member['member_id']}'>{$member['first_name']} {$member['last_name']}</a></p>";
-        }
+          $memberGoals = $searchMember->getMemberGoal($member['member_id']);
+          $memberGoal = isset($memberGoals[0]['goal']) ? $memberGoals[0]['goal'] : null;
+          echo "<p><a class='none text-warning' href='personalTrainerMembersData?member_id={$member['member_id']}&member_goal={$memberGoal}'>{$member['first_name']} {$member['last_name']}</a></p>";
+      }
 
         ?>
 
