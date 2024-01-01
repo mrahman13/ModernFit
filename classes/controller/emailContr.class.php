@@ -16,46 +16,102 @@ class emailContr extends emailModel
 
         if ($_SESSION['user_role'] == 'admin') {
             $emails = $this->getEmailAddresses("admin");
-        } else if ($_SESSION['user_role'] == 'manager') {
-            $emails = $this->getEmailAddresses("manager");
-        }
-
-        foreach ($emails as $email) {
-            $mail = new PHPMailer(true);
-
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            if ($_SESSION['user_role'] == 'admin') {
+            foreach ($emails as $email) {
+                $mail = new PHPMailer(true);
+                echo "hi";
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
                 $mail->Username = 'modernfit09@gmail.com';
                 $mail->Password = 'migimlrqhnjlffll';
-            } else if ($_SESSION['user_role'] == 'manager') {
+
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+                $mail->setFrom('modernfit09@gmail.com');
+
+                $mail->addAddress($email);
+                $mail->isHTML(true);
+
+                $mail->Subject = $subject;
+                $mail->Body = $message;
+
+                $mail->send();
+
+                echo "
+                    <script>
+                    alert('Sent successfully');
+                    document.location.href = 'sendEmail'
+                    </script>
+                ";
+            }
+        } else if ($_SESSION['user_role'] == 'manager') {
+            $emails = $this->getEmailAddresses("manager");
+            foreach ($emails as $email) {
+                $mail = new PHPMailer(true);
+                echo "hi";
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
                 $mail->Username = 'modernfittrainingreminder@gmail.com';
                 $mail->Password = 'tjnnyeusthrojwnk';
-            }
-            $mail->SMTPSecure = 'ssl';
-            $mail->Port = 465;
-            if ($_SESSION['user_role'] == 'admin') {
-                $mail->setFrom('modernfit09@gmail.com');
-            } else if ($_SESSION['user_role'] == 'manager') {
+
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
                 $mail->setFrom('modernfittrainingreminder@gmail.com');
+
+                $mail->addAddress($email);
+                $mail->isHTML(true);
+
+                $mail->Subject = $subject;
+                $mail->Body = $message;
+
+                $mail->send();
+
+                echo "
+                    <script>
+                    alert('Sent successfully');
+                    document.location.href = 'sendEmail'
+                    </script>
+                ";
             }
-
-            $mail->addAddress($email);
-            $mail->isHTML(true);
-
-            $mail->Subject = $subject;
-            $mail->Body = $message;
-
-            $mail->send();
-
-            echo "
-                <script>
-                alert('Sent successfully');
-                document.location.href = 'sendEmail'
-                </script>
-            ";
         }
+
+        // foreach ($emails as $email) {
+        //     $mail = new PHPMailer(true);
+        //     echo "hi";
+        //     $mail->isSMTP();
+        //     $mail->Host = 'smtp.gmail.com';
+        //     $mail->SMTPAuth = true;
+        //     if ($_SESSION['user_role'] == 'admin') {
+        //         $mail->Username = 'modernfit09@gmail.com';
+        //         $mail->Password = 'migimlrqhnjlffll';
+        //     } else if ($_SESSION['user_role'] == 'manager') {
+        //         $mail->Username = 'modernfittrainingreminder@gmail.com';
+        //         $mail->Password = 'tjnnyeusthrojwnk';
+        //     }
+        //     $mail->SMTPSecure = 'ssl';
+        //     $mail->Port = 465;
+        //     if ($_SESSION['user_role'] == 'admin') {
+        //         $mail->setFrom('modernfit09@gmail.com');
+        //     } else if ($_SESSION['user_role'] == 'manager') {
+        //         $mail->setFrom('modernfittrainingreminder@gmail.com');
+        //     }
+
+        //     $mail->addAddress($email);
+        //     $mail->isHTML(true);
+
+        //     $mail->Subject = $subject;
+        //     $mail->Body = $message;
+
+        //     $mail->send();
+
+        //     echo "
+        //         <script>
+        //         alert('Sent successfully');
+        //         document.location.href = 'sendEmail'
+        //         </script>
+        //     ";
+        // }
     }
 }
 
