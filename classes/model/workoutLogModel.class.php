@@ -5,9 +5,6 @@ class workoutLogModel extends dbConnection
 
   protected function setWorkoutLog($date_completed, $exercise, $weight, $reps)
   {
-    if (!$this->ValidateInput($date_completed, $exercise, $weight, $reps)) {
-      return; 
-  }
     $query = "INSERT INTO workout_log (exercise,weight,reps,date_completed,member_id) values (?, ?, ?, ?, ?)";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$exercise, $weight, $reps, $date_completed, $_SESSION['member_id']]);
@@ -40,28 +37,4 @@ class workoutLogModel extends dbConnection
       echo "No workout logs for this exercise";
     }
   }
-
-  protected function ValidateInput($date_completed, $exercise, $weight, $reps)
-  {
-      $errors = [];
-  
-      if (!is_numeric($weight)) {
-          $errors[] = "Weight should only contain numbers.";
-      }
-      if (!is_numeric($reps)) {
-          $errors[] = "Reps should only contain numbers.";
-      }
-  
-      if (!empty($errors)) {
-          foreach ($errors as $error) {
-              echo $error;
-          }
-
-          return false; 
-      }
-  
-      return true;
-  }
-  
 }
-
