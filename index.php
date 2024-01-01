@@ -34,7 +34,7 @@
                 <div class="h1 text-warning mb-1">Services</div>
                 <ul>
                     <li>Tailored programs</li>
-                    <li>Nutritioanl guidance</li>
+                    <li>Nutritional guidance</li>
                     <li>Progress monitoring</li>
                 </ul>
             </div>
