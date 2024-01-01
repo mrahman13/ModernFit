@@ -42,7 +42,8 @@ if (isset($_POST['search'])) {
           $memberGoal = isset($memberGoals[0]['goal']) ? $memberGoals[0]['goal'] : null;
           echo "<p><a class='none text-warning' href='personalTrainerMembersData?member_id={$member['member_id']}&member_goal={$memberGoal}'>{$member['first_name']} {$member['last_name']}</a></p>";
       }
-
+//https://medium.com/@codingscenes/react-router-to-pass-data-between-pages-6ee22fdf2dfa#:~:text=Query%20Parameters%3A%20You%20can%20also,location.search%20string.
+//Reference I used to help me pass the member ID and member goal to the personalTrainerMemberData page
         ?>
 
       </div>

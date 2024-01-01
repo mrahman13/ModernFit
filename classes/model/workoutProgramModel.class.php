@@ -62,5 +62,5 @@ class workoutProgramModel extends dbConnection
   }
   
 }
-//https://www.php.net/manual/en/function.ctype-alpha.php
+//https://stackoverflow.com/questions/19010269/preg-match-false-results
 //Reference I used to validate only text is being inputted.

@@ -100,3 +100,5 @@ class mealLogModel extends dbConnection
   }
   
 }
+//https://www.php.vn.ua/manual/es/function.is-numeric.php
+//Reference I used to validate only numbers are being inputted.
