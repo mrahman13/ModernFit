@@ -49,6 +49,11 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       display: block;
     }
   </style>
+  <script>
+    function selectWorkout(exercise) {
+      document.getElementById('selected_workout').innerHTML = exercise;
+    }
+  </script>
 </head>
 
 <body>
@@ -64,10 +69,10 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           <form class="row content mx-1 gy-2" method="post">
             <input class="form-control border-3" onblur="(this.type='text')" onfocus="(this.type='date')" id="date_completed" name="date_completed" placeholder="Date:" required>
             <input class="form-control border-3" type="text" id="food_name" name="food_name" placeholder="Food name:" required>
-            <input class="form-control border-3" type="text" id="calories" name="calories" placeholder="Calories:" required>
-            <input class="form-control border-3" type="text" id="protein" name="protein" placeholder="Protein:" required>
-            <input class="form-control border-3" type="text" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
-            <input class="form-control border-3" type="text" id="fat" name="fat" placeholder="Fat:" required>
+            <input class="form-control border-3" type="number" id="calories" name="calories" placeholder="Calories:" required>
+            <input class="form-control border-3" type="number" id="protein" name="protein" placeholder="Protein:" required>
+            <input class="form-control border-3" type="number" id="carbohydrates" name="carbohydrates" placeholder="Carbohydrates:" required>
+            <input class="form-control border-3" type="number" id="fat" name="fat" placeholder="Fat:" required>
             <input class="btn btn-warning" id="button" type="submit" value="Submit" name="mealLog">
           </form>
           <?php
@@ -90,8 +95,8 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           <form class="row content mx-1 gy-2" method="post">
             <input class="form-control border-3" onblur="(this.type='text')" onfocus="(this.type='date')" id="date_completed" name="date_completed" placeholder="Date:" required>
             <input class="form-control border-3" type="text" id="exercise" name="exercise" placeholder="Exercise:" required>
-            <input class="form-control border-3" type="text" id="weight" name="weight" placeholder="Weight:" required>
-            <input class="form-control border-3" type="text" id="reps" name="reps" placeholder="Reps:" required>
+            <input class="form-control border-3" type="number" id="weight" name="weight" placeholder="Weight (kg):" required>
+            <input class="form-control border-3" type="number" id="reps" name="reps" placeholder="Reps:" required>
             <input class="btn btn-warning" id="button" type="submit" value="Submit" name="workoutLog">
           </form>
           <?php
@@ -129,7 +134,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
           <div class="h3 text-warning">Workouts</div>
 
           <div class="dropdown" data-bs-theme="dark">
-            <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-warning dropdown-toggle" id="selected_workout" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Select Workout
             </button>
 
@@ -157,6 +162,7 @@ $macrosArray = array('calories', 'protein', 'carbohydrates', 'fat');
       foreach ($exerciseArray as $result) {
         $exercise = str_replace(' ', '_', $result);
         if (isset($_POST[$exercise])) {
+          echo "<script> selectWorkout('".$_POST[$exercise]."')</script>";
           list($dateArray, $weightArray, $repsArray) = $workoutLogObject->showWorkoutLogByExercise($result, $member_id); ?>
           <script>
             const ctx = document.getElementById('exerciseChart');

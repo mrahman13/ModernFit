@@ -32,6 +32,8 @@
         <div class="collapse navbar-collapse ps-sm-3 ps-lg-0" id="navbarCollapseManager">
           <div class="navbar-nav me-auto">
             <a class="nav-link" href="personalTrainerManager">Personal Trainer Manager</a>
+            <a class="nav-link" href="sendEmail">Send Email</a>
+
           </div>
 
           <a class="none btn btn-outline-warning me-lg-3 me-xl-5" href="signOut">Sign Out</a>
