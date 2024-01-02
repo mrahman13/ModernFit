@@ -33,28 +33,28 @@
             <label class="text-warning h4">Name: </label>
           </div>
           <div class="col-9">
-            <input class="form-control border-3" type="text" placeholder="Name" name="Name">
+            <input class="form-control border-3" type="text" placeholder="Name" name="Name"required>
           </div>
 
           <div class="col-3">
             <label class="text-warning h4">Phone Number: </label>
           </div>
           <div class="col-9">
-            <input class="form-control border-3 h-100" type="text" placeholder="Phone Number" name="Phone">
+            <input class="form-control border-3 h-100" type="number" placeholder="Phone Number" name="Phone"required>
           </div>
 
           <div class="col-3">
             <label class="text-warning h4">Email Address:</label>
           </div>
           <div class="col-9">
-            <input class="form-control border-3 h-100" type="email" placeholder="Email Address" name="Email">
+            <input class="form-control border-3 h-100" type="email" placeholder="Email Address" name="Email"required>
           </div>
 
           <div class="col-12">
             <label class="text-warning h4">Message:</label>
           </div>
           <div class="col-12">
-            <textarea textarea class="form-control border-3" name="Message" placeholder="Messages" rows="10"></textarea>
+            <textarea textarea class="form-control border-3" type="text" name="Message" placeholder="Messages" rows="10"required></textarea>
           </div>
           <div class="col-12">
             <input class="btn btn-warning w-100" type="Submit" value="Submit">

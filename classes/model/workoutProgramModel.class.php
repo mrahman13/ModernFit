@@ -26,6 +26,11 @@ class workoutProgramModel extends dbConnection
   }
   protected function SaveWorkoutProgram($workout_name, $notes, $workout_day, $excercises,$member_id,$personal_trainer_id)
   {
+    {
+      if (!$this->ValidateInput($workout_name, $notes, $workout_day, $excercises)) {
+        return; 
+    }
+
     $query = "INSERT INTO workout_program (workout_name, notes, workout_day,exercises,member_id, personal_trainer_id) VALUES (?, ?, ?, ?,?,?)";
     $stmt = $this->connect()->prepare($query);
     $success = $stmt->execute([$workout_name, $notes, $workout_day, $excercises, $member_id, $personal_trainer_id]);
@@ -35,5 +40,27 @@ class workoutProgramModel extends dbConnection
       echo "<div class='fs-5 text-warning text-center p-2'>Error: form unable to be submitted.</div>";
   }
   }
-
 }
+
+  protected function ValidateInput($workout_name, $notes, $workout_day, $excercises)
+  {
+    $errors = [];
+
+    if (!preg_match("/^[a-zA-Z]+$/", $workout_day)) {
+        $errors[] = "Workout Day should only contain letters.";
+      }
+  
+      if (!empty($errors)) {
+          foreach ($errors as $error) {
+              echo $error;
+          }
+
+          return false; 
+      }
+  
+      return true;
+  }
+  
+}
+//https://stackoverflow.com/questions/19010269/preg-match-false-results
+//Reference I used to validate only text is being inputted.

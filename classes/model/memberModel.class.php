@@ -33,7 +33,7 @@ class memberModel extends dbConnection
     return $pin;
   }
   protected function setMember($first_name, $last_name, $profile_picture, $goals, $date_joined, $user_id)
-  {
+  {    
     $query = "SELECT COUNT(*) FROM member WHERE user_id = ?";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$user_id]);
@@ -120,5 +120,13 @@ class memberModel extends dbConnection
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$member_id]);
     return $stmt;
+  }
+
+  public function getMemberGoal($member_id)
+  {
+    $query = "SELECT * FROM goals WHERE goal_id IN (SELECT goal_id FROM member_goals WHERE member_id= ?)";
+    $stmt = $this->connect()->prepare($query);
+    $stmt->execute([$member_id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 }
