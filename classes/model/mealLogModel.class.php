@@ -5,6 +5,9 @@ class mealLogModel extends dbConnection
 
   protected function setMealLog($date_completed, $food_name, $calories, $protein, $carbohydrates, $fat)
   {
+    if (!$this->ValidateInput($date_completed, $food_name, $calories, $protein, $carbohydrates, $fat)) {
+      return; 
+  }
     $query = "INSERT INTO meal_log (food_name,calories,protein,carbohydrates,fat,date_completed,member_id) values (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$food_name, $calories, $protein, $carbohydrates, $fat, $date_completed, $_SESSION['member_id']]);
@@ -67,4 +70,35 @@ class mealLogModel extends dbConnection
     }
     return array($date_completedArraySorted, $caloriesArraySorted, $proteinArraySorted, $carbohydratesArraySorted, $fatArraySorted);
   }
+
+  protected function ValidateInput($date_completed, $food_name, $calories, $protein, $carbohydrates, $fat)
+  {
+      $errors = [];
+  
+      if (!is_numeric($calories)) {
+          $errors[] = "Calories should only contain numbers.";
+      }
+      if (!is_numeric($protein)) {
+          $errors[] = "Protein should only contain numbers.";
+      }
+      if (!is_numeric($carbohydrates)) {
+          $errors[] = "Carbohydrates should only contain numbers.";
+      }
+      if (!is_numeric($fat)) {
+          $errors[] = "Fat should only contain numbers.";
+      }
+  
+      if (!empty($errors)) {
+          foreach ($errors as $error) {
+              echo $error;
+          }
+
+          return false; 
+      }
+  
+      return true;
+  }
+  
 }
+//https://www.php.vn.ua/manual/es/function.is-numeric.php
+//Reference I used to validate only numbers are being inputted.
