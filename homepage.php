@@ -173,7 +173,7 @@ $user_id = $_SESSION['user_id'];
       <h1>Services</h1>
       <br>
       <ul>
-        <h2>Nutrional Information</h2>
+        <h2>Nutritional Information</h2>
         <p>View nutritional information on your favourite foods, which includes vital information such as calories, proteins, carbs, and fats.</p>
         <h2>Tailored Programs</h2>
         <p>We offer tailored programs catered to each members individual needs, these programs are made by our team of personal trainers.</p>
