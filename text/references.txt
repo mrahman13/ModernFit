@@ -17,3 +17,5 @@ https://www.youtube.com/watch?v=GnRAbf9MMQI
 https://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_asort
 // js object to array
 https://www.javascripttutorial.net/object/convert-an-object-to-an-array-in-javascript/
+// sort data by day of the week
+https://stackoverflow.com/questions/13662451/sort-by-day-of-the-week-from-monday-to-sunday
