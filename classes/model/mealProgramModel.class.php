@@ -4,14 +4,14 @@ class mealProgramModel extends dbConnection
 {
   protected function getMealProgramByMember($member_id)
   {
-    $query = "SELECT * from meal_program WHERE member_id = ?";
+    $query = "SELECT * from meal_program WHERE member_id = ? ORDER BY meal_time";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$member_id]);
     return $stmt;
   }
   protected function getMealProgramByPersonalTrainer($personal_trainer_id)
   {
-    $query = "SELECT * from meal_program WHERE personal_trainer_id = ?";
+    $query = "SELECT * from meal_program WHERE personal_trainer_id = ? ORDER BY meal_time";
     $stmt = $this->connect()->prepare($query);
     $stmt->execute([$personal_trainer_id]);
     return $stmt;
