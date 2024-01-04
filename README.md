@@ -8,3 +8,4 @@ manager email: harrypope@gmail.com
 password: harry  
 admin email: elizanella@gmail.com  
 password: eliza  
+http://localhost/ModernFit/modernfit.php/home (the link for homepage)
